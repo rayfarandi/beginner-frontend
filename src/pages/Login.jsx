@@ -2,13 +2,15 @@ const Login = ()=>{
     return(
 <>
     <div className="flex flex-row">
-        <div className="flex lg:w-[25%] w-0">
-        <img src="assets/bg-login.jpg" alt="gambar bacground kiri" className="w-full h-[100%] object-contain"/>
-        </div>
+        <div
+          className="hidden sm:block sm:w-2/5 md:w-2/6 lg:w-1/4
+          bg-[url(../media/bg-login.jpg)] w-1/4 bg-center bg-cover"
+        ></div>
+        
         <div className="flex lg:w-[75%] w-full flex-col gap-5">
           <div className="flex flex-row">
-            <img src="./assets/cup-coffe-icon.png"  className=" flex pl-10 pt-10 lg:pl-12" alt="logo"/>
-            <img src="/assets/text-logo.png" className=" flex  pl-1 pt-10 lg:pl-1" alt="logo tulisan"/>
+            <img src="../media/cup-coffe-icon.png" className=" flex pl-10 pt-10 lg:pl-12" alt="logo"/>
+            <img src="../media/text-logo.png" className=" flex  pl-1 pt-10 lg:pl-1" alt="logo tulisan"/>
           </div>
          <div className="flex flex-col px-5">
           <h1 className="font-semibold text-[#8E6447] px-5">Login</h1>
@@ -20,7 +22,7 @@ const Login = ()=>{
                     </div>
                     <input type="email" name="email" className="w-[93%] py-1 pl-2" placeholder="Enter Your Email"/>
                 </div>
-            </div>
+            
 
             <div>
               <label htmlFor="password"><h3 className="font-semibold px-5 pt-3">Password</h3>
@@ -55,15 +57,15 @@ const Login = ()=>{
 
             <div className="flex justify-center items-center gap-5 my-5 mx-5">
             <button className="flex justify-center items-center gap-5 px-4 py-3 rounded shadow-md lg:w-[46%]">
-                <img src="/assets/google-logo.png" alt="google" className="w-5 h-5 object-contain"/>
+                <img src="../media/google-logo.png" alt="google" className="w-5 h-5 object-contain"/>
                 <h4 className="hidden lg:block">Google</h4>
             </button>
             <button className="flex justify-center items-center gap-5 px-4 py-3 rounded shadow-md lg:w-[46%]">
-                <img src="/assets/facebook-logo.png" alt="facebook" className="w-5 h-5 object-contain"/>
+                <img src="/media/facebook-logo.png" alt="facebook" className="w-5 h-5 object-contain"/>
                 <h4 className="hidden lg:block">Facebook</h4>
             </button>
             </div>
-
+            </div>
         </div>
     </div>          
 </>
