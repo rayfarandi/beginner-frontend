@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 const Register = ()=>{
     return(
         <>
@@ -68,7 +69,7 @@ const Register = ()=>{
 
 
             <div className="flex justify-end items-center mt-5 mr-5">
-              <h1 className="text-gray-500 text-[13px]">Forgot Password? <a href="forgotpassword.html" className="text-orange-500">Forgot</a></h1>
+              <h1 className="text-gray-500 text-[13px]">Forgot Password? <Link to="/forgotpasswords" className="text-orange-500">Forgot</Link></h1>
           </div>
 
             <div className="flex justify-center py-3">

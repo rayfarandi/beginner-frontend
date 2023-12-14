@@ -2,12 +2,11 @@ const ForgotPassword = ()=>{
     return(
         <>
         <div className="flex flex-row">
-        <div
-          className="hidden sm:block sm:w-2/5 md:w-2/6 lg:w-1/4
-          bg-[url(../media/bg-forgot-password.jpg)] w-1/4 bg-center bg-cover">
-          </div>
+            <div className="flex lg:w-fit w-0">
+            <img src="../media/bg-forgot-password.jpg" alt="gambar kiri" className="w-full h-[100%] object-contain" />
+        </div>
         
-        <div className="flex lg:w-[75%] w-full flex-col gap-5">
+        <div className="flex flex-1 lg:w-[75%] w-full flex-col gap-5">
           <div className="flex flex-row">
             <img src="../media/cup-coffe-icon.png" className=" flex pl-10 pt-10 lg:pl-12" alt="logo"/>
             <img src="../media/text-logo.png" className=" flex  pl-1 pt-10 lg:pl-1" alt="logo tulisan"/>

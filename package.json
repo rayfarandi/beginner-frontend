@@ -10,8 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "feather-icons-react": "^0.6.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-feather": "^2.0.10",
     "react-router-dom": "^6.20.1"
   },
   "devDependencies": {

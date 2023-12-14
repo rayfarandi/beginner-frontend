@@ -1,3 +1,9 @@
+import { Link } from 'react-router-dom'
+import { Eye } from 'react-feather';
+import { Key } from 'react-feather';
+import { Mail } from 'react-feather';
+
+
 const Login = ()=>{
     return(
 <>
@@ -18,7 +24,7 @@ const Login = ()=>{
           <label htmlFor="email"><h3 className="font-semibold px-5 pt-3">Email</h3></label>
                  <div className="flex mx-5 my-3 border-[1px] rounded">
                     <div className="w-[7%] flex justify-center">
-                      <i data-feather="mail" className="w-4"></i>
+                      <Mail className="w-4"/>
                     </div>
                     <input type="email" name="email" className="w-[93%] py-1 pl-2" placeholder="Enter Your Email"/>
                 </div>
@@ -29,11 +35,12 @@ const Login = ()=>{
               </label>
                  <div className="flex mx-5 my-3 border-[1px] rounded">
                     <div className="w-[7%] flex justify-center">
-                      <i data-feather="key" className="w-4"></i>
+                      <Key className="w-4"/>
                     </div>
                     <input type="password" name="password" className="w-[90%] py-1 pl-2" placeholder="Enter Your Password"/>
                     <button className="lg:w-[3%] w-[7%] flex lg:px-1" type="button">
-                      <i data-feather="eye" className="w-4"></i>
+                    
+                      <Eye className="w-4"/>
                     </button>
                   
                 </div>
@@ -41,8 +48,10 @@ const Login = ()=>{
 
 
             <div className="flex justify-end items-center mt-5 mr-5">
-              <h1 className="text-gray-500 text-[13px]">Forgot Password? <a href="forgotpassword.html" className="text-orange-500">Forgot</a></h1>
+              <h1 className="text-gray-500 text-[13px]">Forgot Password?</h1> 
+              <Link to="/forgotpasswords" className="text-orange-500">Forgot</Link>
           </div>
+          
 
             <div className="flex justify-center py-3">
               <button className="w-[95%] bg-orange-500 py-2 hover:bg-orange-500/70" type="submit">Login</button>
