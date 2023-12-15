@@ -43,7 +43,7 @@ const Navbar =()=>{
                 </div>
                 <div className="flex flex-col gap-2">
                     <a href="#sign" className="">
-                        <button className="text-white border-[1px] rounded px-4 py-2 hover:opacity-80 mt-3 lg:mt-0 w-full">Sign in</button>
+                        <button className="text-white border-[1px] rounded px-4 py-2 hover:opacity-80 mt-3 w-full">Sign in</button>
                     </a>
                     <a href="#signUp" className="">
                         <button className="text-white bg-primary border-[1px] border-primary px-4 py-2 rounded hover:opacity-80 w-full">Sign up</button>
