@@ -1,9 +1,12 @@
+import * as Icon from 'react-feather'
+
+
 const ForgotPassword = ()=>{
     return(
         <>
         <div className="flex flex-row">
             <div className="flex lg:w-fit w-0">
-            <img src="../media/bg-forgot-password.jpg" alt="gambar kiri" className="w-full h-[100%] object-contain" />
+            <img src="src/assets/media/bg-forgot-password.jpg" alt="gambar kiri" className="w-full h-[100%] object-contain" />
         </div>
         
         <div className="flex flex-1 lg:w-[75%] w-full flex-col gap-5">
@@ -18,7 +21,7 @@ const ForgotPassword = ()=>{
              <label htmlFor="email"><h3 className="font-semibold px-5 pt-3">Email</h3></label>
                 <div className="flex mx-5 my-3 border-[1px] rounded">
                     <div className="w-[7%] flex justify-center">
-                    <i data-feather="mail" className="w-4"></i>
+                    <Icon.Mail className="w-4"/>
                     </div>
              <input type="email" name="email" className="w-[93%] py-1 pl-2" placeholder="Enter Your Email"/>
                 </div>

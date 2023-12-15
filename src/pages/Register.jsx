@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom'
+
+import * as Icon from 'react-feather'
 const Register = ()=>{
     return(
         <>
@@ -10,8 +12,8 @@ const Register = ()=>{
         
         <div className="flex lg:w-[75%] w-full flex-col gap-5">
           <div className="flex flex-row">
-            <img src="../media/cup-coffe-icon.png" className=" flex pl-10 pt-10 lg:pl-12" alt="logo"/>
-            <img src="../media/text-logo.png" className=" flex  pl-1 pt-10 lg:pl-1" alt="logo tulisan"/>
+            <img src="src/assets/media/cup-coffe-icon.png" className=" flex pl-10 pt-10 lg:pl-12" alt="logo"/>
+            <img src="src/assets/media/text-logo.png" className=" flex  pl-1 pt-10 lg:pl-1" alt="logo tulisan"/>
           </div>
          <div className="flex flex-col px-5">
           <h1 className="font-semibold text-[#8E6447] px-5">Login</h1>
@@ -21,7 +23,7 @@ const Register = ()=>{
                 <label htmlFor="fullname"><h3 className="font-semibold px-5 pt-3">Full Name</h3></label>
                  <div className="flex mx-5 my-3 border-[1px] rounded">
                     <div className="w-[7%] flex justify-center">
-                      <i data-feather="mail" className="w-4"></i>
+                      <Icon.Mail className="w-4"/>
                     </div>
                     <input type="text" name="fullname" className="w-[93%] py-1 pl-2" placeholder="Enter Your Full Name"/>
                 </div>
@@ -31,7 +33,7 @@ const Register = ()=>{
                 <label htmlFor="email"><h3 className="font-semibold px-5 pt-3">Email</h3></label>
                  <div className="flex mx-5 my-3 border-[1px] rounded">
                     <div className="w-[7%] flex justify-center">
-                      <i data-feather="mail" className="w-4"></i>
+                      <Icon.Mail className="w-4"/>
                     </div>
                     <input type="email" name="email" className="w-[93%] py-1 pl-2" placeholder="Enter Your Email"/>
                 </div>
@@ -42,11 +44,11 @@ const Register = ()=>{
               </label>
                  <div className="flex mx-5 my-3 border-[1px] rounded">
                     <div className="w-[7%] flex justify-center">
-                      <i data-feather="key" className="w-4"></i>
+                      <Icon.Key className="w-4"/>
                     </div>
                     <input type="password" name="password" className="w-[90%] py-1 pl-2" placeholder="Enter Your Password"/>
                     <button className="lg:w-[3%] w-[7%] flex lg:px-1" type="button">
-                      <i data-feather="eye" className="w-4"></i>
+                      <Icon.Eye className="w-4"/>
                     </button>
                   
                 </div>
@@ -57,11 +59,11 @@ const Register = ()=>{
               </label>
                  <div className="flex mx-5 my-3 border-[1px] rounded">
                     <div className="w-[7%] flex justify-center">
-                      <i data-feather="key" className="w-4"></i>
+                      <Icon.Key className="w-4"/>
                     </div>
                     <input type="password" name="password" className="w-[90%] py-1 pl-2" placeholder="Enter Your Password Again"/>
                     <button className="lg:w-[3%] w-[7%] flex lg:px-1" type="button">
-                      <i data-feather="eye" className="w-4"></i>
+                      <Icon.Eye className="w-4"/>
                     </button>
                   
                 </div>
