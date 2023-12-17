@@ -5,6 +5,8 @@ import Register from './pages/Register'
 import ForgotPassword from './pages/ForgotPassword'
 import Home from './pages/home'
 import Product from './pages/Product'
+import CheckOut from './pages/CheckOut'
+import DetailOrder from './pages/DetailOrder'
 
 
 const router = createBrowserRouter([
@@ -27,6 +29,14 @@ const router = createBrowserRouter([
   {
     path:'/product',
     element: <Product />
+  },
+  {
+    path:'/checkout',
+    element: <CheckOut />
+  },
+  {
+    path:'/detailorder',
+    element: <DetailOrder />
   }
 ])
 
