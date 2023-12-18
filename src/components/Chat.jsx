@@ -47,7 +47,7 @@ const Chat = () => {
                         <div className="flex-1 flex items-center justify-center px-4 gap-2">
                             <input className="w-4/5 rounded-md text-xs p-3 border border-[#DEDEDE]" type="text" placeholder="Masukan Pesan Anda"/>
                             <div className="bg-[#FF8906] rounded-md p-2">
-                            <i className="h-5" data-feather="send"></i>
+                            <Icon.Send className="h-5" />
                             </div>
                         </div>
           </div>

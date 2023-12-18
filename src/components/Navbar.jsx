@@ -1,6 +1,9 @@
 import React from 'react'
 import * as Icon from 'react-feather'
 import { Link } from 'react-router-dom'
+// gambar
+import LogoW from '../assets/images/logo-white.png'
+import LogoTextW from '../assets/images/text-logo-white.png'
 const Navbar =()=>{
   const [menuOpen, setMenuOpen]= React.useState(false)
     return (
@@ -10,8 +13,8 @@ const Navbar =()=>{
       <div className="flex justify-between items-center w-11/12 ml-[5%]">
         <div className="flex gap-10">
           <div className="flex flex-row">
-            <img src="src/assets/media/cup-coffee-icon-white.png"  className=" flex" alt="logo"/>
-            <img src="src/assets/media/text-logo-white.png" className=" flex pl-1" alt="logo tulisan"/>
+            <img src={LogoW}  className=" flex" alt="logo"/>
+            <img src={LogoTextW} className=" flex pl-1" alt="logo tulisan"/>
           </div>
           <div className="flex gap-10">
             <Link to="/" className="hover:border-b hover:border-orange-500 text-white hidden md:block">Home</Link>
@@ -22,7 +25,7 @@ const Navbar =()=>{
       
 
         <div className="flex items-center gap-5">
-            <Icon.Search className="text-white"/>
+            <Icon.Search className="text-white hidden md:block"/>
             <Icon.ShoppingCart className="text-white"/>
             <button onClick={()=>setMenuOpen(!menuOpen)}>
             <Icon.Menu className="md:hidden text-white"/>

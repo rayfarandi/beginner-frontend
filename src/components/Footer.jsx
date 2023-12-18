@@ -1,25 +1,30 @@
 import * as Icon from 'react-feather'
 import { Link } from 'react-router-dom'
+// gambar
+import Logo from '../assets/images/logo.png'
+import LogoText from '../assets/images/text-logo.png'
 
 const Footer =()=>{
     return(
         <>
-        <footer className="flex justify-center items-center w-full h-fit bg-orange-50">
-      <div className="flex flex-col flex-1 items-center my-5 lg:flex-row w-11/12 md:my-4 gap-4 lg:gap-24">
-       {/* bungkus  */}
-       <div className="flex">
-         <div className="flex flex-col items-center lg:items-start w-80 gap-4">
-         <div className="flex">
-           <img src="/assets/cup-coffe-icon.png"  className="flex" alt="logo"/>
-           <img src="/assets/text-logo.png" className=" flex pl-1" alt="logo tulisan"/>
-         </div>
-         <h3 className="text-gray-500">
-           Coffee Shop is a store that sells some good meals, and especially
-           coffee. We provide high quality beans
-         </h3>
-         <h4 className="text-gray-500">&copy;2020CoffeeStore</h4>
-         </div>
-       </div>
+        <footer className="flex justify-center items-center w-full h-fit py-6 sm:h-fit sm:py-12 bg-[#F8F8F8]">
+      <div className="flex flex-col w-5/6 gap-4 sm:gap-0">
+
+        <div className="flex flex-col sm:flex-row gap-10 sm:gap-20">
+          <div className="flex flex-col gap-4 w-full sm:w-[21rem]">
+            <div className="flex gap-4">
+              <div>
+                <img src={Logo}/>
+              </div>
+              <div>
+                <img src={LogoText} />
+              </div>
+            </div>
+            <p className="text-gray-500">
+              Coffee Shop is a store that sells some good meals, and especially
+              coffee. We provide high quality beans
+            </p>
+          </div>
  
        <div className="flex gap-20">
          <div className="flex flex-col gap-4">
@@ -53,8 +58,10 @@ const Footer =()=>{
            <a href="#" className="rounded-full bg-orange-500 w-9 h-9"><Icon.Instagram className="w-8 h-8 pt-1 pl-1"/></a>
          </div>
        </div>
- 
+        
       </div> 
+      <p className="text-[#AFB5C0]" id="copyright">&copy;2020CoffeeStore</p>
+      </div>
       {/* bungkus */}
      </footer>
         </>

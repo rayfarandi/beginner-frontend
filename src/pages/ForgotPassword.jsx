@@ -1,18 +1,23 @@
 import * as Icon from 'react-feather'
+// gambar
+import Logo from '../assets/images/logo.png'
+import LogoText from '../assets/images/text-logo.png'
 
+import Bgforgot from '../assets/images/bg-forgot-password.jpg'
 
 const ForgotPassword = ()=>{
     return(
         <>
-        <div className="flex flex-row">
-            <div className="flex lg:w-fit w-0">
-            <img src="src/assets/media/bg-forgot-password.jpg" alt="gambar kiri" className="w-full h-[100%] object-contain" />
+        <body className="flex flex-row">
+            <div className="flex lg:w-[25%] w-0">
+        <img src={Bgforgot} alt="gambar forgot" className="w-full h-[100%] object-contain"/>
         </div>
         
-        <div className="flex flex-1 lg:w-[75%] w-full flex-col gap-5">
+        
+        <div className="flex lg:w-[75%] w-full flex-col gap-5">
           <div className="flex flex-row">
-            <img src="../media/cup-coffe-icon.png" className=" flex pl-10 pt-10 lg:pl-12" alt="logo"/>
-            <img src="../media/text-logo.png" className=" flex  pl-1 pt-10 lg:pl-1" alt="logo tulisan"/>
+            <img src={Logo} className=" flex pl-10 pt-10 lg:pl-12" alt="logo"/>
+            <img src={LogoText} className=" flex  pl-1 pt-10 lg:pl-1" alt="logo tulisan"/>
           </div>
          <div className="flex flex-col px-5">
           <h1 className="font-semibold text-[#8E6447] px-5">Login</h1>
@@ -38,7 +43,7 @@ const ForgotPassword = ()=>{
 
             </div>
         </div>
-    </div>   
+    </body>   
         </>
     )
     

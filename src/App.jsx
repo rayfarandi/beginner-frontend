@@ -7,6 +7,8 @@ import Home from './pages/home'
 import Product from './pages/Product'
 import CheckOut from './pages/CheckOut'
 import DetailOrder from './pages/DetailOrder'
+import ProductDetail from './pages/ProductDetail'
+import HistoryOrder from './pages/HistoryOrder'
 
 
 const router = createBrowserRouter([
@@ -37,6 +39,14 @@ const router = createBrowserRouter([
   {
     path:'/detailorder',
     element: <DetailOrder />
+  },
+  {
+    path:'/productdetail',
+    element: <ProductDetail />
+  },
+  {
+    path:'/historyorder',
+    element: <HistoryOrder />
   }
 ])
 
