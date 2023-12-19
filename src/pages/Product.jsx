@@ -1,6 +1,12 @@
 import Footer from "../components/Footer"
 import Navbar from "../components/navbar"
+import { Link } from 'react-router-dom'
 // import * as Icon from 'react-feather'
+import KuponMother from '../assets/images/motherdaycupon.png'
+import KuponFather from '../assets/images/fatherdaycupon.png'
+import ProductImg1 from  '../assets/images/recommend-product1.jpg'
+import ProductImg2 from  '../assets/images/recommend-product2.jpg'
+
 
 const Product=()=>{
     return(
@@ -9,7 +15,7 @@ const Product=()=>{
         <Navbar />
 
         {/* header dan kupon  */}
-            <header className="hidden sm:flex items-center bg-[url('assets/header-product-page.jpg')] bg-center w-full h-72 mt-12">
+            <header className="hidden sm:flex items-center bg-[url('../assets/images/bg-product-list.png')] bg-center w-full h-72 mt-12">
             <h1 className="text-white text-5xl ml-28">
                 We Provide Good Coffee and Healthy <br />
                 Meals
@@ -37,7 +43,7 @@ const Product=()=>{
             <div className="w-fit flex gap-10 ">
                 <div className="flex bg-[#88B788] rounded-2xl items-center pl-2 w-64 sm:w-72 h-20 sm:h-auto">
                 <div>
-                    <img className="h-20 sm:h-24 translate-y-1" src="./assets/stiker-kupon-hijau.png" alt="" />
+                    <img className="h-20 sm:h-24 translate-y-1" src={KuponMother} alt="" />
                 </div>
                 <div className="flex flex-col gap-1">
                     <div>
@@ -53,7 +59,7 @@ const Product=()=>{
 
                 <div className="flex bg-[#88B788] rounded-2xl items-center pl-2 w-64 sm:w-72 h-20 sm:h-auto">
                 <div>
-                    <img className="h-20 sm:h-24 translate-y-1" src="./assets/stiker-kupon-hijau.png" alt="" />
+                    <img className="h-20 sm:h-24 translate-y-1" src={KuponMother} alt="" />
                 </div>
                 <div className="flex flex-col gap-1">
                     <div>
@@ -69,7 +75,7 @@ const Product=()=>{
 
                 <div className="flex bg-[#88B788] rounded-2xl items-center pl-2 w-64 sm:w-72 h-20 sm:h-auto">
                 <div>
-                    <img className="h-20 sm:h-24 translate-y-1" src="./assets/stiker-kupon-hijau.png" alt="" />
+                    <img className="h-20 sm:h-24 translate-y-1" src={KuponMother} alt="" />
                 </div>
                 <div className="flex flex-col gap-1">
                     <div>
@@ -85,7 +91,7 @@ const Product=()=>{
 
                 <div className="flex bg-[#88B788] rounded-2xl items-center pl-2 w-64 sm:w-72 h-20 sm:h-auto">
                 <div>
-                    <img className="h-20 sm:h-24 translate-y-1" src="./assets/stiker-kupon-hijau.png" alt="" />
+                    <img className="h-20 sm:h-24 translate-y-1" src={KuponMother} alt="" />
                 </div>
                 <div className="flex flex-col gap-1">
                     <div>
@@ -101,7 +107,7 @@ const Product=()=>{
 
                 <div className="flex bg-[#F5C361]  rounded-2xl items-center pl-2 w-64 sm:w-72 h-20 sm:h-auto">
                 <div>
-                    <img className="h-20 sm:h-24 translate-y-1" src="./assets/stiker-kupon-kuning.png" alt="" />
+                    <img className="h-20 sm:h-24 translate-y-1" src={KuponFather} alt="" />
                 </div>
                 <div className="flex flex-col gap-3">
                     <h5 className="text-xs sm:text-sm font-bold">Get a cup of coffee for free <br/> on sunday morning</h5>
@@ -208,13 +214,14 @@ const Product=()=>{
                 <div className="flex flex-wrap justify-center gap-x-4 sm:gap-x-20 gap-y-44 mb-48 max-w-xl">
                     <div className="relative flex justify-center w-fit h-fit">
                         <div>
-                        <img className=" w-48 sm:w-60" src="src/assets/media/home-product3.jpg" alt="" />
+                        <img className=" w-48 sm:w-60" src={ProductImg1} alt="" />
                         </div>
                         <div className="absolute bg-[#D00000] text-white rounded-3xl text-xs p-1.5 left-2 top-2">
                         <h1>FLASH SALE!</h1>
                         </div>
                         <div className="absolute w-11/12 bg-white top-[85%] p-1.5 sm:p-2 flex flex-col gap-2">
-                        <h1 className="font-semibold text-sm sm:text-base" id="product-name">Hazelnut Latte</h1>
+                        <Link to="/productdetail" >
+                        <h1 className="font-semibold text-sm sm:text-base" id="product-name">Hazelnut Latte</h1></Link>
                         <p className="text-[0.6rem] sm:text-[0.7rem] text-[#4F5665]">
                             You can explore the menu that we provide with fun and have their
                             own taste and make your day better.
@@ -222,19 +229,19 @@ const Product=()=>{
                         <div className="flex items-center gap-2 sm:gap-4">
                             <div className="flex items-center gap-2 sm:gap-4">
                             <div>
-                                <img className="w-3 sm:w-auto" src="/assets/star.png" />
+                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
                             </div>
                             <div>
-                                <img className="w-3 sm:w-auto" src="/assets/star.png" />
+                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
                             </div>
                             <div>
-                                <img className="w-3 sm:w-auto" src="/assets/star.png" />
+                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
                             </div>
                             <div>
-                                <img className="w-3 sm:w-auto" src="/assets/star.png" />
+                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
                             </div>
                             <div>
-                                <img className="w-3 sm:w-auto" src="/assets/star.png" />
+                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
                             </div>
                             </div>
                             <p className="text-[#4F5665] text-xs sm:text-sm" id="rating-number">5.0</p>
@@ -252,13 +259,14 @@ const Product=()=>{
         
                     <div className="relative flex justify-center w-fit h-fit">
                         <div>
-                        <img className=" w-48 sm:w-60" src="src/assets/media/home-product1.jpg" alt="" />
+                        <img className=" w-48 sm:w-60" src={ProductImg2} alt="" />
                         </div>
                         <div className="absolute bg-[#D00000] text-white rounded-3xl text-xs p-1.5 left-2 top-2">
                         <h1>FLASH SALE!</h1>
                         </div>
                         <div className="absolute w-11/12 bg-white top-[85%] p-1.5 sm:p-2 flex flex-col gap-2">
-                        <h1 className="font-semibold text-sm sm:text-base" id="product-name">Hazelnut Latte</h1>
+                        <Link to="/productdetail" >
+                        <h1 className="font-semibold text-sm sm:text-base" id="product-name">Hazelnut Latte</h1></Link>
                         <p className="text-[0.6rem] sm:text-[0.7rem] text-[#4F5665]">
                             You can explore the menu that we provide with fun and have their
                             own taste and make your day better.
@@ -266,19 +274,19 @@ const Product=()=>{
                         <div className="flex items-center gap-2 sm:gap-4">
                             <div className="flex items-center gap-2 sm:gap-4">
                             <div>
-                                <img className="w-3 sm:w-auto" src="/assets/star.png" />
+                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
                             </div>
                             <div>
-                                <img className="w-3 sm:w-auto" src="/assets/star.png" />
+                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
                             </div>
                             <div>
-                                <img className="w-3 sm:w-auto" src="/assets/star.png" />
+                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
                             </div>
                             <div>
-                                <img className="w-3 sm:w-auto" src="/assets/star.png" />
+                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
                             </div>
                             <div>
-                                <img className="w-3 sm:w-auto" src="/assets/star.png" />
+                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
                             </div>
                             </div>
                             <p className="text-[#4F5665] text-xs sm:text-sm" id="rating-number">5.0</p>
@@ -296,7 +304,7 @@ const Product=()=>{
         
                     <div className="relative flex justify-center w-fit h-fit">
                         <div>
-                        <img className=" w-48 sm:w-60" src="src/assets/media/home-product2.jpg" alt="" />
+                        <img className=" w-48 sm:w-60" src={ProductImg2} alt="" />
                         </div>
                         <div className="absolute bg-[#D00000] text-white rounded-3xl text-xs p-1.5 left-2 top-2">
                         <h1>FLASH SALE!</h1>
@@ -310,19 +318,19 @@ const Product=()=>{
                         <div className="flex items-center gap-2 sm:gap-4">
                             <div className="flex items-center gap-2 sm:gap-4">
                             <div>
-                                <img className="w-3 sm:w-auto" src="/assets/star.png" />
+                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
                             </div>
                             <div>
-                                <img className="w-3 sm:w-auto" src="/assets/star.png" />
+                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
                             </div>
                             <div>
-                                <img className="w-3 sm:w-auto" src="/assets/star.png" />
+                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
                             </div>
                             <div>
-                                <img className="w-3 sm:w-auto" src="/assets/star.png" />
+                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
                             </div>
                             <div>
-                                <img className="w-3 sm:w-auto" src="/assets/star.png" />
+                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
                             </div>
                             </div>
                             <p className="text-[#4F5665] text-xs sm:text-sm" id="rating-number">5.0</p>
@@ -340,7 +348,7 @@ const Product=()=>{
         
                     <div className="relative flex justify-center w-fit h-fit">
                         <div>
-                        <img className=" w-48 sm:w-60" src="src/assets/media/home-product3.jpg" alt="" />
+                        <img className=" w-48 sm:w-60" src={ProductImg2} alt="" />
                         </div>
                         <div className="absolute bg-[#D00000] text-white rounded-3xl text-xs p-1.5 left-2 top-2">
                         <h1>FLASH SALE!</h1>
@@ -354,19 +362,19 @@ const Product=()=>{
                         <div className="flex items-center gap-2 sm:gap-4">
                             <div className="flex items-center gap-2 sm:gap-4">
                             <div>
-                                <img className="w-3 sm:w-auto" src="/assets/star.png" />
+                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
                             </div>
                             <div>
-                                <img className="w-3 sm:w-auto" src="/assets/star.png" />
+                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
                             </div>
                             <div>
-                                <img className="w-3 sm:w-auto" src="/assets/star.png" />
+                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
                             </div>
                             <div>
-                                <img className="w-3 sm:w-auto" src="/assets/star.png" />
+                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
                             </div>
                             <div>
-                                <img className="w-3 sm:w-auto" src="/assets/star.png" />
+                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
                             </div>
                             </div>
                             <p className="text-[#4F5665] text-xs sm:text-sm" id="rating-number">5.0</p>
@@ -384,7 +392,7 @@ const Product=()=>{
         
                     <div className="relative flex justify-center w-fit h-fit">
                         <div>
-                        <img className=" w-48 sm:w-60" src="src/assets/media/home-product2.jpg" alt="" />
+                        <img className=" w-48 sm:w-60" src={ProductImg1} alt="" />
                         </div>
                         <div className="absolute bg-[#D00000] text-white rounded-3xl text-xs p-1.5 left-2 top-2">
                         <h1>FLASH SALE!</h1>
@@ -398,19 +406,19 @@ const Product=()=>{
                         <div className="flex items-center gap-2 sm:gap-4">
                             <div className="flex items-center gap-2 sm:gap-4">
                             <div>
-                                <img className="w-3 sm:w-auto" src="/assets/star.png" />
+                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
                             </div>
                             <div>
-                                <img className="w-3 sm:w-auto" src="/assets/star.png" />
+                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
                             </div>
                             <div>
-                                <img className="w-3 sm:w-auto" src="/assets/star.png" />
+                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
                             </div>
                             <div>
-                                <img className="w-3 sm:w-auto" src="/assets/star.png" />
+                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
                             </div>
                             <div>
-                                <img className="w-3 sm:w-auto" src="/assets/star.png" />
+                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
                             </div>
                             </div>
                             <p className="text-[#4F5665] text-xs sm:text-sm" id="rating-number">5.0</p>
@@ -428,7 +436,7 @@ const Product=()=>{
         
                     <div className="relative flex justify-center w-fit h-fit">
                         <div>
-                        <img className=" w-48 sm:w-60" src="src/assets/media/home-product1.jpg" alt="" />
+                        <img className=" w-48 sm:w-60" src={ProductImg1} alt="" />
                         </div>
                         <div className="absolute bg-[#D00000] text-white rounded-3xl text-xs p-1.5 left-2 top-2">
                         <h1>FLASH SALE!</h1>
@@ -442,19 +450,19 @@ const Product=()=>{
                         <div className="flex items-center gap-2 sm:gap-4">
                             <div className="flex items-center gap-2 sm:gap-4">
                             <div>
-                                <img className="w-3 sm:w-auto" src="/assets/star.png" />
+                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
                             </div>
                             <div>
-                                <img className="w-3 sm:w-auto" src="/assets/star.png" />
+                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
                             </div>
                             <div>
-                                <img className="w-3 sm:w-auto" src="/assets/star.png" />
+                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
                             </div>
                             <div>
-                                <img className="w-3 sm:w-auto" src="/assets/star.png" />
+                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
                             </div>
                             <div>
-                                <img className="w-3 sm:w-auto" src="/assets/star.png" />
+                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png" />
                             </div>
                             </div>
                             <p className="text-[#4F5665] text-xs sm:text-sm" id="rating-number">5.0</p>

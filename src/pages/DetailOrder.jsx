@@ -82,7 +82,7 @@ const DetailOrder = ()=>{
             <div className="flex flex-col gap-3 sm:gap-5 overflow-y-scroll h-[22rem] sm:h-[21rem]">
             <div className="relative flex items-center gap-2 sm:gap-4 bg-[#E8E8E84D] p-2">
                 <div className="">
-                <img className="w-24 sm:w-36" src="./assets/checkout-image.jpg" />
+                <img className="w-24 sm:w-36" src="src/assets/images/checkout-image.jpg" />
                 </div>
                 <div className="flex-1 flex flex-col gap-2 sm:gap-3 justify-center">
                 <div className="bg-[#D00000] text-white rounded-3xl text-[0.6rem] sm:text-xs p-1 sm:p-1.5 w-fit">
@@ -104,7 +104,7 @@ const DetailOrder = ()=>{
 
             <div className="relative flex items-center gap-2 sm:gap-4 bg-[#E8E8E84D] p-2">
                 <div className="">
-                <img className="w-24 sm:w-36" src="./assets/checkout-image.jpg" />
+                <img className="w-24 sm:w-36" src="src/assets/images/checkout-image.jpg" />
                 </div>
                 <div className="flex-1 flex flex-col gap-2 sm:gap-3 justify-center">
                 <div className="bg-[#D00000] text-white rounded-3xl text-[0.6rem] sm:text-xs p-1 sm:p-1.5 w-fit">
@@ -126,7 +126,7 @@ const DetailOrder = ()=>{
 
             <div className="relative flex items-center gap-2 sm:gap-4 bg-[#E8E8E84D] p-2">
                 <div className="">
-                <img className="w-24 sm:w-36" src="./assets/checkout-image.jpg" />
+                <img className="w-24 sm:w-36" src="src/assets/images/checkout-image.jpg" />
                 </div>
                 <div className="flex-1 flex flex-col gap-2 sm:gap-3 justify-center">
                 <div className="bg-[#D00000] text-white rounded-3xl text-[0.6rem] sm:text-xs p-1 sm:p-1.5 w-fit">
@@ -148,7 +148,7 @@ const DetailOrder = ()=>{
 
             <div className="relative flex items-center gap-2 sm:gap-4 bg-[#E8E8E84D] p-2">
                 <div className="">
-                <img className="w-24 sm:w-36" src="./assets/checkout-image.jpg" />
+                <img className="w-24 sm:w-36" src="src/assets/images/checkout-image.jpg" />
                 </div>
                 <div className="flex-1 flex flex-col gap-2 sm:gap-3 justify-center">
                 <div className="bg-[#D00000] text-white rounded-3xl text-[0.6rem] sm:text-xs p-1 sm:p-1.5 w-fit">

@@ -1,10 +1,10 @@
 import * as Icon from 'react-feather'
-import cofeeA from '../assets/images/home-product1.jpg'
 
-const ProductCard =({name,description,price})=>{
+
+const ProductCard =({name,description,price,image})=>{
     return(
         <div className='flex flex-col justify-center items-center flex-1'>
-            <div className='bg-gray-50 p-2 rounded'><img src={cofeeA}  alt="product" /></div>
+            <div className='bg-gray-50 p-2 rounded h-60 flex'><img className='flex-1 object-cover' src={image}  alt="product" /></div>
             <div className="shadow-md bg-white rounded p-3 mx-5 -mt-10 flex flex-col gap-5 flex-1">
                 <div className='text-3xl font-bold'>{name}</div>
                 <div className='flex-1'>{description}</div>
