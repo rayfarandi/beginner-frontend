@@ -7,10 +7,9 @@ import { FcGoogle } from "react-icons/fc"
 import { FaFacebook } from "react-icons/fa";
 import Logo from '../assets/images/logo.png'
 import LogoText from '../assets/images/text-logo.png'
-import React, { useState } from 'react';
+import React from 'react';
 
 const Form = () => {
-
   const fullName = React.useRef()
   const inputEmail = React.useRef()
   const inputPassword = React.useRef()
@@ -22,8 +21,6 @@ const Form = () => {
   const {value: fullName} = event.target.fullName
   const {value: email} = event.target.email
   const {value: password} = event.target.password
-
-
   const form = new URLSearchParams()
   form.append('fullName',fullName)
   form.append('email',email)
@@ -32,10 +29,9 @@ const Form = () => {
     try{
       const {data} = await axios.post('http://localhost:8888/auth/register', form.toString())
       const {token} = data.results
-      // window.location = '/login'
+      window.location = '/login'
     }catch(err){
-      console.log(err.response.data.message)
-      // alert(err.response.data.message)
+      alert(err.response.data.message)
     }
   }
   return (
@@ -97,7 +93,7 @@ const Form = () => {
             </button>
           </div>
         </div>
-        
+
         <div className="flex justify-end items-center mt-5 mr-5">
               <h1 className="text-gray-500 text-[13px]">Forgot Password? <Link to="/forgotpasswords" className="text-orange-500">Forgot</Link></h1>
           </div>

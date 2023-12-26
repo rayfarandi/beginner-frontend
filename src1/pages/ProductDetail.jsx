@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 const ProductDetail =()=>{
     return(
         <>
-        <Navbar bg='#000000'/>
+        <Navbar />
         <body className="flex flex-col items-center">
         <section className="h-fit sm:h-screen w-5/6 flex flex-col sm:flex-row items-center mt-20 sm:mt-14 gap-4 sm:gap-0">
         <div className="flex-1 flex flex-col items-center gap-2 sm:gap-4 w-fit h-fit">

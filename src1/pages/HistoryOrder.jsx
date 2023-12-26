@@ -5,7 +5,7 @@ const HistoryOrder = ()=>{
     return(
         <>
         <body className="flex flex-col items-center">
-        <Navbar bg='#000000'/>
+            <Navbar />
             {/* history order */}
             <div className="header flex justify-between sm:justify-start w-5/6 mt-20 sm:mt-24 gap-8 items-end">
             <h1 className="text-2xl sm:text-4xl font-semibold">History Order</h1>

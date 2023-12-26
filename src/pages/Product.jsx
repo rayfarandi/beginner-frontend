@@ -1,18 +1,19 @@
+
 import Footer from "../components/Footer"
 import Navbar from "../components/navbar"
-import { Link } from 'react-router-dom'
-// import * as Icon from 'react-feather'
+
 import KuponMother from '../assets/images/motherdaycupon.png'
 import KuponFather from '../assets/images/fatherdaycupon.png'
-import ProductImg1 from  '../assets/images/recommend-product1.jpg'
-import ProductImg2 from  '../assets/images/recommend-product2.jpg'
+
+import ProductProduct from '../components/ProductProduct';
 
 
 const Product=()=>{
+
     return(
         <>
         <body className="flex flex-col items-center">
-        <Navbar />
+        <Navbar bg='#000000'/>
 
         {/* header dan kupon  */}
             <header className="hidden sm:flex items-center bg-[url('../assets/images/bg-product-list.png')] bg-center w-full h-72 mt-12">
@@ -211,300 +212,34 @@ const Product=()=>{
                 </div>{/* pencarian */}
 
                 {/* list card */}
-                <div className="flex flex-wrap justify-center gap-x-4 sm:gap-x-20 gap-y-44 mb-48 max-w-xl">
-                    <div className="relative flex justify-center w-fit h-fit">
-                        <div>
-                        <img className=" w-48 sm:w-60" src={ProductImg1} alt="" />
-                        </div>
-                        <div className="absolute bg-[#D00000] text-white rounded-3xl text-xs p-1.5 left-2 top-2">
-                        <h1>FLASH SALE!</h1>
-                        </div>
-                        <div className="absolute w-11/12 bg-white top-[85%] p-1.5 sm:p-2 flex flex-col gap-2">
-                        <Link to="/productdetail" >
-                        <h1 className="font-semibold text-sm sm:text-base" id="product-name">Hazelnut Latte</h1></Link>
-                        <p className="text-[0.6rem] sm:text-[0.7rem] text-[#4F5665]">
-                            You can explore the menu that we provide with fun and have their
-                            own taste and make your day better.
-                        </p>
-                        <div className="flex items-center gap-2 sm:gap-4">
-                            <div className="flex items-center gap-2 sm:gap-4">
-                            <div>
-                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
-                            </div>
-                            <div>
-                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
-                            </div>
-                            <div>
-                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
-                            </div>
-                            <div>
-                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
-                            </div>
-                            <div>
-                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
-                            </div>
-                            </div>
-                            <p className="text-[#4F5665] text-xs sm:text-sm" id="rating-number">5.0</p>
-                        </div>
-                        <div className="flex items-center gap-4">
-                            <h1 className="text-[#D00000] text-[0.6rem] sm:text-xs font-semibold line-through">IDR 20.000</h1>
-                            <h1 className="text-[#FF8906] font-semibold text-xs sm:text-base" id="product-price">IDR 20.000</h1>
-                        </div>
-                        <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
-                            <button className=" w-full sm:w-9/12 bg-[#FF8906] rounded-md text-xs sm:text-sm py-1">Buy</button>
-                            <i className="w-full sm:flex-1 border border-[#FF8906] text-[#FF8906] p-1 h-6 sm:h-7 rounded-md" data-feather="shopping-cart"></i>
-                        </div>
-                        </div>
-                    </div>
-        
-                    <div className="relative flex justify-center w-fit h-fit">
-                        <div>
-                        <img className=" w-48 sm:w-60" src={ProductImg2} alt="" />
-                        </div>
-                        <div className="absolute bg-[#D00000] text-white rounded-3xl text-xs p-1.5 left-2 top-2">
-                        <h1>FLASH SALE!</h1>
-                        </div>
-                        <div className="absolute w-11/12 bg-white top-[85%] p-1.5 sm:p-2 flex flex-col gap-2">
-                        <Link to="/productdetail" >
-                        <h1 className="font-semibold text-sm sm:text-base" id="product-name">Hazelnut Latte</h1></Link>
-                        <p className="text-[0.6rem] sm:text-[0.7rem] text-[#4F5665]">
-                            You can explore the menu that we provide with fun and have their
-                            own taste and make your day better.
-                        </p>
-                        <div className="flex items-center gap-2 sm:gap-4">
-                            <div className="flex items-center gap-2 sm:gap-4">
-                            <div>
-                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
-                            </div>
-                            <div>
-                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
-                            </div>
-                            <div>
-                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
-                            </div>
-                            <div>
-                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
-                            </div>
-                            <div>
-                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
-                            </div>
-                            </div>
-                            <p className="text-[#4F5665] text-xs sm:text-sm" id="rating-number">5.0</p>
-                        </div>
-                        <div className="flex items-center gap-4">
-                            <h1 className="text-[#D00000] text-[0.6rem] sm:text-xs font-semibold line-through">IDR 20.000</h1>
-                            <h1 className="text-[#FF8906] font-semibold text-xs sm:text-base" id="product-price">IDR 20.000</h1>
-                        </div>
-                        <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
-                            <button className=" w-full sm:w-9/12 bg-[#FF8906] rounded-md text-xs sm:text-sm py-1">Buy</button>
-                            <i className="w-full sm:flex-1 border border-[#FF8906] text-[#FF8906] p-1 h-6 sm:h-7 rounded-md" data-feather="shopping-cart"></i>
-                        </div>
-                        </div>
-                    </div>
-        
-                    <div className="relative flex justify-center w-fit h-fit">
-                        <div>
-                        <img className=" w-48 sm:w-60" src={ProductImg2} alt="" />
-                        </div>
-                        <div className="absolute bg-[#D00000] text-white rounded-3xl text-xs p-1.5 left-2 top-2">
-                        <h1>FLASH SALE!</h1>
-                        </div>
-                        <div className="absolute w-11/12 bg-white top-[85%] p-1.5 sm:p-2 flex flex-col gap-2">
-                        <h1 className="font-semibold text-sm sm:text-base" id="product-name">Hazelnut Latte</h1>
-                        <p className="text-[0.6rem] sm:text-[0.7rem] text-[#4F5665]">
-                            You can explore the menu that we provide with fun and have their
-                            own taste and make your day better.
-                        </p>
-                        <div className="flex items-center gap-2 sm:gap-4">
-                            <div className="flex items-center gap-2 sm:gap-4">
-                            <div>
-                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
-                            </div>
-                            <div>
-                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
-                            </div>
-                            <div>
-                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
-                            </div>
-                            <div>
-                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
-                            </div>
-                            <div>
-                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
-                            </div>
-                            </div>
-                            <p className="text-[#4F5665] text-xs sm:text-sm" id="rating-number">5.0</p>
-                        </div>
-                        <div className="flex items-center gap-4">
-                            <h1 className="text-[#D00000] text-[0.6rem] sm:text-xs font-semibold line-through">IDR 20.000</h1>
-                            <h1 className="text-[#FF8906] font-semibold text-xs sm:text-base" id="product-price">IDR 20.000</h1>
-                        </div>
-                        <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
-                            <button className=" w-full sm:w-9/12 bg-[#FF8906] rounded-md text-xs sm:text-sm py-1">Buy</button>
-                            <i className="w-full sm:flex-1 border border-[#FF8906] text-[#FF8906] p-1 h-6 sm:h-7 rounded-md" data-feather="shopping-cart"></i>
-                        </div>
-                        </div>
-                    </div>
-        
-                    <div className="relative flex justify-center w-fit h-fit">
-                        <div>
-                        <img className=" w-48 sm:w-60" src={ProductImg2} alt="" />
-                        </div>
-                        <div className="absolute bg-[#D00000] text-white rounded-3xl text-xs p-1.5 left-2 top-2">
-                        <h1>FLASH SALE!</h1>
-                        </div>
-                        <div className="absolute w-11/12 bg-white top-[85%] p-1.5 sm:p-2 flex flex-col gap-2">
-                        <h1 className="font-semibold text-sm sm:text-base" id="product-name">Hazelnut Latte</h1>
-                        <p className="text-[0.6rem] sm:text-[0.7rem] text-[#4F5665]">
-                            You can explore the menu that we provide with fun and have their
-                            own taste and make your day better.
-                        </p>
-                        <div className="flex items-center gap-2 sm:gap-4">
-                            <div className="flex items-center gap-2 sm:gap-4">
-                            <div>
-                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
-                            </div>
-                            <div>
-                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
-                            </div>
-                            <div>
-                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
-                            </div>
-                            <div>
-                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
-                            </div>
-                            <div>
-                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
-                            </div>
-                            </div>
-                            <p className="text-[#4F5665] text-xs sm:text-sm" id="rating-number">5.0</p>
-                        </div>
-                        <div className="flex items-center gap-4">
-                            <h1 className="text-[#D00000] text-[0.6rem] sm:text-xs font-semibold line-through">IDR 20.000</h1>
-                            <h1 className="text-[#FF8906] font-semibold text-xs sm:text-base" id="product-price">IDR 20.000</h1>
-                        </div>
-                        <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
-                            <button className=" w-full sm:w-9/12 bg-[#FF8906] rounded-md text-xs sm:text-sm py-1">Buy</button>
-                            <i className="w-full sm:flex-1 border border-[#FF8906] text-[#FF8906] p-1 h-6 sm:h-7 rounded-md" data-feather="shopping-cart"></i>
-                        </div>
-                        </div>
-                    </div>
-        
-                    <div className="relative flex justify-center w-fit h-fit">
-                        <div>
-                        <img className=" w-48 sm:w-60" src={ProductImg1} alt="" />
-                        </div>
-                        <div className="absolute bg-[#D00000] text-white rounded-3xl text-xs p-1.5 left-2 top-2">
-                        <h1>FLASH SALE!</h1>
-                        </div>
-                        <div className="absolute w-11/12 bg-white top-[85%] p-1.5 sm:p-2 flex flex-col gap-2">
-                        <h1 className="font-semibold text-sm sm:text-base" id="product-name">Hazelnut Latte</h1>
-                        <p className="text-[0.6rem] sm:text-[0.7rem] text-[#4F5665]">
-                            You can explore the menu that we provide with fun and have their
-                            own taste and make your day better.
-                        </p>
-                        <div className="flex items-center gap-2 sm:gap-4">
-                            <div className="flex items-center gap-2 sm:gap-4">
-                            <div>
-                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
-                            </div>
-                            <div>
-                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
-                            </div>
-                            <div>
-                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
-                            </div>
-                            <div>
-                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
-                            </div>
-                            <div>
-                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
-                            </div>
-                            </div>
-                            <p className="text-[#4F5665] text-xs sm:text-sm" id="rating-number">5.0</p>
-                        </div>
-                        <div className="flex items-center gap-4">
-                            <h1 className="text-[#D00000] text-[0.6rem] sm:text-xs font-semibold line-through">IDR 20.000</h1>
-                            <h1 className="text-[#FF8906] font-semibold text-xs sm:text-base" id="product-price">IDR 20.000</h1>
-                        </div>
-                        <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
-                            <button className=" w-full sm:w-9/12 bg-[#FF8906] rounded-md text-xs sm:text-sm py-1">Buy</button>
-                            <i className="w-full sm:flex-1 border border-[#FF8906] text-[#FF8906] p-1 h-6 sm:h-7 rounded-md" data-feather="shopping-cart"></i>
-                        </div>
-                        </div>
-                    </div>
-        
-                    <div className="relative flex justify-center w-fit h-fit">
-                        <div>
-                        <img className=" w-48 sm:w-60" src={ProductImg1} alt="" />
-                        </div>
-                        <div className="absolute bg-[#D00000] text-white rounded-3xl text-xs p-1.5 left-2 top-2">
-                        <h1>FLASH SALE!</h1>
-                        </div>
-                        <div className="absolute w-11/12 bg-white top-[85%] p-1.5 sm:p-2 flex flex-col gap-2">
-                        <h1 className="font-semibold text-sm sm:text-base" id="product-name">Hazelnut Latte</h1>
-                        <p className="text-[0.6rem] sm:text-[0.7rem] text-[#4F5665]">
-                            You can explore the menu that we provide with fun and have their
-                            own taste and make your day better.
-                        </p>
-                        <div className="flex items-center gap-2 sm:gap-4">
-                            <div className="flex items-center gap-2 sm:gap-4">
-                            <div>
-                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
-                            </div>
-                            <div>
-                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
-                            </div>
-                            <div>
-                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
-                            </div>
-                            <div>
-                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png"  />
-                            </div>
-                            <div>
-                                <img className="w-3 sm:w-auto" src="src/assets/images/star.png" />
-                            </div>
-                            </div>
-                            <p className="text-[#4F5665] text-xs sm:text-sm" id="rating-number">5.0</p>
-                        </div>
-                        <div className="flex items-center gap-4">
-                            <h1 className="text-[#D00000] text-[0.6rem] sm:text-xs font-semibold line-through">IDR 20.000</h1>
-                            <h1 className="text-[#FF8906] font-semibold text-xs sm:text-base" id="product-price">IDR 20.000</h1>
-                        </div>
-                        <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
-                            <button className=" w-full sm:w-9/12 bg-[#FF8906] rounded-md text-xs sm:text-sm py-1">Buy</button>
-                            <i className="w-full sm:flex-1 border border-[#FF8906] text-[#FF8906] p-1 h-6 sm:h-7 rounded-md" data-feather="shopping-cart"></i>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
+                <ProductProduct />
                 {/* list card */}
              </div> {/* bungkus tes  */}
 
 
             </div>{/* conten product  */}
             {/* tombol  */}
-            <div className="flex gap-2">
-                    <div className="flex justify-center items-center bg-[#FF8906] text-xs sm:text-sm rounded-full h-6 w-6 sm:h-8 sm:w-8">
-                        <h3>1</h3>
-                    </div>
+            {/* <div className="flex gap-2">
+                    <button type="button" className="flex justify-center items-center bg-[#FF8906] text-xs sm:text-sm rounded-full h-6 w-6 sm:h-8 sm:w-8">
+                        1
+                    </button>
         
-                    <div className="flex justify-center items-center  text-[#A0A3BD] text-xs sm:text-sm bg-[#E8E8E8] rounded-full h-6 w-6 sm:h-8 sm:w-8">
-                        <h3>2</h3>
-                    </div>
+                    <button type="button" className="flex justify-center items-center  text-[#A0A3BD] text-xs sm:text-sm bg-[#E8E8E8] rounded-full h-6 w-6 sm:h-8 sm:w-8">
+                        2
+                    </button>
         
-                    <div className="flex justify-center items-center  text-[#A0A3BD] text-xs sm:text-sm bg-[#E8E8E8] rounded-full h-6 w-6 sm:h-8 sm:w-8">
-                        <h3>2</h3>
-                    </div>
+                    <button type="button" className="flex justify-center items-center  text-[#A0A3BD] text-xs sm:text-sm bg-[#E8E8E8] rounded-full h-6 w-6 sm:h-8 sm:w-8">
+                        3
+                    </button>
         
-                    <div className="flex justify-center items-center text-[#A0A3BD] text-xs sm:text-sm bg-[#E8E8E8] rounded-full h-6 w-6 sm:h-8 sm:w-8">
-                        <h3>4</h3>
-                    </div>
+                    <button type="button" className="flex justify-center items-center text-[#A0A3BD] text-xs sm:text-sm bg-[#E8E8E8] rounded-full h-6 w-6 sm:h-8 sm:w-8">
+                        4
+                    </button>
         
-                    <div className="flex justify-center items-center bg-[#FF8906] rounded-full h-6 w-6 sm:h-8 sm:w-8">
+                    <button type="button" onClick={()=>getProducts('next')} className="flex justify-center items-center bg-[#FF8906] rounded-full h-6 w-6 sm:h-8 sm:w-8">
                         <i className="text-white h-4 sm:h-auto" data-feather="arrow-right"></i>
-                    </div>
-                    </div>
+                    </button>
+            </div> */}
         <Footer />
         </body>
         </>

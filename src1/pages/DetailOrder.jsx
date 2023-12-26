@@ -5,7 +5,7 @@ const DetailOrder = ()=>{
     return(
         <>
         <body className="flex flex-col items-center">
-        <Navbar bg='#000000'/>
+        <Navbar />
         <div className="flex flex-col w-full px-20 mt-24 ">
             <div className="flex flex-col mb-5">
                 <h1 className=" text-3xl font-bold">Order #12354-09893</h1>

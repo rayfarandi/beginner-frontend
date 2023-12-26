@@ -4,14 +4,12 @@ import { Link } from 'react-router-dom'
 // gambar
 import LogoW from '../assets/images/logo-white.png'
 import LogoTextW from '../assets/images/text-logo-white.png'
-const Navbar =({ bg })=>{
+const Navbar =()=>{
   const [menuOpen, setMenuOpen]= React.useState(false)
     return (
       
         <>
-      {/* <nav className={`${!menuOpen ? 'h-[10%] ':'flex-col pt-4 '} flex w-full fixed bg-black z-10`}> */}
-      <nav className={`${!menuOpen ? 'h-[10%] ' : 'flex-col pt-4 '} flex w-full fixed z-10`} style={{ background: bg }}>
-      {/* <nav className={`fixed w-full h-fit py-3 sm:py-0 sm:h-14 flex flex-col gap-4 items-center bg-[black] z-50`}> */}
+      <nav className={`${!menuOpen ? 'h-[10%] ':'flex-col pt-4 '} flex w-full fixed bg-black z-10`}>
       <div className="flex justify-between items-center w-11/12 ml-[5%]">
         <div className="flex gap-10">
           <div className="flex flex-row">
@@ -20,7 +18,7 @@ const Navbar =({ bg })=>{
           </div>
           <div className="flex gap-10">
             <Link to="/" className="hover:border-b hover:border-orange-500 text-white hidden md:block">Home</Link>
-            <Link to="/product" className="hover:border-b hover:border-orange-500 text-white hidden md:block">Product</Link>
+            <Link to="./product" className="hover:border-b hover:border-orange-500 text-white hidden md:block">Product</Link>
           </div>
         </div>
 
@@ -39,7 +37,7 @@ const Navbar =({ bg })=>{
           <Link to="./register" className="bg-orange-500 py-2 px-3 text-sm rounded hidden md:block">Sign Up</Link>
         </div>
     </div>
-    {menuOpen && <div className="md:hidden flex w-full bg-black pt-4 pb-2 flex-col" style={{ background: bg }}>
+    {menuOpen && <div className="md:hidden flex w-full bg-black pt-4 pb-2 flex-col">
                 <div className="flex ">
                     <Icon.Search className="bg-white pl-2  rounded-l-full text-black text-2xl md hydrated"/>
                     <input type="text" className="w-full rounded-r-full px-3" placeholder="Search"/>

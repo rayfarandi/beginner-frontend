@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import  * as Icon from 'react-feather'
 import { Link } from 'react-router-dom'
 // gambar
@@ -8,9 +8,12 @@ import Logo from '../assets/images/logo.png'
 import LogoText from '../assets/images/text-logo.png'
 import axios from 'axios'
 
+
 const Form = ()=>{
   const inputEmail = React.useRef()
   const inputPassword = React.useRef()
+  const [alertSuccess, setalertSuccess] = useState(false)
+  const [alertError, setalertError] = useState(false)
 
   const proccesLogin =async (event)=>{
     event.preventDefault()
@@ -21,10 +24,17 @@ const Form = ()=>{
   form.append('password',password)
   try{
     const {data} = await axios.post('http://localhost:8888/auth/login', form.toString())
-    const {token} = data.results
-    window.location = '/'
+    setalertSuccess(true)
+    setalertError(false)
+
+    setTimeout(()=>{
+      window.location = '/'
+    },1500)
   }catch(err){
-    alert(err.response.data.message)
+    // alert(err.response.data.message)
+    setalertError(true)
+    setalertSuccess(false)
+    
   }
     
 
@@ -60,6 +70,17 @@ const Form = ()=>{
             <div className="flex justify-end items-center mt-5 mr-5">
               <h1 className="text-gray-500 text-[13px]">Forgot Password?</h1> 
               <Link to="/forgotpasswords" className="text-orange-500">Forgot</Link>
+          </div>
+          <div id="alert-success"
+          className={`bg-green-200 border border-green-500 text-green-900 px-10 py-4 rounded text-bold 
+          ${alertSuccess ? '' : 'hidden'}`}>
+          Login Successfully
+          </div>
+
+          <div id="alert-error"
+          className={`bg-red-200 border border-red-500 text-red-900 px-10 py-4 rounded text-bold 
+          ${alertError ? '' : 'hidden'}`}>
+          Wrong email or Password!
           </div>
           
 
