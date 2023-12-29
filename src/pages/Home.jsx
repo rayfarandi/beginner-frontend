@@ -125,7 +125,7 @@ const Home =()=>{
             {/* favorite product start */}
           <section className="h-fit sm:h-full flex flex-col items-center sm:pt-10 w-full sm:w-5/6 gap-6 sm:gap-12">
                        
-            <ProductHome />
+            <ProductHome isHomePage={true} />
             
             </section>
             {/* favorite product */}

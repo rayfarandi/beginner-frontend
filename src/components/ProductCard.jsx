@@ -13,7 +13,11 @@ const ProductCard =({id,name,description,price,image,isFlashSale,ratingProduct})
                 <div className='absolute top-2 bg-red-500 text-white rounded-3xl text-xs sm:text-sm p-1.5 left-2 w-fit'><h1>Flash Sale !</h1></div>
             )}
             <div className='bg-gray-50 p-2 rounded h-60 flex'>
-                {/* <img className='flex-1 object-cover' src={{`http://localhost:8888/products/${image}`} image ? image : noImage}  alt="product" /> */}
+                {/* <img
+                 className='flex-1 object-cover' 
+                 src={{`http://localhost:8888/products/${image}`} image ? image : noImage}  
+                 alt="product" /> */}
+                 {/* <img className='flex-1 ' src={image || defaultImage} /> */}
                 <img
                 className='flex-1 object-cover'
                 src={image ? `http://localhost:8888/uploads/products/${image}` : noImage}
@@ -22,8 +26,8 @@ const ProductCard =({id,name,description,price,image,isFlashSale,ratingProduct})
             </div>
             
             <div className="shadow-md bg-white rounded p-3 mx-5 -mt-10 flex flex-col gap-5 flex-1">
-                <Link to={'/productdetail'} className='text-3xl font-bold'>{name}</Link>
-                {/* <Link to={`/productdetail/${id}`} className='text-3xl font-bold'>{name}</Link> */}
+                {/* <Link to={'/productdetail'} className='text-3xl font-bold'>{name}</Link> */}
+                <Link to={`/productdetail/${id}`} className='text-3xl font-bold'>{name}</Link>
                 <div className='flex-1'>{description}</div>
                 {ratingProduct && (
                     <Rating />

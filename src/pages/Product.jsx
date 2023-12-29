@@ -218,28 +218,6 @@ const Product=()=>{
 
 
             </div>{/* conten product  */}
-            {/* tombol  */}
-            {/* <div className="flex gap-2">
-                    <button type="button" className="flex justify-center items-center bg-[#FF8906] text-xs sm:text-sm rounded-full h-6 w-6 sm:h-8 sm:w-8">
-                        1
-                    </button>
-        
-                    <button type="button" className="flex justify-center items-center  text-[#A0A3BD] text-xs sm:text-sm bg-[#E8E8E8] rounded-full h-6 w-6 sm:h-8 sm:w-8">
-                        2
-                    </button>
-        
-                    <button type="button" className="flex justify-center items-center  text-[#A0A3BD] text-xs sm:text-sm bg-[#E8E8E8] rounded-full h-6 w-6 sm:h-8 sm:w-8">
-                        3
-                    </button>
-        
-                    <button type="button" className="flex justify-center items-center text-[#A0A3BD] text-xs sm:text-sm bg-[#E8E8E8] rounded-full h-6 w-6 sm:h-8 sm:w-8">
-                        4
-                    </button>
-        
-                    <button type="button" onClick={()=>getProducts('next')} className="flex justify-center items-center bg-[#FF8906] rounded-full h-6 w-6 sm:h-8 sm:w-8">
-                        <i className="text-white h-4 sm:h-auto" data-feather="arrow-right"></i>
-                    </button>
-            </div> */}
         <Footer />
         </body>
         </>
