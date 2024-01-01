@@ -10,11 +10,19 @@ import MapRes from '../assets/images/map-res.jpg'
 import { FaStar } from "react-icons/fa6"
 import testimoni from '../assets/images/home-testimoni1.jpg'
 import ProductHome from '../components/ProductHome';
+import { useEffect } from 'react';
 
 
 
 
 const Home =()=>{
+  useEffect(()=>{
+    window.scrollTo({
+      top:0,
+      left:0,
+      behavior:'smooth'
+    })
+  },[])
 
     return(
         <>

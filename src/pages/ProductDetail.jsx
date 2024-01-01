@@ -6,6 +6,7 @@ import axios from "axios"
 import ProductHome from "../components/ProductHome"
 import { FaStar } from "react-icons/fa6"
 import noImage from '../assets/images/kopi.png'
+import ProductCard from "../components/ProductCard"
 
 const ProductDetail =(image)=>{
 const {id} = useParams()
@@ -32,15 +33,37 @@ const [product, setProducts] = useState (null)
     }
 }
 
-const addButton = () => {
+  const addButton = () => {
   setQuantity(quantity + 1)
-}
+  }
+
+  const [ProductData, setData]= React.useState([])
+    
+    const getRecomentProduct = async () => {
+        try {
+          const response = await axios.get('http://localhost:8888/products', {
+            params: {
+              best_seller: true,
+              limit: 3
+            }
+          });
+      
+          console.log(response.data.results);
+          setData(response.data.results);
+        } catch (error) {
+          console.error('Error fetching product data:', error);
+        }
+      }
+    React.useEffect(()=>{
+        getRecomentProduct()
+    },[])
+  
 
     return(
         <>
         <Navbar bg='#000000'/>
         <body className="flex flex-col items-center">
-        <section className="h-fit sm:h-screen w-5/6 flex flex-col sm:flex-row items-center mt-20 sm:mt-14 gap-4 sm:gap-0">
+        <section className="h-fit sm:h-screen w-5/6 flex flex-col sm:flex-row items-center mt-20 sm:mt-18 gap-4 sm:gap-0">
         <div className="flex-1 flex flex-col items-center gap-2 sm:gap-4 w-fit h-fit">
           <div className="">
             <img className="w-96 h-72 sm:h-96" id={product?.id}
@@ -124,7 +147,18 @@ const addButton = () => {
       {/* recommen product */}
         <div className="h-fit sm:h-screen flex flex-col justify-center items-center w-5/6 gap-4 mt-8 mb-8 sm:mb-0">
           <h1 className="w-full text-xl text-center sm:text-start sm:text-4xl">Recommendation <span className="text-[#8E6447]">For You</span></h1>
-          <ProductHome/>
+          <div className="flex sm:flex-row flex-col my-5 gap-2 sm:gap-4">
+              {ProductData.map((item, index)=>(
+                <ProductCard 
+                key={String(index)} 
+                id={item.id}
+                name={item.name}
+                isFlashSale={true} 
+                description={item.description} 
+                price={item.basePrice} 
+                image={item.image} />
+            ))}
+        </div>
         </div>
       {/* recommen product */}
         </body>

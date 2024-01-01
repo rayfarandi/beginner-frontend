@@ -6,9 +6,17 @@ import KuponMother from '../assets/images/motherdaycupon.png'
 import KuponFather from '../assets/images/fatherdaycupon.png'
 
 import ProductProduct from '../components/ProductProduct';
+import { useEffect } from "react";
 
 
 const Product=()=>{
+    useEffect(() => {
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: 'smooth'
+        });
+      }, [])
 
     return(
         <>
