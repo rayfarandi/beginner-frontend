@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import * as Icon from 'react-feather'
 import { Link } from 'react-router-dom'
 // gambar
@@ -6,12 +6,13 @@ import LogoW from '../assets/images/logo-white.png'
 import LogoTextW from '../assets/images/text-logo-white.png'
 const Navbar =({ bg })=>{
   const [menuOpen, setMenuOpen]= React.useState(false)
+  const [token ,setToken] = useState(window.localStorage.getItem('token'))
     return (
       
         <>
-      {/* <nav className={`${!menuOpen ? 'h-[10%] ':'flex-col pt-4 '} flex w-full fixed bg-black z-10`}> */}
+      
       <nav className={`${!menuOpen ? 'h-[10%] ' : 'flex-col pt-4 '} flex w-full fixed z-10`} style={{ background: bg }}>
-      {/* <nav className={`fixed w-full h-fit py-3 sm:py-0 sm:h-14 flex flex-col gap-4 items-center bg-[black] z-50`}> */}
+      
       <div className="flex justify-between items-center w-11/12 ml-[5%]">
         <div className="flex gap-10">
           <div className="flex flex-row">
@@ -29,14 +30,16 @@ const Navbar =({ bg })=>{
         <div className="flex items-center gap-5">
             <Icon.Search className="text-white hidden md:block"/>
             <Icon.ShoppingCart className="text-white"/>
+            <button>
+            {token && <div className='h-8 w-8 rounded-full bg-white'></div>}
+            </button>
             <button onClick={()=>setMenuOpen(!menuOpen)}>
             <Icon.Menu className="md:hidden text-white"/>
             </button>
             
             
-          
-            <Link to="./login"className="text-white border border-white py-2 px-3 text-sm rounded hidden md:block">Sign In</Link>
-          <Link to="./register" className="bg-orange-500 py-2 px-3 text-sm rounded hidden md:block">Sign Up</Link>
+            {!token &&<Link to="./login"className="text-white border border-white py-2 px-3 text-sm rounded hidden md:block">Sign In</Link>}
+            {!token &&<Link to="./register" className="bg-orange-500 py-2 px-3 text-sm rounded hidden md:block">Sign Up</Link>}
         </div>
     </div>
     {menuOpen && <div className="md:hidden flex w-full bg-black pt-4 pb-2 flex-col" style={{ background: bg }}>
@@ -47,8 +50,8 @@ const Navbar =({ bg })=>{
                 <div className="flex flex-col gap-2">
                     <Link to="/" className="text-white hover:opacity-80  mt-2 flex justify-center border-[1px] border-white py-2 rounded">Home</Link>
                     <Link to="/product" className="text-white hover:opacity-80 decoration-primary flex justify-center border-[1px] border-white py-2 rounded">Product</Link>
-                    <Link to="/register" className="text-white hover:opacity-80  mt-2 flex justify-center border-[1px] border-white py-2 rounded">Sign Up</Link>
-                    <Link to="/login" className="text-white hover:opacity-80 decoration-primary flex justify-center border-[1px] border-white py-2 rounded">Sign In</Link>
+                    {!token&& <Link to="/register" className="text-white hover:opacity-80  mt-2 flex justify-center border-[1px] border-white py-2 rounded">Sign Up</Link>}
+                    {!token&& <Link to="/login" className="text-white hover:opacity-80 decoration-primary flex justify-center border-[1px] border-white py-2 rounded">Sign In</Link>}
                 </div>
                 
             </div>}

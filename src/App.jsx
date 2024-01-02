@@ -9,6 +9,7 @@ import CheckOut from './pages/CheckOut'
 import DetailOrder from './pages/DetailOrder'
 import ProductDetail from './pages/ProductDetail'
 import HistoryOrder from './pages/HistoryOrder'
+import Profile from './pages/Profile'
 
 
 const router = createBrowserRouter([
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
   {
     path:'/historyorder',
     element: <HistoryOrder />
+  },
+  {
+    path:'/profile',
+    element: <Profile/>
   }
 ])
 

@@ -1,7 +1,15 @@
 import Footer from "../components/Footer"
 import Navbar from "../components/navbar"
+import { useEffect } from 'react';
 
 const HistoryOrder = ()=>{
+    useEffect(()=>{
+        window.scrollTo({
+          top:0,
+          left:0,
+          behavior:'smooth'
+        })
+      },[])
     return(
         <>
         <body className="flex flex-col items-center">

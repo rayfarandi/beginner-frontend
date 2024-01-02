@@ -1,9 +1,9 @@
 import React,{ useState, useEffect } from "react"
+import * as Icon from "react-feather"
 import Footer from "../components/Footer"
 import Navbar from "../components/navbar"
 import { Link, useParams } from 'react-router-dom'
 import axios from "axios"
-import ProductHome from "../components/ProductHome"
 import { FaStar } from "react-icons/fa6"
 import noImage from '../assets/images/kopi.png'
 import ProductCard from "../components/ProductCard"
@@ -31,7 +31,7 @@ const [product, setProducts] = useState (null)
     } else {
       setQuantity(quantity - 1)
     }
-}
+  }
 
   const addButton = () => {
   setQuantity(quantity + 1)
@@ -71,13 +71,13 @@ const [product, setProducts] = useState (null)
           </div>
           <div className="flex gap-6">
             <div>
-              <img className="w-28" src="src/assets/images/detail-product1.jpg" />
+              <img className="w-28" src="../assets/images/detail-product1.jpg" />
             </div>
             <div>
-              <img className="w-28" src="src/assets/images/detail-product2.jpg" />
+              <img className="w-28" src="../assets/images/detail-product2.jpg" />
             </div>
             <div>
-              <img className="w-28" src="src/assets/images/detail-product3.jpg" />
+              <img className="w-28" src="../assets/images/detail-product3.jpg" />
             </div>
           </div>
         </div>
@@ -101,12 +101,22 @@ const [product, setProducts] = useState (null)
             </div>
             <p className="text-gray-500 text-xs sm:text-sm" id="rating-number">5.0</p>
           </div>
-          <div className="flex items-center divide-gray-500 divide-x-2 w-[15rem] sm:w-3/5 text-sm text-gray-500">
+          {/* <div className="flex items-center divide-gray-500 divide-x-2 w-[15rem] sm:w-3/5 text-sm text-gray-500">
             <p className="w-[35%] text-xs sm:text-sm">200+ Review</p>
+            { product?.best_seller &&(
             <div className="flex-1 flex gap-2 sm:gap-4 justify-center items-center">
               <p className="text-xs sm:text-sm">Recommendation</p>
-              <i className="text-orange-500 h-4 sm:h-auto" data-feather="thumbs-up"></i>
-            </div>
+              <Icon.ThumbsUp className="text-orange-500 h-4 sm:h-auto"/>
+            </div> )}
+          </div> */}
+          <div className="flex items-center divide-gray-500 divide-x-2 w-[15rem] sm:w-3/5 text-sm text-gray-500">
+            <p className="w-[35%] text-xs sm:text-sm">200+ Review</p>
+            {product?.isRecommended && (
+              <div className="flex-1 flex gap-2 sm:gap-4 justify-center items-center">
+                <p className="text-xs sm:text-sm">Recommendation</p>
+                <Icon.ThumbsUp className="text-orange-500 h-4 sm:h-auto"/>
+              </div>
+            )}
           </div>
           <p className="text-xs sm:text-sm">
             {product?.description}

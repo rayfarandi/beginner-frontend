@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import  * as Icon from 'react-feather'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 // gambar
 import { FcGoogle } from "react-icons/fc"
 import { FaFacebook } from "react-icons/fa"
@@ -14,21 +14,28 @@ const Form = ()=>{
   const inputPassword = React.useRef()
   const [alertSuccess, setalertSuccess] = useState(false)
   const [alertError, setalertError] = useState(false)
+  const[token, setToken]= useState(null)
+  const Navigate = useNavigate()
 
   const proccesLogin =async (event)=>{
+  try{
     event.preventDefault()
   const {value: email} = event.target.email
   const {value: password} = event.target.password
   const form = new URLSearchParams()
   form.append('email',email)
   form.append('password',password)
-  try{
+  
     const {data} = await axios.post('http://localhost:8888/auth/login', form.toString())
+    const {token: resultstoken} = data.results
+    setToken(resultstoken)
+    window.localStorage.setItem("token",resultstoken)
     setalertSuccess(true)
     setalertError(false)
 
     setTimeout(()=>{
-      window.location = '/'
+      // window.location = '/'
+      Navigate('/')
     },1500)
   }catch(err){
     // alert(err.response.data.message)
