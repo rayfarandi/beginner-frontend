@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import  * as Icon from 'react-feather'
 import { Link, useNavigate } from 'react-router-dom'
 // gambar
@@ -12,10 +12,23 @@ import axios from 'axios'
 const Form = ()=>{
   const inputEmail = React.useRef()
   const inputPassword = React.useRef()
-  const [alertSuccess, setalertSuccess] = useState(false)
-  const [alertError, setalertError] = useState(false)
-  const[token, setToken]= useState(null)
-  const Navigate = useNavigate()
+  // const [alertSuccess, setalertSuccess] = useState(false)
+  // const [alertError, setalertError] = useState(false)
+  const[token, setToken]= useState(window.localStorage.getItem('token'))
+  const navigate = useNavigate()
+  const [showPassword,setShowPassword] =useState(false)
+  const [successMessage,setSuccessMessage] = useState(null)
+  const [errorMessage,setErrorMessage] = useState(null)
+
+  useEffect(()=>{
+    if(token){
+      navigate('/')
+    }
+  },[token,navigate])
+
+  const togglePassword = () => {
+    setShowPassword(!showPassword)
+    }
 
   const proccesLogin =async (event)=>{
   try{
@@ -25,22 +38,26 @@ const Form = ()=>{
   const form = new URLSearchParams()
   form.append('email',email)
   form.append('password',password)
-  
+    
     const {data} = await axios.post('http://localhost:8888/auth/login', form.toString())
-    const {token: resultstoken} = data.results
-    setToken(resultstoken)
-    window.localStorage.setItem("token",resultstoken)
-    setalertSuccess(true)
-    setalertError(false)
+    setSuccessMessage(data.message)
+    setErrorMessage(null)
+    const {token: resultsToken} = data.results
+    
+    // setalertSuccess(true)
+    // setalertError(false)
 
     setTimeout(()=>{
       // window.location = '/'
-      Navigate('/')
+      setToken(resultsToken)
+      window.localStorage.setItem("token",resultsToken)
+      navigate('/')
     },1500)
   }catch(err){
     // alert(err.response.data.message)
-    setalertError(true)
-    setalertSuccess(false)
+    // setalertError(true)
+    // setalertSuccess(false)
+    setErrorMessage(err.res.data.message)
     
   }
     
@@ -64,8 +81,8 @@ const Form = ()=>{
                     <div className="w-[7%] flex justify-center">
                       <Icon.Key className="w-4"/>
                     </div>
-                    <input ref={inputPassword} type="password" name="password" className="w-[90%] py-1 pl-2" placeholder="Enter Your Password"/>
-                    <button className="lg:w-[3%] w-[7%] flex lg:px-1" type="button">
+                    <input ref={inputPassword} type={showPassword ?'text':'password'}  name="password" className="w-[90%] py-1 pl-2" placeholder="Enter Your Password"/>
+                    <button onClick={togglePassword} className="lg:w-[3%] w-[7%] flex lg:px-1" type="button">
                     
                       <Icon.Eye className="w-4"/>
                     </button>
@@ -78,7 +95,16 @@ const Form = ()=>{
               <h1 className="text-gray-500 text-[13px]">Forgot Password?</h1> 
               <Link to="/forgotpasswords" className="text-orange-500">Forgot</Link>
           </div>
-          <div id="alert-success"
+          {successMessage&& <div
+          className="bg-green-200 border border-green-500 text-green-900 px-10 py-4 rounded text-bold">
+            {successMessage}
+          </div>}
+          {errorMessage && <div
+          className="bg-red-200 border border-red-500 text-red-900 px-10 py-4 rounded text-bold">
+            {errorMessage}
+          </div>} {/* masih di fikirkan caranya */}
+
+          {/* <div id="alert-success"
           className={`bg-green-200 border border-green-500 text-green-900 px-10 py-4 rounded text-bold 
           ${alertSuccess ? '' : 'hidden'}`}>
           Login Successfully
@@ -88,7 +114,7 @@ const Form = ()=>{
           className={`bg-red-200 border border-red-500 text-red-900 px-10 py-4 rounded text-bold 
           ${alertError ? '' : 'hidden'}`}>
           Wrong email or Password!
-          </div>
+          </div> */}
           
 
             <div className="flex justify-center py-3">

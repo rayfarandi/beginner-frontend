@@ -10,6 +10,7 @@ import DetailOrder from './pages/DetailOrder'
 import ProductDetail from './pages/ProductDetail'
 import HistoryOrder from './pages/HistoryOrder'
 import Profile from './pages/Profile'
+import PrivateRoute from './components/PrivateRoute'
 
 
 const router = createBrowserRouter([
@@ -51,7 +52,7 @@ const router = createBrowserRouter([
   },
   {
     path:'/profile',
-    element: <Profile/>
+    element: (<PrivateRoute><Profile/></PrivateRoute>)
   }
 ])
 

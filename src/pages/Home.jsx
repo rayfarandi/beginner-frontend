@@ -1,4 +1,4 @@
-import  * as Icon from 'react-feather';
+import  * as Icon from 'react-feather'
 import Chat from "../components/Chat"
 import Footer from "../components/Footer"
 
@@ -9,8 +9,8 @@ import MapRes from '../assets/images/map-res.jpg'
 
 import { FaStar } from "react-icons/fa6"
 import testimoni from '../assets/images/home-testimoni1.jpg'
-import ProductHome from '../components/ProductHome';
-import { useEffect } from 'react';
+import ProductHome from '../components/ProductHome'
+import { useEffect } from 'react'
 
 
 
@@ -141,7 +141,7 @@ const Home =()=>{
 
             
             {/* Map*/}
-            <section className="h-fit py-6 sm:h-screen flex flex-col items-center justify-center w-full bg-gray-100 gap-12">
+            <section className="h-fit py-6 sm:h-full flex flex-col items-center justify-center w-full bg-gray-100 gap-12">
             <div className="flex flex-col items-center gap-2 sm:gap-4">{/* map-text */}
             <h1 className="text-4xl font-semibold"><span className="text-amber-600">Visit Our Store</span> in the Spot on the Map Below</h1>
                 <h2 className="text-sm py-2 text-center">

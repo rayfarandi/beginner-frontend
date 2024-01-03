@@ -1,17 +1,25 @@
 import React, { useState } from 'react'
 import * as Icon from 'react-feather'
-import { Link } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
 // gambar
 import LogoW from '../assets/images/logo-white.png'
 import LogoTextW from '../assets/images/text-logo-white.png'
 const Navbar =({ bg })=>{
-  const [menuOpen, setMenuOpen]= React.useState(false)
+  const [menuOpen, setMenuOpen]= useState(false)
+  const [logoutOpen, setLogoutOpen] = useState(false)
   const [token ,setToken] = useState(window.localStorage.getItem('token'))
+  const navigate = useNavigate()
+
+  const onLogout =()=>{
+    setToken(null)
+    window.localStorage.removeItem('token')
+    navigate('/login')
+  }
     return (
       
         <>
       
-      <nav className={`${!menuOpen ? 'h-[10%] ' : 'flex-col pt-4 '} flex w-full fixed z-10`} style={{ background: bg }}>
+      <nav className={`${!menuOpen ? 'py-4 flex-row  ' : 'flex-col pt-4 '} flex w-full fixed z-10`} style={{ background: bg }}>
       
       <div className="flex justify-between items-center w-11/12 ml-[5%]">
         <div className="flex gap-10">
@@ -30,16 +38,18 @@ const Navbar =({ bg })=>{
         <div className="flex items-center gap-5">
             <Icon.Search className="text-white hidden md:block"/>
             <Icon.ShoppingCart className="text-white"/>
-            <button>
-            {token && <div className='h-8 w-8 rounded-full bg-white'></div>}
+            <button onClick={()=>setLogoutOpen(!logoutOpen)}>
+            {token && <div className='h-8 w-8 rounded-full bg-white'>
+              </div>}
             </button>
             <button onClick={()=>setMenuOpen(!menuOpen)}>
             <Icon.Menu className="md:hidden text-white"/>
             </button>
             
             
-            {!token &&<Link to="./login"className="text-white border border-white py-2 px-3 text-sm rounded hidden md:block">Sign In</Link>}
-            {!token &&<Link to="./register" className="bg-orange-500 py-2 px-3 text-sm rounded hidden md:block">Sign Up</Link>}
+            
+            {!token &&<Link to="/login"className="text-white border border-white py-2 px-3 text-sm rounded hidden md:block">Sign In</Link>}
+            {!token &&<Link to="/register" className="bg-orange-500 py-2 px-3 text-sm rounded hidden md:block">Sign Up</Link>}
         </div>
     </div>
     {menuOpen && <div className="md:hidden flex w-full bg-black pt-4 pb-2 flex-col" style={{ background: bg }}>
@@ -56,7 +66,10 @@ const Navbar =({ bg })=>{
                 
             </div>}
     </nav>
-    
+          {logoutOpen && <button onClick={onLogout} className="flex -right-1 top-11 text-l bg-orange-300 items-center px-2 py-2 mx-5 my-5 rounded hover:opacity-70 z-20 fixed">
+          <Icon.LogOut className="w-12" name="log-out"/>
+          <h1 className="px-2">Logout</h1>
+          </button>}
         </>
     )
 } 
