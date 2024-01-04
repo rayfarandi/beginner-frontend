@@ -1,4 +1,4 @@
-
+import  * as Icon from 'react-feather'
 import Footer from "../components/Footer"
 import Navbar from "../components/navbar"
 
@@ -6,10 +6,46 @@ import KuponMother from '../assets/images/motherdaycupon.png'
 import KuponFather from '../assets/images/fatherdaycupon.png'
 
 import ProductProduct from '../components/ProductProduct';
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
-
+const handleInputChange = (event) => {
+    const { name, value, type } = event.target;
+    setFilters((prevFilters) => {
+      if (type === 'checkbox') {
+        return {
+          ...prevFilters,
+          [name]: prevFilters[name].includes(value)
+            ? prevFilters[name].filter((item) => item !== value)
+            : [...prevFilters[name], value],
+        };
+      } else {
+        return { ...prevFilters, [name]: value };
+      }
+    })
+  }
+  
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    console.log('Applied filters:', filters)
+    
+  }
+  
+  const handleReset = () => {
+    setFilters({
+      search: '',
+      categories: [],
+      sortBy: [],
+      priceRange: 0,
+    })
+  }
 const Product=()=>{
+    const [filters, setFilters] = useState({
+        search:'',
+        categories: [],
+        sortBy: [],
+        priceRange: 0
+    })
+    
     useEffect(() => {
         window.scrollTo({
           top: 0,
@@ -39,11 +75,11 @@ const Product=()=>{
 
                 <div className="hidden sm:flex gap-2">
                 <div className="flex justify-center items-center bg-[#E8E8E8] rounded-full h-8 w-8">
-                    <i className="h-5" data-feather="arrow-left"></i>
+                    <Icon.ArrowLeft className="h-5" />
                 </div>
 
                 <div className="flex justify-center items-center bg-[#FF8906] rounded-full h-8 w-8">
-                    <i className="h-5"  data-feather="arrow-right"></i>
+                    <Icon.ArrowRight className="h-5" />
                 </div>
                 </div>
             </div>
@@ -147,19 +183,36 @@ const Product=()=>{
                 
                     <div className="flex justify-between">
                         <h4 className="font-semibold text-sm">Filter</h4>
-                        <button type="reset" className="font-semibold text-sm">Reset Filter</button>
+                        <button type="reset" onClick={handleReset} className="font-semibold text-sm">
+                        Reset Filter
+                        </button>
                     </div>
 
                     <div className="flex flex-col gap-1">
                         <label htmlFor="search-product" className="font-semibold text-sm">Search</label>
-                        <input id="search-product" type="text" className="text-xs p-2 text-black" placeholder="Search Your Product"/>
+                        <input
+                            id="search-product"
+                            type="text"
+                            name="search"
+                            value={filters.search}
+                            onChange={handleInputChange}
+                            className="text-xs p-2 text-black"
+                            placeholder="Search Your Product"
+                            />
                     </div>
 
                     <div className="flex flex-col gap-1 text-sm">
                         {/* Category */}
                         <h4 className="font-semibold text-sm">Category</h4>
                         <div className="flex gap-2">
-                        <input type="checkbox" name="category" id="favorite-product" value="Favorite Product"/>
+                        <input
+                            type="checkbox"
+                            name="categories"
+                            id="favorite-product"
+                            value="Favorite Product"
+                            checked={filters.categories.includes('Favorite Product')}
+                            onChange={handleInputChange}
+                            />
                         <label htmlFor="favorite-product">Favorite Product</label>
                         </div>
 
@@ -211,16 +264,29 @@ const Product=()=>{
                     {/* range */}
                     <div className="flex flex-col gap-2 text-sm">
                         <label htmlFor="range-price">Range Price</label>
-                        <input id="range-price" type="range" />
+                        <input
+                            id="range-price"
+                            type="range"
+                            name="priceRange"
+                            value={filters.priceRange}
+                            onChange={handleInputChange}
+                            />
                     </div>
 
-                    <button type="submit" className="bg-orange-500 rounded-md w-36 h-8 font-semibold text-sm  text-black ">Apply Filter</button>
+                    <button
+                    type="submit"
+                    onClick={handleSubmit}
+                    className="bg-orange-500 rounded-md w-36 h-8 font-semibold text-sm text-black"
+                    >
+                    Apply Filter
+                    </button>
                     
                 </form>{/* form pencarian */}
                 </div>{/* pencarian */}
 
                 {/* list card */}
-                <ProductProduct />
+                {/* <ProductProduct /> */}
+                <ProductProduct filters={filters} />
                 {/* list card */}
              </div> {/* bungkus tes  */}
 

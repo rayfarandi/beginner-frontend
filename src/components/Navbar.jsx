@@ -1,20 +1,49 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import * as Icon from 'react-feather'
 import { Link,useNavigate } from 'react-router-dom'
 // gambar
 import LogoW from '../assets/images/logo-white.png'
 import LogoTextW from '../assets/images/text-logo-white.png'
+import axios from 'axios'
+
 const Navbar =({ bg })=>{
   const [menuOpen, setMenuOpen]= useState(false)
   const [logoutOpen, setLogoutOpen] = useState(false)
   const [token ,setToken] = useState(window.localStorage.getItem('token'))
+  const [searchDisplay, setSearchDisplay] = React.useState('hidden')
+  const [user, setUser] = useState({})
   const navigate = useNavigate()
 
+  const getProfile =async()=>{
+    const {data}= await axios.get('http://localhost:8888/profile',{
+                headers:{
+                    'Authorization': `Bearer ${token}`
+                }
+    })
+    setUser(data.results)
+}
+React.useEffect(()=>{
+    getProfile()
+},[])
+  
+  const searchButton = (event) => {
+    event.preventDefault()
+    if(searchDisplay === 'hidden'){
+        setSearchDisplay('flex')
+    }else if(searchDisplay === 'flex'){
+        setSearchDisplay('hidden')
+    }
+}
+
+  
   const onLogout =()=>{
     setToken(null)
     window.localStorage.removeItem('token')
     navigate('/login')
   }
+  useEffect(()=>{
+    // getProfile()
+  },[])
     return (
       
         <>
@@ -36,11 +65,27 @@ const Navbar =({ bg })=>{
       
 
         <div className="flex items-center gap-5">
-            <Icon.Search className="text-white hidden md:block"/>
+            
+            
+            <form className='flex flex-row-reverse items-center gap-2' action="">
+              <div onClick={searchButton}>
+                <div className="hover:border-b-2 hover:border-b-orange-500 hover:pb-1.5"><Icon.Search  className='text-lg text-white'/>
+                </div>
+              </div>
+            </form>
+            <div className={`${searchDisplay} flex-row items-center border h-8 border-gray-300 rounded-lg px-4 gap-4`}>
+                <input className="flex-1 outline-none placeholder:text-sm placeholder:text-white bg-transparent" id="search" type="text" name="search" placeholder="Search" autoComplete="on"/>
+            </div>
             <Icon.ShoppingCart className="text-white"/>
+            
             <button onClick={()=>setLogoutOpen(!logoutOpen)}>
-            {token && <div className='h-8 w-8 rounded-full bg-white'>
-              </div>}
+            {token && 
+            <>
+            <div className='h-8 w-8 rounded-full bg-white'>
+              <img className='h-8 w-8 rounded-full' src={`http://localhost:8888/uploads/profile/${user.picture}`} />
+            </div>
+            </>
+            }
             </button>
             <button onClick={()=>setMenuOpen(!menuOpen)}>
             <Icon.Menu className="md:hidden text-white"/>
@@ -66,10 +111,18 @@ const Navbar =({ bg })=>{
                 
             </div>}
     </nav>
-          {logoutOpen && <button onClick={onLogout} className="flex -right-1 top-11 text-l bg-orange-300 items-center px-2 py-2 mx-5 my-5 rounded hover:opacity-70 z-20 fixed">
+          <div className='flex'>
+          {logoutOpen && <button><Link to="/profile" className="flex -right-1 top-11 text-l bg-orange-300 items-center px-2 py-2 mx-5 my-5 rounded hover:opacity-70 z-20 fixed">
+          <Icon.User className="w-12" name="log-out"/>
+          <h1 className="px-2">Profile</h1>
+          </Link></button>}
+          {logoutOpen && <button onClick={onLogout} className="flex -right-1 top-24 text-l bg-orange-300 items-center px-1.5 py-2 mx-5 my-5  rounded hover:opacity-70 z-20 fixed">
           <Icon.LogOut className="w-12" name="log-out"/>
           <h1 className="px-2">Logout</h1>
           </button>}
+          
+          </div>
+          
         </>
     )
 } 

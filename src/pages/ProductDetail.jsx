@@ -71,13 +71,13 @@ const [product, setProducts] = useState (null)
           </div>
           <div className="flex gap-6">
             <div>
-              <img className="w-28" src="../assets/images/detail-product1.jpg" />
+              <img className="w-28" src={noImage}/>
             </div>
             <div>
-              <img className="w-28" src="../assets/images/detail-product2.jpg" />
+              <img className="w-28" src={noImage} />
             </div>
             <div>
-              <img className="w-28" src="../assets/images/detail-product3.jpg" />
+              <img className="w-28" src={noImage} />
             </div>
           </div>
         </div>
