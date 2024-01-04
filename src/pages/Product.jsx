@@ -286,7 +286,10 @@ const Product=()=>{
 
                 {/* list card */}
                 {/* <ProductProduct /> */}
+                <div className='relative flex justify-center w-full'>
                 <ProductProduct filters={filters} />
+                </div>
+                
                 {/* list card */}
              </div> {/* bungkus tes  */}
 

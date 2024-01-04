@@ -3,6 +3,7 @@ import * as Icon from "react-feather"
 import Navbar from "../components/navbar";
 import Footer from "../components/Footer";
 import axios from "axios";
+import defaultInsertImage from "../assets/images/insertimage.jpg" 
 
 
 const Profile =()=>{
@@ -44,7 +45,7 @@ const Profile =()=>{
         // event.prevenDefault() gara2 ini sampe pagi
         event.preventDefault()
         const form = new FormData()
-        const fields = ['fullName','email','address','phoneNumber']
+        const fields = ['fullName','email','address','phoneNumber','password']
         fields.forEach((field)=>{
             if(event.target[field]){
                 form.append(field, event.target[field].value)
@@ -112,7 +113,8 @@ const Profile =()=>{
           <p className="text-xs text-gray-500">{user.email}</p>
         </div>
         <label className="flex flex-col items-center gap-2">
-          {(!preview && user.picture)&& <img className="rounded-full w-28 h-28" src={preview? preview : `http://localhost:8888/uploads/profile/${user.picture}`} alt="profile picture" />}
+            {!user.image && <img className="rounded-full w-28 h-28" src={defaultInsertImage} alt="profile picture" />}
+          {(!preview && user.picture)&& <img className="rounded-full w-28 h-28" src={preview? preview : `http://localhost:8888/uploads/profile/${user.picture} `} alt="profile picture" />}
           {preview && <img className="rounded-full w-28 h-28" src={preview} alt="profile picture" />}
           {preview && <div className="absolute bg-[rgb(0,0,0,0.5)] rounded-full w-28 h-28 top-[12.5rem]" />}
 

@@ -5,6 +5,7 @@ import { Link,useNavigate } from 'react-router-dom'
 import LogoW from '../assets/images/logo-white.png'
 import LogoTextW from '../assets/images/text-logo-white.png'
 import axios from 'axios'
+import defaultInsertImage from "../assets/images/insertimage.jpg" 
 
 const Navbar =({ bg })=>{
   const [menuOpen, setMenuOpen]= useState(false)
@@ -82,7 +83,8 @@ React.useEffect(()=>{
             {token && 
             <>
             <div className='h-8 w-8 rounded-full bg-white'>
-              <img className='h-8 w-8 rounded-full' src={`http://localhost:8888/uploads/profile/${user.picture}`} />
+            {!user.images && <img className='h-8 w-8 rounded-full' src={defaultInsertImage} />}
+              {user.images && <img className='h-8 w-8 rounded-full' src={`http://localhost:8888/uploads/profile/${user.picture}` } />}
             </div>
             </>
             }
