@@ -60,14 +60,16 @@ const ProductHome =({ isHomePage})=>{
     return(
         <>
         {isHomePage &&(
-            <div className="flex flex-col items-center gap-2 sm:gap-4">
+        <section className="h-fit sm:h-screen flex flex-col items-center sm:pt-10 w-full sm:w-5/6 gap-6 sm:gap-12">
+          <div className="flex flex-col items-center gap-2 sm:gap-4">
             <h1 className="text-2xl text-center sm:text-5xl font-medium sm:mb-2 px-4">Here is Peoples <span className="text-[#8E6447]">Favorite</span></h1>
-            <hr className="border-orange-500 border-2 sm:border-4 w-16"/>
+
+            <hr className="border-[#ff8906] border-2 sm:border-4 w-16"/>
             <h2 className="text-[#4f5665] text-xs sm:text-base text-center px-4">Lets choose and have a bit taste of poeples favorite. It might be yours too!</h2>
-        </div>
-        )}
+          </div>
         
-        <div className="flex sm:flex-row flex-col my-5 gap-2 sm:gap-4">
+        
+        <div className="gap-y-44 gap-x-6 flex flex-wrap justify-center mb-44 sm:gap-6 w-fit mx-6 sm:mx-0 sm:px-6">
                 
 
             {ProductData.map((item, index)=>(
@@ -81,6 +83,8 @@ const ProductHome =({ isHomePage})=>{
                 image={item.image} />
             ))}
             </div>
+      </section>
+      )}
         </>
     )
 }

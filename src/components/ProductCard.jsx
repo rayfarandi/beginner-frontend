@@ -8,33 +8,82 @@ import Rating from './Rating'
 
 const ProductCard =({id,name,description,price,image,isFlashSale,ratingProduct})=>{
     return(
-        <div className='flex w-full flex-col relative justify-center items-center flex-1'>
-            {isFlashSale && (
-                <div className='absolute top-2 bg-red-500 text-white rounded-3xl text-xs sm:text-sm p-1.5 left-2 w-fit'><h1>Flash Sale !</h1></div>
-            )}
-            <div className='bg-gray-50 p-2 rounded h-60 w-fit flex'>
-                
+        <div className='relative flex justify-center w-fit h-fit'>
+           
+            <div>
                 <img
                 className='w-44 h-44 sm:w-56 sm:h-56 object-cover'
                 src={image ? `http://localhost:8888/uploads/products/${image}` : noImage}
                 alt="product"
                 />
             </div>
+
+            {isFlashSale && (
+                <div className='absolute bg-[#D00000] text-white rounded-3xl text-xs p-1.5 left-2 top-2'><h1>Flash Sale !</h1></div>
+            )}
             
-            <div className="shadow-md bg-white rounded p-3 mx-5 -mt-10 flex flex-col gap-5 flex-1">
-                
-                <Link to={`/productdetail/${id}`} className='text-3xl font-bold'>{name}</Link>
-                <div className='flex-1'>{description}</div>
-                {ratingProduct && (
-                    <Rating />
-                )}
-                
-                <div className='text-2xl font-bold text-orange-500'>Rp.{price?.toLocaleString('id')}</div>
-                <div className='flex gap-5'>
-                <button type='butoon' className='h-10 rounded bg-orange-500 flex-1 border-2 border-orange-500'>Buy</button>
-                <button className='h-10 rounded px-5 border-2 bg-transparent border-orange-500 text-orange-500'><Icon.ShoppingCart/></button>
+                <div
+                  className="absolute w-11/12 h-[12.5rem] sm:h-5/6 bg-white top-[85%] p-1.5 sm:p-2 flex flex-col gap-1.5"
+                >
+                  <h1
+                    className="font-semibold text-sm sm:text-base"
+                    id="product-name"
+                  >
+                    <Link to={`/productdetail/${id}`}>{name}</Link>
+                  </h1>
+
+                  <p className="text-[0.6rem] sm:text-[0.7rem] text-[#4F5665]">
+                    {description}
+                  </p>
+
+                    {ratingProduct &&(<div className="flex items-center gap-2 sm:gap-4">
+                        <div className="flex items-center gap-2 sm:gap-4">
+                            <div>
+                            <img className="w-3 sm:w-auto" src="./assets/star.png" />
+                            </div>
+                            <div>
+                            <img className="w-3 sm:w-auto" src="./assets/star.png" />
+                            </div>
+                            <div>
+                            <img className="w-3 sm:w-auto" src="./assets/star.png" />
+                            </div>
+                            <div>
+                            <img className="w-3 sm:w-auto" src="./assets/star.png" />
+                            </div>
+                            <div>
+                            <img className="w-3 sm:w-auto" src="./assets/star.png" />
+                            </div>
+                        </div>
+                        <p
+                            className="text-[#4F5665] text-xs sm:text-sm"
+                            id="rating-number"
+                        >
+                            5.0
+                        </p>
+                        </div>)}
+
+                  <div className="flex items-center gap-4">
+                    <h1
+                      className="text-[#D00000] text-[0.6rem] sm:text-xs font-semibold line-through"
+                    >
+                      IDR{price*2 ?.toLocaleString('id')}
+                    </h1>
+                    <h1
+                      className="text-[#FF8906] font-semibold text-xs sm:text-base"
+                      id="product-price"
+                    >
+                      IDR {price?.toLocaleString('id')}
+                    </h1>
+                  </div>
+
+                  <div className="flex-1 flex flex-col sm:flex-row items-end gap-1 sm:gap-2">
+                    <Link to='/detailproduct' className="w-full sm:w-9/12 bg-[#FF8906] rounded-md text-xs sm:text-sm py-1 active:scale-95 transition-all flex justify-center">Buy</Link>
+                    <button className="w-full sm:flex-1 border border-[#FF8906] text-[#FF8906] p-[0.21rem] rounded-md flex justify-center items-center active:scale-95 transition-all">
+                      <Icon.ShoppingCart className="h-4 sm:h-5" />
+                    </button>
+                  </div>
+
                 </div>
-            </div>
         </div>
     )
 }
