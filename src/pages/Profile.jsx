@@ -4,22 +4,29 @@ import Navbar from "../components/navbar";
 import Footer from "../components/Footer";
 import axios from "axios";
 import defaultInsertImage from "../assets/images/insertimage.jpg" 
+import { useDispatch, useSelector } from "react-redux";
+import { setProfile as setProfileAction } from "../../redux/reducers/profile";
 
 
 const Profile =()=>{
-    const [user,setUser] =React.useState({})
+    // const [user,setUser] =React.useState({})
+    const user = useSelector (state =>state.profile.data)
     const [successMessage,setSuccessMessage] = React.useState(null)
     const [preview, setPreview] = React.useState()
-    const token = window.localStorage.getItem('token')
-    React.useEffect(()=>{
-        axios.get('http://localhost:8888/profile',{
-            headers:{
-                'Authorization': `Bearer ${token}`
-            }
-        }).then(({data})=>{
-            setUser(data.results)
-        })
-    },[])
+    // const token = window.localStorage.getItem('token')
+    const token = useSelector(state => state.auth.token)
+    const dispatch = useDispatch()
+
+    // React.useEffect(()=>{
+    //     axios.get('http://localhost:8888/profile',{
+    //         headers:{
+    //             'Authorization': `Bearer ${token}`
+    //         }
+    //     }).then(({data})=>{
+    //         setUser(data.results)
+    //     })
+    // },[])
+
     // const getProfile =async()=>{
     //     const {data}= await axios.get('http://localhost:8888/profile',{
     //                 headers:{
@@ -28,9 +35,9 @@ const Profile =()=>{
     //     })
     //     setUser(data.results)
     // }
-    // React.useEffect(()=>{
-    //     getProfile()
-    // },[])
+    React.useEffect(()=>{
+        // getProfile()
+    },[])
     
 
     React.useEffect(()=>{
@@ -71,7 +78,9 @@ const Profile =()=>{
             }
         })
         setSuccessMessage(data.message)
-        setUser(data.results)
+        // setUser(data.results)
+        dispatch(setProfileAction(data.results))
+
     }
     const changePicture = (event)=>{
         const pictureUrl = URL.createObjectURL(event.target.files[0])
@@ -91,7 +100,8 @@ const Profile =()=>{
             }
             })
             window.alert(data.message)
-            setUser(data.results)
+            // setUser(data.results)
+            dispatch(setProfileAction(data.results))
             setPreview(null)
         }
         }catch(error){
@@ -113,16 +123,20 @@ const Profile =()=>{
           <p className="text-xs text-gray-500">{user.email}</p>
         </div>
         <label className="flex flex-col items-center gap-2">
-            {!user.image && <img className="rounded-full w-28 h-28" src={defaultInsertImage} alt="profile picture" />}
-          {(!preview && user.picture)&& <img className="rounded-full w-28 h-28" src={preview? preview : `http://localhost:8888/uploads/profile/${user.picture} `} alt="profile picture" />}
-          {preview && <img className="rounded-full w-28 h-28" src={preview} alt="profile picture" />}
-          {preview && <div className="absolute bg-[rgb(0,0,0,0.5)] rounded-full w-28 h-28 top-[12.5rem]" />}
+            {(!user.picture && !preview) && <img className="rounded-full w-28 h-28" src={defaultInsertImage} alt="profile picture" />}
+            {(!preview && user.picture)&& <img className="rounded-full w-28 h-28" src={preview? preview : `http://localhost:8888/uploads/profile/${user.picture} `} alt="profile picture" />}
+            {preview && <img className="rounded-full w-28 h-28" src={preview} alt="profile picture" />}
+            {preview && <div className="absolute bg-[rgb(0,0,0,0.5)] rounded-full w-28 h-28 top-[12.5rem]" />}
 
         <input multiple={false} accept=".jpg,.jpeg,.png" onChange={changePicture} className="hidden" type="file" name="picture" />
 
         </label>
-        <button className="text-xs bg-orange-500 w-full rounded p-2" type="submit">Upload New Photo</button>
-        <p className="text-xs text-gray-500">Since <span className="font-bold">{user.createdAt}</span></p>
+        <div className={`${!preview ? 'hidden' :''} flex justify-between`}>
+        <button className="text-xs bg-green-500 w-full rounded p-2" type="submit">Confrim Photo</button>
+        <button onClick={()=>{setPreview()}} className="text-xs bg-red-500 w-full rounded p-2" type="reset">Cencel Photo</button>
+        </div>
+        <button className={`${preview ? 'hidden' :''} text-xs bg-orange-500 w-full rounded p-2`} type="submit">Upload New Photo</button>
+        <p className="text-xs text-gray-500">Since <span className="font-bold">{user.createdAt?.slice(0,-14)}</span></p>
       </form>
       
       <form onSubmit={updateProfileData} className="flex-1 border border-gray-500 p-4 flex flex-col gap-6 outline-none">

@@ -7,6 +7,8 @@ import { FaFacebook } from "react-icons/fa"
 import Logo from '../assets/images/logo.png'
 import LogoText from '../assets/images/text-logo.png'
 import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import { login as loginAction } from '../../redux/reducers/auth'
 
 
 const Form = ()=>{
@@ -14,7 +16,9 @@ const Form = ()=>{
   const inputPassword = React.useRef()
   // const [alertSuccess, setalertSuccess] = useState(false)
   // const [alertError, setalertError] = useState(false)
-  const[token, setToken]= useState(window.localStorage.getItem('token'))
+  // const[token, setToken]= useState(window.localStorage.getItem('token'))
+  const token = useSelector (state=> state.auth.token)
+  const dispach = useDispatch()
   const navigate = useNavigate()
   const [showPassword,setShowPassword] =useState(false)
   const [successMessage,setSuccessMessage] = useState(null)
@@ -49,15 +53,14 @@ const Form = ()=>{
 
     setTimeout(()=>{
       // window.location = '/'
-      setToken(resultsToken)
-      window.localStorage.setItem("token",resultsToken)
+      // setToken(resultsToken)
+      // window.localStorage.setItem("token",resultsToken)
+      dispach(loginAction(resultsToken))
       navigate('/')
     },1500)
   }catch(err){
-    // alert(err.response.data.message)
-    // setalertError(true)
-    // setalertSuccess(false)
-    setErrorMessage(err.res.data.message)
+    
+    setErrorMessage(err.response.data.message)
     
   }
     
@@ -102,20 +105,7 @@ const Form = ()=>{
           {errorMessage && <div
           className="bg-red-200 border border-red-500 text-red-900 px-10 py-4 rounded text-bold">
             {errorMessage}
-          </div>} {/* masih di fikirkan caranya */}
-
-          {/* <div id="alert-success"
-          className={`bg-green-200 border border-green-500 text-green-900 px-10 py-4 rounded text-bold 
-          ${alertSuccess ? '' : 'hidden'}`}>
-          Login Successfully
-          </div>
-
-          <div id="alert-error"
-          className={`bg-red-200 border border-red-500 text-red-900 px-10 py-4 rounded text-bold 
-          ${alertError ? '' : 'hidden'}`}>
-          Wrong email or Password!
-          </div> */}
-          
+          </div>} 
 
             <div className="flex justify-center py-3">
               <button type="submit" className="w-[95%] bg-orange-500 py-2 hover:bg-orange-500/70">Login</button>

@@ -6,22 +6,32 @@ import LogoW from '../assets/images/logo-white.png'
 import LogoTextW from '../assets/images/text-logo-white.png'
 import axios from 'axios'
 import defaultInsertImage from "../assets/images/insertimage.jpg" 
+import { useDispatch, useSelector } from 'react-redux'
+import { logout as logoutAction } from '../../redux/reducers/auth'
+import { setProfile as setProfileAction } from '../../redux/reducers/profile'
 
 const Navbar =({ bg })=>{
   const [menuOpen, setMenuOpen]= useState(false)
   const [logoutOpen, setLogoutOpen] = useState(false)
-  const [token ,setToken] = useState(window.localStorage.getItem('token'))
+  // const [token ,setToken] = useState(window.localStorage.getItem('token'))
+  const token = useSelector(state=> state.auth.token)
   const [searchDisplay, setSearchDisplay] = React.useState('hidden')
-  const [user, setUser] = useState({})
+  // const [user, setUser] = useState({})
+  const user = useSelector(state => state.profile.data)
+  const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const getProfile =async()=>{
-    const {data}= await axios.get('http://localhost:8888/profile',{
+  const getProfile = async()=>{
+    if(token){
+      const {data} = await axios.get('http://localhost:8888/profile',{
                 headers:{
                     'Authorization': `Bearer ${token}`
                 }
     })
-    setUser(data.results)
+    // setUser(data.results)
+    
+    dispatch(setProfileAction(data.results))
+    }
 }
 React.useEffect(()=>{
     getProfile()
@@ -38,8 +48,9 @@ React.useEffect(()=>{
 
   
   const onLogout =()=>{
-    setToken(null)
-    window.localStorage.removeItem('token')
+    // setToken(null)
+    // window.localStorage.removeItem('token')
+    dispatch(logoutAction())
     navigate('/login')
   }
   useEffect(()=>{
@@ -83,8 +94,8 @@ React.useEffect(()=>{
             {token && 
             <>
             <div className='h-8 w-8 rounded-full bg-white'>
-            {!user.images && <img className='h-8 w-8 rounded-full' src={defaultInsertImage} />}
-              {user.images && <img className='h-8 w-8 rounded-full' src={`http://localhost:8888/uploads/profile/${user.picture}` } />}
+            {!user.picture && <img className='h-8 w-8 rounded-full' src={defaultInsertImage} />}
+              {user.picture && <img className='h-8 w-8 rounded-full' src={`http://localhost:8888/uploads/profile/${user.picture}` } />}
             </div>
             </>
             }
@@ -113,17 +124,16 @@ React.useEffect(()=>{
                 
             </div>}
     </nav>
-          <div className='flex'>
-          {logoutOpen && <button><Link to="/profile" className="flex -right-1 top-11 text-l bg-orange-300 items-center px-2 py-2 mx-5 my-5 rounded hover:opacity-70 z-20 fixed">
+            
+          {logoutOpen && <div className='flex'> <button><Link to="/profile" className="flex -right-1 top-11 text-l bg-orange-300 items-center px-2 py-2 mx-5 my-5 rounded hover:opacity-70 z-20 fixed">
           <Icon.User className="w-12" name="log-out"/>
           <h1 className="px-2">Profile</h1>
-          </Link></button>}
-          {logoutOpen && <button onClick={onLogout} className="flex -right-1 top-24 text-l bg-orange-300 items-center px-1.5 py-2 mx-5 my-5  rounded hover:opacity-70 z-20 fixed">
+          </Link></button>
+          <button onClick={onLogout} className="flex -right-1 top-24 text-l bg-orange-300 items-center px-1.5 py-2 mx-5 my-5  rounded hover:opacity-70 z-20 fixed">
           <Icon.LogOut className="w-12" name="log-out"/>
           <h1 className="px-2">Logout</h1>
-          </button>}
+          </button></div>}
           
-          </div>
           
         </>
     )

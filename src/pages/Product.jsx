@@ -8,36 +8,7 @@ import KuponFather from '../assets/images/fatherdaycupon.png'
 import ProductProduct from '../components/ProductProduct';
 import { useEffect, useState } from "react";
 
-const handleInputChange = (event) => {
-    const { name, value, type } = event.target;
-    setFilters((prevFilters) => {
-      if (type === 'checkbox') {
-        return {
-          ...prevFilters,
-          [name]: prevFilters[name].includes(value)
-            ? prevFilters[name].filter((item) => item !== value)
-            : [...prevFilters[name], value],
-        };
-      } else {
-        return { ...prevFilters, [name]: value };
-      }
-    })
-  }
-  
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    console.log('Applied filters:', filters)
-    
-  }
-  
-  const handleReset = () => {
-    setFilters({
-      search: '',
-      categories: [],
-      sortBy: [],
-      priceRange: 0,
-    })
-  }
+
 const Product=()=>{
     const [filters, setFilters] = useState({
         search:'',
@@ -178,116 +149,67 @@ const Product=()=>{
                 <h1 className="text-3xl">Our <span className="SPAN">Product</span></h1>
                 <div className="flex  flex-col  gap-3 lg:flex-row"> {/* bungkus tes  */}
                 {/* pencarian  */}
-             <div className=" lg:w-1/5 w-[30%] bg-black rounded-xl h-fit p-4 justify-center text-white hidden lg:flex">
-                <form className="flex flex-col gap-4" >
-                
+             <div className="hidden sm:block w-1/4 bg-black rounded-xl h-fit p-4 text-white">
+                <aside className="">
+                <form className="flex flex-col gap-4 bg-black p-4 text-white rounded-xl">
                     <div className="flex justify-between">
-                        <h4 className="font-semibold text-sm">Filter</h4>
-                        <button type="reset" onClick={handleReset} className="font-semibold text-sm">
-                        Reset Filter
-                        </button>
+                        <h4 className="font-semibold text-xs sm:text-sm">Filter</h4>
+                        <button className="font-semibold text-xs sm:text-sm active:scale-95 transition-all" type="reset">Reset Filter</button>
                     </div>
-
                     <div className="flex flex-col gap-1">
-                        <label htmlFor="search-product" className="font-semibold text-sm">Search</label>
-                        <input
-                            id="search-product"
-                            type="text"
-                            name="search"
-                            value={filters.search}
-                            onChange={handleInputChange}
-                            className="text-xs p-2 text-black"
-                            placeholder="Search Your Product"
-                            />
+                        <label className="font-semibold text-sm" htmlFor="search-product">Search</label>
+                        <input name="searchKey" className="rounded text-xs p-2 outline-none text-black" id="search-product" type="text" placeholder="Search Your Product"/>
                     </div>
-
-                    <div className="flex flex-col gap-1 text-sm">
-                        {/* Category */}
-                        <h4 className="font-semibold text-sm">Category</h4>
-                        <div className="flex gap-2">
-                        <input
-                            type="checkbox"
-                            name="categories"
-                            id="favorite-product"
-                            value="Favorite Product"
-                            checked={filters.categories.includes('Favorite Product')}
-                            onChange={handleInputChange}
-                            />
-                        <label htmlFor="favorite-product">Favorite Product</label>
+                    <div className="flex flex-col gap-3 text-xs">
+                            <h4 className="font-semibold text-xs sm:text-sm">Category</h4>
+                        <div className="flex gap-2 sm:gap-3">
+                            <input type="checkbox" name="category" value="favorite product"/><label htmlFor="favorite product" className="text-xs sm:text-sm">Favorite Product</label>
+                        </div>
+                            <div className="flex gap-2 sm:gap-3">
+                            <input type="checkbox" name="category" value="coffee"/>
+                            <label htmlFor="coffee" className="text-xs sm:text-sm">Coffee</label>
+                        </div>
+                        <div className="flex gap-2 sm:gap-3">
+                            <input type="checkbox" name="category" value="non coffee"/>
+                            <label htmlFor="non coffee" className="text-xs sm:text-sm">Non Coffee</label>
+                        </div>
+                        <div className="flex gap-2 sm:gap-3">
+                            <input type="checkbox" name="category" value="foods"/>
+                            <label htmlFor="foods" className="text-xs sm:text-sm">Foods</label>
+                        </div>
+                        <div className="flex gap-2 sm:gap-3">
+                            <input type="checkbox" name="category" value="add on"/>
+                            <label htmlFor="add on" className="text-xs sm:text-sm">Add-On</label>
                         </div>
 
-                        <div className="flex gap-2">
-                        <input type="checkbox" name="category" id="coffee" value="coffee"/>                  
-                        <label htmlFor="coffee">Coffee</label>
-                        </div>
-
-                        <div className="flex gap-2">
-                        <input type="checkbox" name="category" id="non-coffee" value="non-coffee"/>                  
-                        <label htmlFor="non-coffee">Non Coffee</label>
-                        </div>
-
-                        <div className="flex gap-2">
-                        <input type="checkbox" name="category" id="foods" value="foods"/>                  
-                        <label htmlFor="foods">Foods</label>
-                        </div>
-
-                        <div className="flex gap-2">
-                        <input type="checkbox" name="category" id="add-on" value="add-on"/>                  
-                        <label htmlFor="add-on">Add-On</label>
-                        </div>
-                    </div>{/* Category */}
-
-                    <div className="flex flex-col gap-2 text-sm">
-                        {/* sort by */}
-                        <h4 className="font-semibold text-sm">Sort By</h4>
-                        <div className="flex gap-2">
-                        <input type="checkbox" name="category" id="buy1get1" value="buy1get1"/> 
-                        <label htmlFor="buy1get1">Buy1get1</label>                 
-                        </div>
-
-                        <div className="flex gap-2">
-                        <input type="checkbox" name="category" id="flashsale" value="flashsale"/>  
-                        <label htmlFor="flashsale">Flashsale</label>                
-                        </div>
-
-                        <div className="flex gap-2">
-                        <input type="checkbox" name="category" id="birthday-package" value="birthday-package"/>
-                        <label htmlFor="birthday-package">Birthday Package</label>
-                        </div>
-
-                        <div className="flex gap-2">
-                        <label htmlFor="cheap">Cheap</label>
-                        <input type="checkbox" name="category" id="cheap" value="cheap"/>
-                        </div>
-                    </div>{/* sort by */}
-
-                    {/* range */}
-                    <div className="flex flex-col gap-2 text-sm">
-                        <label htmlFor="range-price">Range Price</label>
-                        <input
-                            id="range-price"
-                            type="range"
-                            name="priceRange"
-                            value={filters.priceRange}
-                            onChange={handleInputChange}
-                            />
                     </div>
-
-                    <button
-                    type="submit"
-                    onClick={handleSubmit}
-                    className="bg-orange-500 rounded-md w-36 h-8 font-semibold text-sm text-black"
-                    >
-                    Apply Filter
+                                    
+                    <div className="flex flex-col gap-3 text-xs">
+                        <h4 className="font-semibold text-xs sm:text-sm">SortBy</h4>
+                        <div className="flex gap-2 sm:gap-3">
+                            <input type="checkbox" name="sortBy" value="createdAt"/>
+                            <label htmlFor="createdAt" className="text-xs sm:text-sm">Latest Products</label>
+                        </div>
+                        <div className="flex gap-2 sm:gap-3">
+                            <input type="checkbox" name="sortBy" value="name"/>
+                            <label htmlFor="name" className="text-xs sm:text-sm">Name</label>
+                        </div>
+                        <div className="flex gap-2 sm:gap-3">
+                            <input type="checkbox" name="sortBy" value="basePrice"/>
+                            <label htmlFor="basePrice" className="text-xs sm:text-sm">Cheap</label>
+                        </div>
+                    </div>
+                    <button className="bg-[#FF8906] rounded p-2 text-xs text-black font-semibold active:scale-95 transition-all" type="submit">Apply Filter
                     </button>
-                    
-                </form>{/* form pencarian */}
-                </div>{/* pencarian */}
+                    </form>
+                </aside>
+             
+             </div>
 
                 {/* list card */}
                 {/* <ProductProduct /> */}
                 <div className='relative flex justify-center w-full'>
-                <ProductProduct filters={filters} />
+                <ProductProduct  />
                 </div>
                 
                 {/* list card */}

@@ -8,7 +8,7 @@ import { FaStar } from "react-icons/fa6"
 import noImage from '../assets/images/kopi.png'
 import ProductCard from "../components/ProductCard"
 
-const ProductDetail =(image)=>{
+const ProductDetail =()=>{
 const {id} = useParams()
 const [product, setProducts] = useState (null)
   const getProduct = async ()=>{
@@ -61,23 +61,24 @@ const [product, setProducts] = useState (null)
 
     return(
         <>
-        <Navbar bg='#000000'/>
+        
         <body className="flex flex-col items-center">
-        <section className="h-fit sm:h-screen w-5/6 flex flex-col sm:flex-row items-center mt-20 sm:mt-18 gap-4 sm:gap-0">
-        <div className="flex-1 flex flex-col items-center gap-2 sm:gap-4 w-fit h-fit">
-          <div className="">
-            <img className="w-96 h-72 sm:h-96" id={product?.id}
+        <Navbar bg='#000000'/>
+        <section className="h-fit sm:h-screen w-5/6 flex flex-col sm:flex-row items-center mt-20 sm:mt-8 gap-4 ">
+        <div className="w-full sm:flex-1 flex flex-col items-center gap-2 sm:gap-4 h-96 sm:h-5/6">
+          <div className="w-full">
+            <img className="w-full h-72 sm:h-80 object-cover object-center" id={product?.id}
             src={product?.image? `http://localhost:8888/uploads/products/${product?.image}` : noImage} />
           </div>
-          <div className="flex gap-6">
+          <div className="flex-1 flex justify-between gap-4 w-full">
             <div>
-              <img className="w-28" src={noImage}/>
+              <img className="object-cover object-center" src={noImage}/>
             </div>
             <div>
-              <img className="w-28" src={noImage} />
+              <img className="object-cover object-center" src={noImage} />
             </div>
             <div>
-              <img className="w-28" src={noImage} />
+              <img className="object-cover object-center" src={noImage} />
             </div>
           </div>
         </div>
@@ -88,8 +89,8 @@ const [product, setProducts] = useState (null)
           </div>
           <h1 className="text-xl sm:text-3xl font-bold">{product?.name}</h1>
           <div className="flex items-center gap-4">
-            <h1 className="text-red-500 text-[0.6rem] sm:text-xs font-semibold line-through">IDR {product?.basePrice*2}</h1>
-            <h1 className="text-orange-500 font-semibold text-xs sm:text-base" id="product-price">IDR {product?.basePrice}</h1>
+            <h1 className="text-red-500 text-[0.6rem] sm:text-xs font-semibold line-through">IDR {product?.basePrice*2?.toLocaleString('id')}</h1>
+            <h1 className="text-orange-500 font-semibold text-xs sm:text-base" id="product-price">IDR {product?.basePrice?.toLocaleString('id')}</h1>
           </div>
           <div className="flex items-center gap-2 sm:gap-4">
             <div className="flex items-center gap-2 sm:gap-4 text-yellow-500">
@@ -109,11 +110,11 @@ const [product, setProducts] = useState (null)
               <Icon.ThumbsUp className="text-orange-500 h-4 sm:h-auto"/>
             </div> )}
           </div> */}
-          <div className="flex items-center divide-gray-500 divide-x-2 w-[15rem] sm:w-3/5 text-sm text-gray-500">
-            <p className="w-[35%] text-xs sm:text-sm">200+ Review</p>
+          <div className="flex items-center divide-gray-500 divide-x-2 w-fit text-sm text-gray-500">
+            <p className="flex-1 text-xs sm:text-sm pr-2">200+ Review</p>
             {product?.isRecommended && (
-              <div className="flex-1 flex gap-2 sm:gap-4 justify-center items-center">
-                <p className="text-xs sm:text-sm">Recommendation</p>
+              <div className="flex-1 flex gap-2 sm:gap-4 justify-center items-center pl-2">
+                <p className="text-xs sm:text-sm"> Recommendation</p>
                 <Icon.ThumbsUp className="text-orange-500 h-4 sm:h-auto"/>
               </div>
             )}
@@ -129,35 +130,43 @@ const [product, setProducts] = useState (null)
           <div className="flex flex-col gap-2">
             <h4 className="font-semibold text-xs sm:text-auto">Choose Size</h4>
             <div className="flex justify-between gap-4">
-              <p className="flex-1 flex justify-center border border-gray-300 hover:border hover:border-orange-500 active:scale-95 transition:all duration-300 cursor-pointer text-xs sm:text-sm rounded py-1 sm:py-1.5">Regular</p>
-              <p className="flex-1 flex justify-center border border-gray-300 hover:border hover:border-orange-500 active:scale-95 transition:all duration-300 cursor-pointer rounded py-1 sm:py-1.5">Medium</p>
-              <p className="flex-1 flex justify-center border border-gray-300 hover:border hover:border-orange-500 active:scale-95 transition:all duration-300 cursor-pointer rounded py-1 sm:py-1.5">Large</p>
+              <p className="flex-1 flex justify-center border border-gray-300 hover:border hover:border-orange-500 active:scale-95 transition:all duration-300 cursor-pointer text-[0.65rem] sm:text-xs rounded py-1 sm:py-1.5">Regular</p>
+              <p className="flex-1 flex justify-center border border-gray-300 hover:border text-[0.65rem] sm:text-xshover:border-orange-500 active:scale-95 transition:all duration-300 cursor-pointer rounded py-1 sm:py-1.5">Medium</p>
+              <p className="flex-1 flex justify-center border border-gray-300 hover:border text-[0.65rem] sm:text-xs hover:border-orange-500 active:scale-95 transition:all duration-300 cursor-pointer rounded py-1 sm:py-1.5">Large</p>
             </div>
           </div>
           <div className="flex flex-col gap-2">
             <h4 className="font-semibold text-xs sm:text-auto">Hot/Ice?</h4>
             <div className="flex justify-between gap-4">
-              <p className="flex-1 flex justify-center text-xs sm:text-sm border border-gray-300 hover:border hover:border-orange-500 active:scale-95 transition:all duration-300 cursor-pointer rounded py-1 sm:py-1.5">Cold</p>
-              <p className="flex-1 flex justify-center text-xs sm:text-sm border border-gray-300 hover:border hover:border-orange-500 active:scale-95 transition:all duration-300 cursor-pointer rounded py-1 sm:py-1.5">Hot</p>
+              <button type="button"  className="flex-1 flex justify-center text-[0.65rem] sm:text-xs border border-gray-300 hover:border hover:border-orange-500 active:scale-95 transition:all duration-300 cursor-pointer rounded py-1 sm:py-1.5">Cold</button>
+              <button type="button" className="flex-1 flex justify-center text-[0.65rem] sm:text-xs border border-gray-300 hover:border hover:border-orange-500 active:scale-95 transition:all duration-300 cursor-pointer rounded py-1 sm:py-1.5">Hot</button>
+            </div>
+          </div>
+          <div className="flex flex-col gap-1">
+            <h4 className="font-semibold text-[0.7rem] sm:text-xs">Delivery</h4>
+            <div className="flex justify-between gap-2 sm:gap-4">
+              <button type="button" className="flex-1 flex justify-center text-[0.65rem] sm:text-xs border border-gray-300 hover:border hover:border-orange-500 active:scale-95 transition:all duration-300 cursor-pointer rounded py-1 sm:py-1.5">Dine In</button>
+              <button type="button" className="flex-1 flex justify-center text-[0.65rem] sm:text-xs border border-gray-300 hover:border hover:border-orange-500 active:scale-95 transition:all duration-300 cursor-pointer rounded py-1 sm:py-1.5">Door Delivery</button>
+              <button type="button" className="flex-1 flex justify-center text-[0.65rem] sm:text-xs border border-gray-300 hover:border hover:border-orange-500 active:scale-95 transition:all duration-300 cursor-pointer rounded py-1 sm:py-1.5">Pick Up</button>
             </div>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-3 sm:mt-4"> 
-          <button className="flex-1 text-xs sm:text-sm bg-orange-500 rounded py-1.5"><Link to='/checkout'>Buy</Link></button>
-          
-            
-            <button className="flex-1 flex justify-center gap-2 sm:gap-4 text-orange-500 border border-orange-500 rounded py-1.5">
-              <i className="text-orange-500 h-4 sm:h-auto" data-feather="shopping-cart"></i>
-              <p className="text-xs sm:text-sm">add to cart</p>
-            </button>
+          <button className="flex-1 text-xs sm:text-sm bg-orange-500 rounded py-1.5">
+            <Link to='/checkout'>Buy</Link>
+          </button>
+          <button className="flex-1 flex justify-center gap-2 sm:gap-4 text-orange-500 border border-orange-500 rounded py-1.5">
+            <Icon.ShoppingCart className="text-orange-500 h-4 sm:h-auto" />
+            <p className="text-xs sm:text-sm">add to cart</p>
+          </button>
           </div>
         </div>
       </section>
       {/* product detail */}
 
       {/* recommen product */}
-        <div className="h-fit sm:h-screen flex flex-col justify-center items-center w-5/6 gap-4 mt-8 mb-8 sm:mb-0">
+        <div className="h-fit sm:h-screen flex flex-col items-center w-5/6 gap-4 mt-8 mb-8 sm:mb-0">
           <h1 className="w-full text-xl text-center sm:text-start sm:text-4xl">Recommendation <span className="text-[#8E6447]">For You</span></h1>
-          <div className="flex sm:flex-row flex-col my-5 gap-2 sm:gap-4">
+          <div className="gap-y-44 gap-x-6 flex flex-wrap justify-center mb-44 sm:gap-20 w-fit mx-6 sm:mx-0 sm:px-6">
               {ProductData.map((item, index)=>(
                 <ProductCard 
                 key={String(index)} 
@@ -171,6 +180,7 @@ const [product, setProducts] = useState (null)
         </div>
         </div>
       {/* recommen product */}
+      
         </body>
         <Footer />
         </>

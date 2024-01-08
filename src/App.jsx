@@ -1,4 +1,10 @@
 import React from 'react'
+
+// Redux integration
+import { Provider } from 'react-redux'
+import { store } from '../redux/store'
+
+// Page and components
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Login from './pages/Login'
 import Register from './pages/Register'
@@ -11,6 +17,7 @@ import ProductDetail from './pages/ProductDetail'
 import HistoryOrder from './pages/HistoryOrder'
 import Profile from './pages/Profile'
 import PrivateRoute from './components/PrivateRoute'
+
 
 
 const router = createBrowserRouter([
@@ -58,7 +65,9 @@ const router = createBrowserRouter([
 
 const App=()=>{
   return(
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   )
 }
 
