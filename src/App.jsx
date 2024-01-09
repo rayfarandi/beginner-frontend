@@ -2,7 +2,7 @@ import React from 'react'
 
 // Redux integration
 import { Provider } from 'react-redux'
-import { store } from '../redux/store'
+import { persisitor, store } from '../redux/store'
 
 // Page and components
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
@@ -17,6 +17,7 @@ import ProductDetail from './pages/ProductDetail'
 import HistoryOrder from './pages/HistoryOrder'
 import Profile from './pages/Profile'
 import PrivateRoute from './components/PrivateRoute'
+import { PersistGate } from 'redux-persist/integration/react'
 
 
 
@@ -66,7 +67,9 @@ const router = createBrowserRouter([
 const App=()=>{
   return(
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <PersistGate persistor={persisitor} >
+        <RouterProvider router={router} />
+      </PersistGate>
     </Provider>
   )
 }

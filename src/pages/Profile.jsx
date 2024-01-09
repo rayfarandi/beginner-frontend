@@ -49,7 +49,7 @@ const Profile =()=>{
     },[successMessage])
 
     const updateProfileData = async(event)=>{
-        // event.prevenDefault() gara2 ini sampe pagi
+        
         event.preventDefault()
         const form = new FormData()
         const fields = ['fullName','email','address','phoneNumber','password']
@@ -136,7 +136,7 @@ const Profile =()=>{
         <button onClick={()=>{setPreview()}} className="text-xs bg-red-500 w-full rounded p-2" type="reset">Cencel Photo</button>
         </div>
         <button className={`${preview ? 'hidden' :''} text-xs bg-orange-500 w-full rounded p-2`} type="submit">Upload New Photo</button>
-        <p className="text-xs text-gray-500">Since <span className="font-bold">{user.createdAt?.slice(0,-14)}</span></p>
+        <p className="text-xs text-gray-500">Since <span className="font-bold">{user.createdAt?.slice(0,-14).split('-').reverse().join('-')}</span></p>
       </form>
       
       <form onSubmit={updateProfileData} className="flex-1 border border-gray-500 p-4 flex flex-col gap-6 outline-none">
@@ -176,7 +176,7 @@ const Profile =()=>{
                 <div className="font-bold text-sm">Password</div>
             <div className="flex border border-[#DEDEDE] rounded-md text-gray-500 p-2 gap-2">
               <Icon.Lock/>
-              <input defaultValue={user.password} className="text-xs w-full outline-none" type="password" placeholder="Enter Your Password" name="password"/>
+              <input defaultValue={user.password} htmlFor={'password'}className="text-xs w-full outline-none" type="password" placeholder="Enter Your Password" name="password"/>
             </div>
             </label>
           </div>
