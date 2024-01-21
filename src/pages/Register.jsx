@@ -14,7 +14,9 @@ import LogoText from '../assets/images/text-logo.png'
 
 function RegisterForm() {
   const [isSuccess, setIsSuccess] = useState(false)
+  const [successMessage,setSuccessMessage] = useState('')
   const [isError, setIsError] = useState(false)
+  const [errorMessage,setErrorMessage] = useState('')
   
   const registerProcess = async (event) => {
     event.preventDefault()
@@ -49,7 +51,8 @@ function RegisterForm() {
   
     try{
       const {data} = await axios.post('http://localhost:8888/auth/register', form.toString())
-      // const {token} = data.results
+      
+      setSuccessMessage(data.message)
       setIsSuccess(true)
       setIsError(false)
 
@@ -59,6 +62,7 @@ function RegisterForm() {
     
     }catch(err) {
       console.log(err)
+      setErrorMessage(err.response.data.message)
       setIsError(true)
       setIsSuccess(false)
     }
@@ -90,13 +94,14 @@ function RegisterForm() {
               id="alert-success"
               className={`bg-green-300 border border-green-400 text-green-960 px-10 py-4 rounded text-bold ${isSuccess ? '' : 'hidden'}`}
             >
-              Register Successfully
+              <p>{successMessage}</p>
             </div>
             <div
               id="alert-error"
               className={`bg-red-300 border border-red-400 text-red-900 px-10 py-4 rounded text-bold ${isError ? '' : 'hidden'}`}
             >
-              Please fill out the form correctly!
+              Please check form correctly! 
+              <p> {errorMessage}</p>
             </div>
             <div>
             <button className="border w-full h-12 rounded-md bg-amber-500" type="submit">

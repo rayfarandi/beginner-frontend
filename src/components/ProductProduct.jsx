@@ -1,12 +1,16 @@
 import axios from "axios"
 import React, { useEffect, useState } from "react"
-import ProductCard from "./ProductCard"
 import * as Icon from "react-feather"
+import ProductCard from "./ProductCard"
+
+
+
 
 const ProductProduct = () => {
   const [products, setProducts] = useState([])
   const [pageInfo, setPageInfo] = useState(null)
   const [activePage, setActivePage] = useState(1)
+
 
   const getProducts = async (page) => {
     try {

@@ -77,7 +77,7 @@ const ProductCard =({id,name,description,price,image,isFlashSale,ratingProduct})
                   </div>
 
                   <div className="flex-1 flex flex-col sm:flex-row items-end gap-1 sm:gap-2">
-                    <Link to='/detailproduct' className="w-full sm:w-9/12 bg-[#FF8906] rounded-md text-xs sm:text-sm py-1 active:scale-95 transition-all flex justify-center">Buy</Link>
+                    <Link to={`/productdetail/${id}`} className="w-full sm:w-9/12 bg-[#FF8906] rounded-md text-xs sm:text-sm py-1 active:scale-95 transition-all flex justify-center">Buy</Link>
                     <button className="w-full sm:flex-1 border border-[#FF8906] text-[#FF8906] p-[0.21rem] rounded-md flex justify-center items-center active:scale-95 transition-all">
                       <Icon.ShoppingCart className="h-4 sm:h-5" />
                     </button>

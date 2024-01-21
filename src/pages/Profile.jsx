@@ -124,7 +124,7 @@ const Profile =()=>{
         </div>
         <label className="flex flex-col items-center gap-2">
             {(!user.picture && !preview) && <img className="rounded-full w-28 h-28" src={defaultInsertImage} alt="profile picture" />}
-            {(!preview && user.picture)&& <img className="rounded-full w-28 h-28" src={preview? preview : `http://localhost:8888/uploads/profile/${user.picture} `} alt="profile picture" />}
+            {(!preview && user.picture)&& <img className="rounded-full w-28 h-28 object-cover" src={preview? preview : `http://localhost:8888/uploads/profile/${user.picture} `} alt="profile picture" />}
             {preview && <img className="rounded-full w-28 h-28" src={preview} alt="profile picture" />}
             {preview && <div className="absolute bg-[rgb(0,0,0,0.5)] rounded-full w-28 h-28 top-[12.5rem]" />}
 
