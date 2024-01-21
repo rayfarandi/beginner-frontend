@@ -17,7 +17,7 @@ const CheckOut =()=>{
                     <div className="flex flex-col gap-4">
                     <div className="flex justify-between">
                         <h4 className="font-semibold">Your Order</h4>
-                        <button className="flex items-center bg-orange-500 rounded-md">
+                        <button className="flex items-center bg-slate-700 rounded-md">
                         <i className="h-3 sm:h-4" data-feather="plus"></i>
                         <h5 className="text-xs p-1.5 sm:p-2">Add Menu</h5>
                         </button>
@@ -41,7 +41,7 @@ const CheckOut =()=>{
                             </div> 
                             <div className="flex items-center gap-4">
                             <h1 className="text-red-600 text-[0.6rem] sm:text-xs font-semibold line-through">IDR 40.000</h1>
-                            <h1 className="text-orange-500 font-semibold text-xs sm:text-base" id="product-price">IDR 10.000</h1>
+                            <h1 className="text-slate-700 font-semibold text-xs sm:text-base" id="product-price">IDR 10.000</h1>
                             </div>
                             <div className="absolute text-red-600 top-2 right-2 sm:top-auto sm:right-4">
                             <i className="h-4" data-feather="x-circle"></i>
@@ -66,7 +66,7 @@ const CheckOut =()=>{
                             </div>
                             <div className="flex items-center gap-4">
                             <h1 className="text-red-600 text-[0.6rem] sm:text-xs font-semibold line-through">IDR 40.000</h1>
-                            <h1 className="text-orange-500 font-semibold text-xs sm:text-base" id="product-price">IDR 10.000</h1>
+                            <h1 className="text-slate-700 font-semibold text-xs sm:text-base" id="product-price">IDR 10.000</h1>
                             </div>
                             <div className="absolute text-red-600 top-2 right-2 sm:top-auto sm:right-4">
                             <i className="h-4" data-feather="x-circle"></i>
@@ -91,7 +91,7 @@ const CheckOut =()=>{
                             </div>
                             <div className="flex items-center gap-4">
                             <h1 className="text-red-600 text-[0.6rem] sm:text-xs font-semibold line-through">IDR 40.000</h1>
-                            <h1 className="text-orange-500 font-semibold text-xs sm:text-base" id="product-price">IDR 10.000</h1>
+                            <h1 className="text-slate-700 font-semibold text-xs sm:text-base" id="product-price">IDR 10.000</h1>
                             </div>
                             <div className="absolute text-red-600 top-2 right-2 sm:top-auto sm:right-4">
                             <i className="h-4" data-feather="x-circle"></i>
@@ -116,7 +116,7 @@ const CheckOut =()=>{
                             </div>
                             <div className="flex items-center gap-4">
                             <h1 className="text-red-600 text-[0.6rem] sm:text-xs font-semibold line-through">IDR 40.000</h1>
-                            <h1 className="text-orange-500 font-semibold text-xs sm:text-base" id="product-price">IDR 10.000</h1>
+                            <h1 className="text-slate-700 font-semibold text-xs sm:text-base" id="product-price">IDR 10.000</h1>
                             </div>
                             <div className="absolute text-red-600 top-2 right-2 sm:top-auto sm:right-4">
                             <i className="h-4" data-feather="x-circle"></i>
@@ -209,7 +209,7 @@ const CheckOut =()=>{
                         <h5 className="font-semibold text-xs sm:text-base">Idr.44.000</h5>
                     </div>
 
-                    <button className="bg-orange-500 w-full rounded-md text-xs sm:text-sm py-1.5"><Link to='/detailorder'>Checkout</Link></button>
+                    <button className="bg-slate-700 w-full rounded-md text-xs sm:text-sm py-1.5"><Link to='/detailorder'>Checkout</Link></button>
 
                     <p className="text-xs text-gray-500">We Accept</p>
 

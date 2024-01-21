@@ -96,7 +96,7 @@ const Form = ()=>{
 
             <div className="flex justify-end items-center mt-5 mr-5">
               <h1 className="text-gray-500 text-[13px]">Forgot Password?</h1> 
-              <Link to="/forgotpasswords" className="text-orange-500">Forgot</Link>
+              <Link to="/forgotpasswords" className="text-slate-700">Forgot</Link>
           </div>
           {successMessage&& <div
           className="bg-green-200 border border-green-500 text-green-900 px-10 py-4 rounded text-bold">
@@ -108,7 +108,7 @@ const Form = ()=>{
           </div>} 
 
             <div className="flex justify-center py-3">
-              <button type="submit" className="w-[95%] bg-orange-500 py-2 hover:bg-orange-500/70">Login</button>
+              <button type="submit" className="w-[95%] bg-slate-700 py-2 hover:bg-slate-700/70">Login</button>
             </div>
           
           </form>

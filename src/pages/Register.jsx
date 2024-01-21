@@ -104,7 +104,7 @@ function RegisterForm() {
               <p> {errorMessage}</p>
             </div>
             <div>
-            <button className="border w-full h-12 rounded-md bg-amber-500" type="submit">
+            <button className="border w-full h-12 rounded-md bg-slate-700" type="submit">
               Register
             </button>
               

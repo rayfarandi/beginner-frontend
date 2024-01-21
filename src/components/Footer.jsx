@@ -53,9 +53,9 @@ const Footer =()=>{
        <div className="flex flex-col gap-4 ">
          <p className="font-semibold">Social Media</p>
          <div className="flex gap-4">
-           <a href="#" className="rounded-full bg-orange-500 w-9 h-9"><Icon.Facebook className="w-8 h-8 pt-1"/></a>
-           <a href="#" className="rounded-full bg-orange-500 w-9 h-9"><Icon.Twitter className="w-8 h-8 pt-1 pl-1"/></a>
-           <a href="#" className="rounded-full bg-orange-500 w-9 h-9"><Icon.Instagram className="w-8 h-8 pt-1 pl-1"/></a>
+           <a href="#" className="rounded-full bg-slate-700 w-9 h-9"><Icon.Facebook className="w-8 h-8 pt-1"/></a>
+           <a href="#" className="rounded-full bg-slate-700 w-9 h-9"><Icon.Twitter className="w-8 h-8 pt-1 pl-1"/></a>
+           <a href="#" className="rounded-full bg-slate-700 w-9 h-9"><Icon.Instagram className="w-8 h-8 pt-1 pl-1"/></a>
          </div>
        </div>
         

@@ -135,7 +135,7 @@ const Profile =()=>{
         <button className="text-xs bg-green-500 w-full rounded p-2" type="submit">Confrim Photo</button>
         <button onClick={()=>{setPreview()}} className="text-xs bg-red-500 w-full rounded p-2" type="reset">Cencel Photo</button>
         </div>
-        <button className={`${preview ? 'hidden' :''} text-xs bg-orange-500 w-full rounded p-2`} type="submit">Upload New Photo</button>
+        <button className={`${preview ? 'hidden' :''} text-xs bg-slate-700 w-full rounded p-2`} type="submit">Upload New Photo</button>
         <p className="text-xs text-gray-500">Since <span className="font-bold">{user.createdAt?.slice(0,-14).split('-').reverse().join('-')}</span></p>
       </form>
       
@@ -191,7 +191,7 @@ const Profile =()=>{
             </label>
           </div>
         <div>
-        <button className="w-full bg-orange-500 rounded text-xs p-2" type="submit">Update Profile</button>
+        <button className="w-full bg-slate-700 rounded text-xs p-2" type="submit">Update Profile</button>
         </div>
           
         </form>

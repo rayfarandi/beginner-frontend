@@ -94,14 +94,14 @@ const HistoryOrder = ()=>{
                             <p className="text-xs sm:text-base">Status</p>
                         </div>
                         <h5
-                            className="font-semibold text-orange-500 text-xs bg-orange-200 p-1.5 rounded-3xl translate-y-[-0.3rem] w-fit "
+                            className="font-semibold text-slate-700 text-xs bg-orange-200 p-1.5 rounded-3xl translate-y-[-0.3rem] w-fit "
                         >
                             On Progress
                         </h5>
                         </div>
                     </div>
 
-                    <a className="text-orange-500 underline text-xs sm:text-base" href="#"
+                    <a className="text-slate-700 underline text-xs sm:text-base" href="#"
                         >Views Order Detail</a
                     >
                     </div>
@@ -152,14 +152,14 @@ const HistoryOrder = ()=>{
                             <p className="text-xs sm:text-base">Status</p>
                         </div>
                         <h5
-                            className="font-semibold text-orange-500 text-xs bg-orange-200 p-1.5 rounded-3xl translate-y-[-0.3rem] w-fit"
+                            className="font-semibold text-slate-700 text-xs bg-orange-200 p-1.5 rounded-3xl translate-y-[-0.3rem] w-fit"
                         >
                             On Progress
                         </h5>
                         </div>
                     </div>
 
-                    <a className="text-orange-500 underline text-xs sm:text-base" href="#"
+                    <a className="text-slate-700 underline text-xs sm:text-base" href="#"
                         >Views Order Detail</a
                     >
                     </div>
@@ -210,14 +210,14 @@ const HistoryOrder = ()=>{
                             <p className="text-xs sm:text-base">Status</p>
                         </div>
                         <h5
-                            className="font-semibold text-orange-500 text-xs bg-orange-200 p-1.5 rounded-3xl translate-y-[-0.3rem] w-fit "
+                            className="font-semibold text-slate-700 text-xs bg-orange-200 p-1.5 rounded-3xl translate-y-[-0.3rem] w-fit "
                         >
                             On Progress
                         </h5>
                         </div>
                     </div>
 
-                    <a className="text-orange-500 underline text-xs sm:text-base" href="#"
+                    <a className="text-slate-700 underline text-xs sm:text-base" href="#"
                         >Views Order Detail</a
                     >
                     </div>
@@ -268,14 +268,14 @@ const HistoryOrder = ()=>{
                             <p className="text-xs sm:text-base">Status</p>
                         </div>
                         <h5
-                            className="font-semibold text-orange-500 text-xs bg-orange-200 p-1.5 rounded-3xl translate-y-[-0.3rem] w-fit"
+                            className="font-semibold text-slate-700 text-xs bg-orange-200 p-1.5 rounded-3xl translate-y-[-0.3rem] w-fit"
                         >
                             On Progress
                         </h5>
                         </div>
                     </div>
 
-                    <a className="text-orange-500 underline text-xs sm:text-base" href="#"
+                    <a className="text-slate-700 underline text-xs sm:text-base" href="#"
                         >Views Order Detail</a
                     >
                     </div>
@@ -284,7 +284,7 @@ const HistoryOrder = ()=>{
 
                 <div className="flex gap-2 justify-center">
                 <div
-                    className="flex justify-center items-center bg-orange-500 text-xs sm:text-sm rounded-full h-6 w-6 sm:h-8 sm:w-8"
+                    className="flex justify-center items-center bg-slate-700 text-xs sm:text-sm rounded-full h-6 w-6 sm:h-8 sm:w-8"
                 >
                     <h3>1</h3>
                 </div>
@@ -308,7 +308,7 @@ const HistoryOrder = ()=>{
                 </div>
 
                 <div
-                    className="flex justify-center items-center bg-orange-500 rounded-full h-6 w-6 sm:h-8 sm:w-8"
+                    className="flex justify-center items-center bg-slate-700 rounded-full h-6 w-6 sm:h-8 sm:w-8"
                 >
                     <i className="text-white h-4 sm:h-auto" data-feather="arrow-right"></i>
                 </div>
@@ -321,7 +321,7 @@ const HistoryOrder = ()=>{
                 <div className="relative bg-black rounded-2xl w-fit p-1.5 flex">
                 <i className="text-white" data-feather="message-square"></i>
                 <i
-                    className="absolute top-2.5 text-orange-500 h-3"
+                    className="absolute top-2.5 text-slate-700 h-3"
                     data-feather="align-right"
                 ></i>
                 </div>
@@ -330,7 +330,7 @@ const HistoryOrder = ()=>{
                 if your unable to find answer or find your product quickly, please
                 describe your problem and tell us. we will give you solution.
                 </p>
-                <button className="text-xs bg-orange-500 p-1.5 rounded-md">
+                <button className="text-xs bg-slate-700 p-1.5 rounded-md">
                 Send Message
                 </button>
             </div>

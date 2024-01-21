@@ -124,7 +124,7 @@ const CheckBox = ({label, name, value}) => {
           
   
           <button
-            className="bg-[#FF8906] rounded p-2 text-xs text-black font-semibold active:scale-95 transition-all"
+            className="bg-slate-700 rounded p-2 text-xs text-black font-semibold active:scale-95 transition-all"
             type="submit"
           >
             Apply Filter

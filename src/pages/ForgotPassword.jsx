@@ -35,7 +35,7 @@ const ForgotPassword = ()=>{
                      
 
             <div className="flex justify-center py-3">
-              <button className="w-[95%] bg-orange-500 py-2 hover:bg-orange-500/70" type="submit">Forgot Email</button>
+              <button className="w-[95%] bg-slate-700 py-2 hover:bg-slate-700/70" type="submit">Forgot Email</button>
             </div>
           
 

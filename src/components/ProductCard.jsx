@@ -69,7 +69,7 @@ const ProductCard =({id,name,description,price,image,isFlashSale,ratingProduct})
                       IDR{price*2 ?.toLocaleString('id')}
                     </h1>
                     <h1
-                      className="text-[#FF8906] font-semibold text-xs sm:text-base"
+                      className="text-slate-700 font-semibold text-xs sm:text-base"
                       id="product-price"
                     >
                       IDR {price?.toLocaleString('id')}
@@ -77,8 +77,8 @@ const ProductCard =({id,name,description,price,image,isFlashSale,ratingProduct})
                   </div>
 
                   <div className="flex-1 flex flex-col sm:flex-row items-end gap-1 sm:gap-2">
-                    <Link to={`/productdetail/${id}`} className="w-full sm:w-9/12 bg-[#FF8906] rounded-md text-xs sm:text-sm py-1 active:scale-95 transition-all flex justify-center">Buy</Link>
-                    <button className="w-full sm:flex-1 border border-[#FF8906] text-[#FF8906] p-[0.21rem] rounded-md flex justify-center items-center active:scale-95 transition-all">
+                    <Link to={`/productdetail/${id}`} className="w-full sm:w-9/12 bg-slate-700 rounded-md text-xs sm:text-sm py-1 active:scale-95 transition-all flex justify-center">Buy</Link>
+                    <button className="w-full sm:flex-1 border border-slate-700 text-slate-700 p-[0.21rem] rounded-md flex justify-center items-center active:scale-95 transition-all">
                       <Icon.ShoppingCart className="h-4 sm:h-5" />
                     </button>
                   </div>

@@ -69,8 +69,8 @@ React.useEffect(()=>{
             <img src={LogoTextW} className=" flex pl-1" alt="logo tulisan"/>
           </div>
           <div className="flex gap-10">
-            <Link to="/" className="hover:border-b hover:border-orange-500 text-white hidden md:block">Home</Link>
-            <Link to="/product" className="hover:border-b hover:border-orange-500 text-white hidden md:block">Product</Link>
+            <Link to="/" className="hover:border-b hover:border-slate-700 text-white hidden md:block">Home</Link>
+            <Link to="/product" className="hover:border-b hover:border-slate-700 text-white hidden md:block">Product</Link>
           </div>
         </div>
 
@@ -81,7 +81,7 @@ React.useEffect(()=>{
             
             <form className='flex flex-row-reverse items-center gap-2' action="">
               <div onClick={searchButton}>
-                <div className="hover:border-b-2 hover:border-b-orange-500 hover:pb-1.5"><Icon.Search  className='text-lg text-white'/>
+                <div className="hover:border-b-2 hover:border-b-slate-700 hover:pb-1.5"><Icon.Search  className='text-lg text-white'/>
                 </div>
               </div>
             </form>
@@ -107,7 +107,7 @@ React.useEffect(()=>{
             
             
             {!token &&<Link to="/login"className="text-white border border-white py-2 px-3 text-sm rounded hidden md:block">Sign In</Link>}
-            {!token &&<Link to="/register" className="bg-orange-500 py-2 px-3 text-sm rounded hidden md:block">Sign Up</Link>}
+            {!token &&<Link to="/register" className="bg-slate-700 py-2 px-3 text-sm rounded hidden md:block">Sign Up</Link>}
         </div>
     </div>
     {menuOpen && <div className="md:hidden flex w-full bg-black pt-4 pb-2 flex-col" style={{ background: bg }}>
@@ -125,11 +125,11 @@ React.useEffect(()=>{
             </div>}
     </nav>
             
-          {logoutOpen && <div className='flex'> <button><Link to="/profile" className="flex -right-1 top-11 text-l bg-orange-300 items-center px-2 py-2 mx-5 my-5 rounded hover:opacity-70 z-20 fixed">
+          {logoutOpen && <div className='flex'> <button><Link to="/profile" className="flex -right-1 top-11 text-l bg-slate-300 items-center px-2 py-2 mx-5 my-5 rounded hover:opacity-70 z-20 fixed">
           <Icon.User className="w-12" name="log-out"/>
           <h1 className="px-2">Profile</h1>
           </Link></button>
-          <button onClick={onLogout} className="flex -right-1 top-24 text-l bg-orange-300 items-center px-1.5 py-2 mx-5 my-5  rounded hover:opacity-70 z-20 fixed">
+          <button onClick={onLogout} className="flex -right-1 top-24 text-l bg-slate-300 items-center px-1.5 py-2 mx-5 my-5  rounded hover:opacity-70 z-20 fixed">
           <Icon.LogOut className="w-12" name="log-out"/>
           <h1 className="px-2">Logout</h1>
           </button></div>}

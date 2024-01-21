@@ -8,7 +8,7 @@ const Chat = () => {
     <>
       <div className={`flex ${isChatOpen? 'flex-col-reverse':''} fixed bottom-10 right-10 z-10`}>
         <div
-          className="flex justify-center items-center bg-orange-500 rounded-full p-2 w-12 h-12 cursor-pointer"
+          className="flex justify-center items-center bg-slate-700 rounded-full p-2 w-12 h-12 cursor-pointer"
           onClick={() => setIsChatOpen(!isChatOpen)}  
         >
           <Icon.MessageCircle />
@@ -22,7 +22,7 @@ const Chat = () => {
                             </div>
                             <div className="admin-support">
                             <h1 className="font-bold">Maria Angela</h1>
-                            <h1 className="text-orange-500">Admin Support</h1>
+                            <h1 className="text-slate-700">Admin Support</h1>
                             </div>
                         </div>
 

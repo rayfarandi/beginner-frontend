@@ -64,7 +64,7 @@ const ProductHome =({ isHomePage})=>{
           <div className="flex flex-col items-center gap-2 sm:gap-4">
             <h1 className="text-2xl text-center sm:text-5xl font-medium sm:mb-2 px-4">Here is Peoples <span className="text-[#8E6447]">Favorite</span></h1>
 
-            <hr className="border-[#ff8906] border-2 sm:border-4 w-16"/>
+            <hr className="border-slate-700 border-2 sm:border-4 w-16"/>
             <h2 className="text-[#4f5665] text-xs sm:text-base text-center px-4">Lets choose and have a bit taste of poeples favorite. It might be yours too!</h2>
           </div>
         

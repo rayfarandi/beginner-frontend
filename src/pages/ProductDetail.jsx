@@ -117,7 +117,7 @@ const ProductDetail =()=>{
           <h1 className="text-xl sm:text-3xl font-bold">{detailProduct?.name}</h1>
           <div className="flex items-center gap-4">
             <h1 className="text-red-500 text-[0.6rem] sm:text-xs font-semibold line-through">IDR {detailProduct?.basePrice*2?.toLocaleString('id')}</h1>
-            <h1 className="text-orange-500 font-semibold text-xs sm:text-base" id="product-price">IDR {detailProduct?.basePrice?.toLocaleString('id')}</h1>
+            <h1 className="text-slate-700 font-semibold text-xs sm:text-base" id="product-price">IDR {detailProduct?.basePrice?.toLocaleString('id')}</h1>
           </div>
           <div className="flex items-center gap-2 sm:gap-4">
             <div className="flex items-center gap-2 sm:gap-4 text-yellow-500">
@@ -135,7 +135,7 @@ const ProductDetail =()=>{
             {detailProduct?.isRecommended && (
               <div className="flex-1 flex gap-2 sm:gap-4 justify-center items-center pl-2">
                 <p className="text-xs sm:text-sm"> Recommendation</p>
-                <Icon.ThumbsUp className="text-orange-500 h-4 sm:h-auto"/>
+                <Icon.ThumbsUp className="text-slate-700 h-4 sm:h-auto"/>
               </div>
             )}
           </div>
@@ -144,9 +144,9 @@ const ProductDetail =()=>{
           </p>
           
           <div className="h-9 w-fit flex flex-row border rounded-md border-gray-3">
-                <div onClick={decButton} id="substract-button" className="flex w-9 text-lg font-semibold justify-center items-center border border-orange-500 rounded-md hover:bg-orange-500 active:scale-95 transition:all duration-300 cursor-pointer hover:text-white">-</div>
+                <div onClick={decButton} id="substract-button" className="flex w-9 text-lg font-semibold justify-center items-center border border-slate-700 rounded-md hover:bg-slate-700 active:scale-95 transition:all duration-300 cursor-pointer hover:text-white">-</div>
                 <div id="quantity-number" className="flex w-10 text-lg font-semibold justify-center items-center">{quantity}</div>
-                <div onClick={addButton} id="add-button" className="flex w-9 text-lg font-semibold justify-center items-center border border-orange-500 rounded-md hover:bg-orange-500 hover:text-white active:scale-95 transition:all duration-300 cursor-pointer">+</div>
+                <div onClick={addButton} id="add-button" className="flex w-9 text-lg font-semibold justify-center items-center border border-slate-700 rounded-md hover:bg-slate-700 hover:text-white active:scale-95 transition:all duration-300 cursor-pointer">+</div>
             </div>
         
             <div className="flex flex-col gap-3">
@@ -154,7 +154,7 @@ const ProductDetail =()=>{
 
                 <div className="flex flex-row items-center h-10 gap-8">
                     {detailProduct?.sizes?.map(item => (
-                            <button onClick={()=>setLocalSelector({...localSelector, size: item})} type="button" key={`size_${item.id}`} className={`flex flex-1 h-full text-sm tracking-wide justify-center items-center border ${localSelector.size.id === item.id ? 'border-orange-500':'border-gray-300'} hover:border hover:border-orange-500 hover:bg-orange-500 hover:text-white active:scale-95 transition:all duration-300 cursor-pointer`}>
+                            <button onClick={()=>setLocalSelector({...localSelector, size: item})} type="button" key={`size_${item.id}`} className={`flex flex-1 h-full text-sm tracking-wide justify-center items-center border ${localSelector.size.id === item.id ? 'border-slate-700':'border-gray-300'} hover:border hover:border-slate-700 hover:bg-slate-700 hover:text-white active:scale-95 transition:all duration-300 cursor-pointer`}>
                             {item.size}
                         </button>
                     ))}
@@ -165,7 +165,7 @@ const ProductDetail =()=>{
                 <span className="font-semibold">Hot/Ice?</span>
                 <div className="flex flex-row items-center h-10 gap-8">
                     {detailProduct?.variants?.map(item => (
-                        <button onClick={()=>setLocalSelector({...localSelector, variant: item})} type="button" key={`variant_${item.id}`} className={`flex flex-1 h-full text-sm tracking-wide text-black justify-center items-center border ${localSelector.variant.id === item.id ? 'border-orange-500':'border-gray-300'} hover:border hover:border-orange-500 hover:bg-orange-500 hover:text-white active:scale-95 transition:all duration-300 cursor-pointer`}>
+                        <button onClick={()=>setLocalSelector({...localSelector, variant: item})} type="button" key={`variant_${item.id}`} className={`flex flex-1 h-full text-sm tracking-wide text-black justify-center items-center border ${localSelector.variant.id === item.id ? 'border-slate-700':'border-gray-300'} hover:border hover:border-slate-700 hover:bg-slate-700 hover:text-white active:scale-95 transition:all duration-300 cursor-pointer`}>
                             {item.name}
                         </button>
                     ))}
@@ -173,8 +173,8 @@ const ProductDetail =()=>{
             </div>
         
             <div className="flex flex-row h-11 gap-5 mt-8">
-                <Link to={'/CheckOut'} className="flex flex-1 text-sm justify-center items-center border border-orange-500 bg-orange-500 rounded-md hover:border-orange-500 text-white active:scale-95 transition:all duration-300 cursor-pointer"><button id="buy-button" >Buy</button></Link>
-                <button onClick={addCart} className="flex flex-row flex-1 justify-center items-center gap-5 border border-orange-500 rounded-md hover:border-orange-500 active:scale-95 transition:all duration-300 cursor-pointer">
+                <Link to={'/CheckOut'} className="flex flex-1 text-sm justify-center items-center border border-slate-700 bg-slate-700 rounded-md hover:border-slate-700 text-white active:scale-95 transition:all duration-300 cursor-pointer"><button id="buy-button" >Buy</button></Link>
+                <button onClick={addCart} className="flex flex-row flex-1 justify-center items-center gap-5 border border-slate-700 rounded-md hover:border-slate-700 active:scale-95 transition:all duration-300 cursor-pointer">
                     Add to Cart
                 </button>
             </div>

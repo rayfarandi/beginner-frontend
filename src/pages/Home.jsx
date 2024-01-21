@@ -44,24 +44,24 @@ const Home =()=>{
                     love just for you. Start your day with us for a bigger smile!
                 </h3>
                 <div className="flex justify-between">
-                    <button className="bg-orange-500 py-2 px-3 rounded-md">Get Started</button>
+                    <button className="bg-slate-700 py-2 px-3 rounded-md">Get Started</button>
                 </div>
                 <div className="flex divide-x-2">
                     <div className="flex flex-1 items-center">
                         <div className="flex flex-col gap-2">
-                        <h2 className="text-orange-500 text-4xl font-semibold">90+</h2>
+                        <h2 className="text-slate-700 text-4xl font-semibold">90+</h2>
                         <h2 className="text-white">Staff</h2>
                         </div>
                     </div>
                     <div className="flex flex-1 justify-center items-center">
                         <div className="flex flex-col gap-2">
-                        <h1 className="text-orange-500 text-4xl font-semibold">30+</h1>
+                        <h1 className="text-slate-700 text-4xl font-semibold">30+</h1>
                         <h2 className="text-white text-sm">Stores</h2>
                         </div>
                     </div>
                     <div className="flex flex-1 justify-end">
                         <div className="flex flex-col gap-2">
-                        <h1 className="text-orange-500 text-4xl font-semibold">800+</h1>
+                        <h1 className="text-slate-700 text-4xl font-semibold">800+</h1>
                         <h2 className="text-white">Customer</h2>
                         </div>
                     </div>
@@ -83,7 +83,7 @@ const Home =()=>{
         <div className="h-fit py-16 sm:py-0 sm:h-screen sm:flex-1  flex items-center">
           <div className="flex flex-col ml-8 sm:ml-28 gap-4 h-fit max-w-lg">
               <div className="flex items-center gap-4">
-                <hr className="border-orange-500 border-2 sm:border-4 h-14"/>
+                <hr className="border-slate-700 border-2 sm:border-4 h-14"/>
                 <h1 className="text-2xl sm:text-5xl font-medium">
                   We Provide <span className="text-[#8E6447]">Good <br/> Coffee</span> and
                   <span className="text-[#8E6447]">Healthy Meals</span>
@@ -143,7 +143,7 @@ const Home =()=>{
             {/* Map*/}
             <section className="h-fit py-6 sm:h-full flex flex-col items-center justify-center w-full bg-gray-100 gap-12">
             <div className="flex flex-col items-center gap-2 sm:gap-4">{/* map-text */}
-            <h1 className="text-4xl font-semibold"><span className="text-amber-600">Visit Our Store</span> in the Spot on the Map Below</h1>
+            <h1 className="text-4xl font-semibold"><span className="text-slate-600">Visit Our Store</span> in the Spot on the Map Below</h1>
                 <h2 className="text-sm py-2 text-center">
                 You can explore the menu that we provide with fun and have their own
                 taste and make your day better.
@@ -167,8 +167,8 @@ const Home =()=>{
                 
                 <div className="flex flex-col gap-4 w-full sm:w-[30rem]">
                 <h2 className="text-white hidden sm:block">TESTIMONIAL</h2>
-                <h1 className="text-white text-2xl sm:text-4xl border-l-4 border-orange-500 pl-4">Viezh Robert</h1>
-                <h2 className="text-orange-500">Manager Coffe Shop</h2>
+                <h1 className="text-white text-2xl sm:text-4xl border-l-4 border-slate-700 pl-4">Viezh Robert</h1>
+                <h2 className="text-slate-700">Manager Coffe Shop</h2>
                 <h2 className="text-white text-sm sm:text-base">
                     “Wow... I am very happy to spend my whole day here. the Wi-fi is good,
                     and the coffee and meals tho. I like it here!! Very recommended!
@@ -198,12 +198,12 @@ const Home =()=>{
                     <i className="h-5" data-feather="arrow-left"></i>
                     </div>
 
-                    <div className="flex justify-center items-center bg-orange-500 rounded-full h-8 w-8">
+                    <div className="flex justify-center items-center bg-slate-700 rounded-full h-8 w-8">
                     <i className="h-5"  data-feather="arrow-right"></i>
                     </div>
                 </div>
                 <div className="flex gap-1">
-                    <div className="bg-orange-500 w-8 h-2 rounded-md"></div>
+                    <div className="bg-slate-700 w-8 h-2 rounded-md"></div>
                     <div className="bg-white w-2 h-2 rounded-md"></div>
                     <div className="bg-white w-2 h-2 rounded-md"></div>
                     <div className="bg-white w-2 h-2 rounded-md"></div>
