@@ -150,9 +150,9 @@ const ProductProduct = () => {
       
 
       if (page === "next" && pageInfo && pageInfo.nextPage) {
-        res = await axios.get(`http://localhost:8888/products?page=${pageInfo.nextPage}`)
+        res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/products?page=${pageInfo.nextPage}`)
       } else {
-        res = await axios.get(`http://localhost:8888/products?page=${page}`)
+        res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/products?page=${page}`)
       }
 
       setPageInfo(res.data.pageInfo)
@@ -231,7 +231,7 @@ const Product=()=>{
   
     const listAllProducts = async () => {
       try {
-        const {data} = await axios.get("http://localhost:8888/products")
+        const {data} = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/products`)
         console.log(data)
         setTotalPage(data.pageInfo.totalPage)
         setNextPage(data.pageInfo.nextPage)
@@ -277,7 +277,7 @@ const Product=()=>{
       const queryParams = form.toString()
       
       try {
-        const {data} = await axios.get(`http://localhost:8888/products?${queryParams}`)
+        const {data} = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/products?${queryParams}`)
         console.log(data)
         setTotalPage(data.pageInfo.totalPage)
         setNextPage(data.pageInfo.nextPage)
@@ -306,7 +306,7 @@ const Product=()=>{
   
       try {
         if(queryParameter){
-          const {data} = await axios.get(`http://localhost:8888/products?${queryParameter}&page=${page}`)
+          const {data} = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/products?${queryParameter}&page=${page}`)
           console.log(data)
           setDataProducts(data.results)
           setNextPage(data.pageInfo.nextPage)
@@ -316,7 +316,7 @@ const Product=()=>{
             setDisable(false)
           }
         }else{
-          const {data} = await axios.get(`http://localhost:8888/products?page=${page}`)
+          const {data} = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/products?page=${page}`)
           console.log(data)
           setDataProducts(data.results)
           setNextPage(data.pageInfo.nextPage)
@@ -341,7 +341,7 @@ const Product=()=>{
       
       try {
         if(queryParameter){
-          const {data} = await axios.get(`http://localhost:8888/products?${queryParameter}&page=${nextPage}`)
+          const {data} = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/products?${queryParameter}&page=${nextPage}`)
           console.log(data)
           setDataProducts(data.results)
           setNextPage(data.pageInfo.nextPage)
@@ -351,7 +351,7 @@ const Product=()=>{
             setDisable(false)
           }
         }else{
-          const {data} = await axios.get(`http://localhost:8888/products?page=${nextPage}`)
+          const {data} = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/products?page=${nextPage}`)
           setDataProducts(data.results)
           setNextPage(data.pageInfo.nextPage)
           if(data.pageInfo.nextPage === null){

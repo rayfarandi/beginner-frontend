@@ -16,9 +16,9 @@ const ProductProduct = () => {
     try {
       let res
       if (page === "next" && pageInfo && pageInfo.nextPage) {
-        res = await axios.get(`http://localhost:8888/products?page=${pageInfo.nextPage}`)
+        res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/products?page=${pageInfo.nextPage}`)
       } else {
-        res = await axios.get(`http://localhost:8888/products?page=${page}`)
+        res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/products?page=${page}`)
       }
 
       setPageInfo(res.data.pageInfo)

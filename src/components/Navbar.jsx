@@ -23,7 +23,7 @@ const Navbar =({ bg })=>{
 
   const getProfile = async()=>{
     if(token){
-      const {data} = await axios.get('http://localhost:8888/profile',{
+      const {data} = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/profile`,{
                 headers:{
                     'Authorization': `Bearer ${token}`
                 }
@@ -95,7 +95,7 @@ React.useEffect(()=>{
             <>
             <div className='h-8 w-8 rounded-full bg-white'>
             {!user.picture && <img className='h-8 w-8 rounded-full' src={defaultInsertImage} />}
-              {user.picture && <img className='h-8 w-8 rounded-full' src={`http://localhost:8888/uploads/profile/${user.picture}` } />}
+              {user.picture && <img className='h-8 w-8 rounded-full' src={`${import.meta.env.VITE_BACKEND_URL}/uploads/profile/${user.picture}` } />}
             </div>
             </>
             }

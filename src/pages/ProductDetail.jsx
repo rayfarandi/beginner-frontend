@@ -38,7 +38,7 @@ const ProductDetail =()=>{
     
     const getRecomentProduct = async () => {
         try {
-          const response = await axios.get('http://localhost:8888/products', {
+          const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/products`, {
             params: {
               best_seller: true,
               limit: 3
@@ -54,7 +54,7 @@ const ProductDetail =()=>{
     
 
     const getDetailProduct = async (id) => {
-        const {data} = await axios.get(`http://localhost:8888/products/${id}`)
+        const {data} = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/products/${id}`)
         if(data.success){
             setDetailProduct(data.results)
             setLocalSelector({
@@ -95,7 +95,7 @@ const ProductDetail =()=>{
         <div className="w-full sm:flex-1 flex flex-col items-center gap-2 sm:gap-4 h-96 sm:h-5/6">
           <div className="w-full">
             <img className="w-full h-72 sm:h-80 object-cover object-center" id={detailProduct?.id}
-            src={detailProduct?.image? `http://localhost:8888/uploads/products/${detailProduct?.image}` : noImage} />
+            src={detailProduct?.image? `${import.meta.env.VITE_BACKEND_URL}/uploads/products/${detailProduct?.image}` : noImage} />
           </div>
           <div className="flex-1 flex justify-between gap-4 w-full">
             <div>

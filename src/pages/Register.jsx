@@ -50,7 +50,7 @@ function RegisterForm() {
     
   
     try{
-      const {data} = await axios.post('http://localhost:8888/auth/register', form.toString())
+      const {data} = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/register`, form.toString())
       
       setSuccessMessage(data.message)
       setIsSuccess(true)

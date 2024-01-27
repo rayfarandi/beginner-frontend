@@ -39,7 +39,7 @@ const ProductHome =({ isHomePage})=>{
     
     const getRecomentProduct = async () => {
         try {
-          const response = await axios.get('http://localhost:8888/products', {
+          const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/products`, {
             params: {
               best_seller: true,
               limit: 4

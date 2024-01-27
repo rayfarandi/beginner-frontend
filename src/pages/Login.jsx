@@ -43,7 +43,7 @@ const Form = ()=>{
   form.append('email',email)
   form.append('password',password)
     
-    const {data} = await axios.post('http://localhost:8888/auth/login', form.toString())
+    const {data} = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/login`, form.toString())
     setSuccessMessage(data.message)
     setErrorMessage(null)
     const {token: resultsToken} = data.results

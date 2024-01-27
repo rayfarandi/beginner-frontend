@@ -13,7 +13,7 @@ const ProductCard =({id,name,description,price,image,isFlashSale,ratingProduct})
             <div>
                 <img
                 className='w-44 h-44 sm:w-56 sm:h-56 object-cover'
-                src={image ? `http://localhost:8888/uploads/products/${image}` : noImage}
+                src={image ? `${import.meta.env.VITE_BACKEND_URL}/uploads/products/${image}` : noImage}
                 alt="product"
                 />
             </div>
