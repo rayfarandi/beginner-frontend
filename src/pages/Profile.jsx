@@ -1,6 +1,6 @@
 import React from "react";
 import * as Icon from "react-feather"
-import Navbar from "../components/navbar";
+import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import axios from "axios";
 import defaultInsertImage from "../assets/images/insertimage.jpg" 

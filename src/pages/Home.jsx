@@ -2,7 +2,7 @@ import  * as Icon from 'react-feather'
 import Chat from "../components/Chat"
 import Footer from "../components/Footer"
 
-import Navbar from "../components/navbar"
+import Navbar from "../components/Navbar"
 // gambar
 import Map from '../assets/images/home-map.jpg'
 import MapRes from '../assets/images/map-res.jpg'

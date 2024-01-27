@@ -1,6 +1,6 @@
 import  * as Icon from 'react-feather'
 import Footer from "../components/Footer"
-import Navbar from "../components/navbar"
+import Navbar from "../components/Navbar"
 
 import KuponMother from '../assets/images/motherdaycupon.png'
 import KuponFather from '../assets/images/fatherdaycupon.png'

@@ -1,7 +1,7 @@
 import React from "react"
 import * as Icon from "react-feather"
 import Footer from "../components/Footer"
-import Navbar from "../components/navbar"
+import Navbar from "../components/Navbar"
 import { Link, useParams, useNavigate } from 'react-router-dom'
 import axios from "axios"
 import { FaStar } from "react-icons/fa6"
