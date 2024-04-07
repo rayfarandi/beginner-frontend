@@ -1,77 +1,75 @@
-import React from 'react'
-
-// Redux integration
-import { Provider } from 'react-redux'
-import { persisitor, store } from '../redux/store'
-
-// Page and components
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Login from './pages/Login'
-import Register from './pages/Register'
-import ForgotPassword from './pages/ForgotPassword'
-import Home from './pages/Home'
-import Product from './pages/Product'
-import CheckOut from './pages/CheckOut'
-import DetailOrder from './pages/DetailOrder'
-import ProductDetail from './pages/ProductDetail'
-import HistoryOrder from './pages/HistoryOrder'
-import Profile from './pages/Profile'
-import PrivateRoute from './components/PrivateRoute'
+
+// redux integrations
+import { Provider } from 'react-redux'
+import { persistor, store } from './redux/store'
 import { PersistGate } from 'redux-persist/integration/react'
 
-
+// pages & components
+import Register from './pages/Register'
+import Login from './pages/Login'
+import ForgotPassword from './pages/ForgotPassword'
+import Home from './pages/Home'
+import Products from './pages/Products'
+import ProductDetails from './pages/ProductDetails'
+import Checkout from './pages/Checkout'
+import HistoryOrder from './pages/HistoryOrder'
+import OrderDetails from './pages/OrderDetails'
+import Profile from './pages/Profile'
+import PrivateRoute from './components/privateRoute'
 
 const router = createBrowserRouter([
   {
-    path:'/',
-    element: <Home />
-  },
-  {
-    path:'/login',
-    element: <Login />
-  },
-  {
-    path:'/register',
+    path: '/register',
     element: <Register />
   },
   {
-    path:'/forgotpasswords',
-    element: <ForgotPassword/>
+    path: '/login',
+    element: <Login />
   },
   {
-    path:'/product',
-    element: <Product />
+    path: '/forgot-password',
+    element: <ForgotPassword />
   },
   {
-    path:'/checkout',
-    element:  (<PrivateRoute><CheckOut /></PrivateRoute>)
+    path: '/',
+    element: <Home />
   },
   {
-    path:'/detailorder',
-    element: <DetailOrder />
+    path: '/products',
+    element: <Products />
   },
   {
-    path:'/productdetail/:id',
-    element: <ProductDetail />
+    path: '/products/:id',
+    element: <ProductDetails /> 
   },
   {
-    path:'/historyorder',
-    element: <HistoryOrder />
+    path: '/checkout',
+    element: <PrivateRoute> <Checkout /> </PrivateRoute>
   },
   {
-    path:'/profile',
-    element: (<PrivateRoute><Profile/></PrivateRoute>)
+    path: '/history-order',
+    element: <PrivateRoute> <HistoryOrder /> </PrivateRoute>
+  },
+  {
+    path: '/order-details/:id',
+    element: <PrivateRoute> <OrderDetails /> </PrivateRoute>
+  },
+  {
+    path: '/profile',
+    element: <PrivateRoute> <Profile/> </PrivateRoute>
   }
 ])
 
-const App=()=>{
-  return(
+function App() {
+
+  return (
     <Provider store={store}>
-      <PersistGate persistor={persisitor} >
+      <PersistGate persistor={persistor}>
         <RouterProvider router={router} />
       </PersistGate>
     </Provider>
-  )
+  );
 }
 
 export default App
