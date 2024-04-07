@@ -526,7 +526,7 @@ const Products = () => {
         </div>
 
         
-        <div className={`w-fit flex gap-10  translate-x-[${position}rem]`}>
+        <div className={`w-fit flex gap-10  translate-x-[1rem]`}>
           {kupon.map((item, index) => (
             <Kupon
               key={index}

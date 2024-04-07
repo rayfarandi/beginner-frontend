@@ -15,7 +15,7 @@ import InputForm from "../components/InputForm";
 
 
 
-const Checkout = () => {
+const CheckOut = () => {
   const products = useSelector(state => state.products.data)
   const sizeProducts = useSelector(state => state.sizeProducts.sizes)
   const variantProduct = useSelector(state => state.variantProducts.variants)
@@ -110,4 +110,4 @@ const Checkout = () => {
   );
 };
 
-export default Checkout;
+export default CheckOut;
