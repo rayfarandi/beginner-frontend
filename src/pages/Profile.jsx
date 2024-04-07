@@ -1,211 +1,255 @@
-import React from "react";
-import * as Icon from "react-feather"
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import axios from "axios";
-import defaultInsertImage from "../assets/images/insertimage.jpg" 
 import { useDispatch, useSelector } from "react-redux";
-import { setProfile as setProfileAction } from "../../redux/reducers/profile";
+import { setProfile as setProfileAction } from "../redux/reducers/profile";
+
+import { useState } from "react";
+
+import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
+import InputForm from "../components/InputForm";
+import Button from "../components/Button"
+import axios from "axios";
+import moment from "moment";
+import defaultPhoto from '../assets/images/default-photo-profil.jpeg'
 
 
-const Profile =()=>{
-    // const [user,setUser] =React.useState({})
-    const user = useSelector (state =>state.profile.data)
-    const [successMessage,setSuccessMessage] = React.useState(null)
-    const [preview, setPreview] = React.useState()
-    // const token = window.localStorage.getItem('token')
-    const token = useSelector(state => state.auth.token)
-    const dispatch = useDispatch()
+const Profile = () => {
+  const token = useSelector(state => state.auth.token)
+  const dataProfile = useSelector(state => state.profile.data)
+  const dispatch = useDispatch()
+  
+  const registrationDate = dataProfile && moment(dataProfile.createdAt)
 
-    // React.useEffect(()=>{
-    //     axios.get('http://localhost:8888/profile',{
-    //         headers:{
-    //             'Authorization': `Bearer ${token}`
-    //         }
-    //     }).then(({data})=>{
-    //         setUser(data.results)
-    //     })
-    // },[])
+  // update profile start
+    const [success, setSuccess] = useState(false)
+    const [error, setError] = useState(false)
+    const [errorMessage, setErrorMessage] = useState()
+    const [preview, setPreview] = useState()
 
-    // const getProfile =async()=>{
-    //     const {data}= await axios.get('http://localhost:8888/profile',{
-    //                 headers:{
-    //                     'Authorization': `Bearer ${token}`
-    //                 }
-    //     })
-    //     setUser(data.results)
-    // }
-    React.useEffect(()=>{
-        // getProfile()
-    },[])
-    
+    const updateProfile = async (event) => {
+      event.preventDefault();
 
-    React.useEffect(()=>{
-        if(successMessage){
-            setTimeout(()=>{
-                setSuccessMessage(null)
-            },2000)
+      const form = new FormData();
+      
+      const fields = ['fullName', 'email', 'phoneNumber', 'address', 'password']
+      fields.forEach((field) => {
+        if(dataProfile && event.target[field].value && dataProfile[field] !== event.target[field].value){
+          form.append(field, event.target[field].value)
         }
-    },[successMessage])
+      })
 
-    const updateProfileData = async(event)=>{
-        
-        event.preventDefault()
-        const form = new FormData()
-        const fields = ['fullName','email','address','phoneNumber','password']
-        fields.forEach((field)=>{
-            if(event.target[field]){
-                form.append(field, event.target[field].value)
-            }
+      try {
+        const {data} = await axios.patch('http://localhost:8888/profile', form, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            'Authorization': `Bearer ${token}`
+          }
         })
-        // if(event.target.fullName){
-        //     form.append('fullName',event.target.fullName.value)
-        // }
-        // if(event.target.email){
-        //     form.append('email',event.target.email.value)
-        // }
-        // if(event.target.address){
-        //     form.append('address',event.target.address.value)
-        // }
-        // if(event.target.phoneNumber){
-        //     form.append('phoneNumber',event.target.phone.value)
-        // }
+        if(data.results){
+          dispatch(setProfileAction(data.results))
 
-        const {data} = await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/profile`,form,{
-            headers: {
-                'Content-Type': 'multipart/form-data',
-                'Authorization': `Bearer ${token}`
-            }
+          setSuccess(true)
+          setTimeout(() => {
+            setSuccess(false)
+          }, 2000);
+          event.target.password.value = ''
+        }else{
+          setErrorMessage(data.message)
+          setError(true)
+          setTimeout(() => {
+            setError(false)
+          }, 2000);
+        }
+      } catch (error) {
+        console.log(error)
+        setErrorMessage(error.response.data.message)
+        setError(true)
+        setTimeout(() => {
+          setError(false)
+        }, 2000);
+      }
+    }
+
+
+    const previewPicture = (event) => {
+      const pictureUrl = URL.createObjectURL(event.target.files[0])
+      setPreview(pictureUrl)
+    }
+
+
+    const updatePicture = async (event) => {
+      event.preventDefault();
+      const [file] = event.target.picture.files
+
+      console.log(event.target.picture.files)
+      console.log(file)
+      console.log(file.name)
+      console.log(file.size)
+      console.log(file.type)
+
+      const form  = new FormData()
+      form.append('picture', file)
+
+      try {
+        const {data} = await axios.patch('http://localhost:8888/profile', form, {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'multipart/form-data'
+          }
         })
-        setSuccessMessage(data.message)
-        // setUser(data.results)
         dispatch(setProfileAction(data.results))
+        
+        setPreview(null)
+        setSuccess(true)
+        setTimeout(() => {
+          setSuccess(false)
+        }, 2000);
+      } catch (error) {
+        console.log(error)
+        setErrorMessage(error.response.data.message)
+        setError(true)
+        setTimeout(() => {
+          setError(false)
+        }, 2000);
+      }
 
     }
-    const changePicture = (event)=>{
-        const pictureUrl = URL.createObjectURL(event.target.files[0])
-        setPreview(pictureUrl)
-    }
-    const uploadPhoto = async(event)=>{
-        event.preventDefault()
-        try{
-            const [file] = event.target.picture.files
-        if(file){
-            const form = new FormData()
-            form.append('picture',file)
-            const {data} = await axios.patch('${import.meta.env.VITE_BACKEND_URL}/profile',form,{
-            headers: {
-                'Content-Type': 'multipart/form-data',
-                'Authorization': `Bearer ${token}`
-            }
-            })
-            window.alert(data.message)
-            // setUser(data.results)
-            dispatch(setProfileAction(data.results))
-            setPreview(null)
-        }
-        }catch(error){
-            window.alert(error.response.data.message)
-        }
-    }
-    return(
-        <>
-        <div className="flex flex-col items-center">
-            <Navbar bg='#000000' />
+  // update profile end
 
-        {/* profile form */}
-    <h1 className="w-5/6 mt-24 text-3xl font-bold">Profile</h1>
-    <div className="w-5/6 flex flex-col sm:flex-row gap-4">
-    
-      <form onSubmit={uploadPhoto} className="w-full sm:w-1/5 border border-gray-500 h-fit flex flex-col items-center p-4 gap-3">
-        <div className="flex flex-col items-center">
-          <h2 className="font-bold">{user.fullName}</h2>
-          <p className="text-xs text-gray-500">{user.email}</p>
-        </div>
-        <label className="flex flex-col items-center gap-2">
-            {(!user.picture && !preview) && <img className="rounded-full w-28 h-28" src={defaultInsertImage} alt="profile picture" />}
-            {(!preview && user.picture)&& <img className="rounded-full w-28 h-28 object-cover" src={preview? preview : `${import.meta.env.VITE_BACKEND_URL}/uploads/profile/${user.picture} `} alt="profile picture" />}
-            {preview && <img className="rounded-full w-28 h-28" src={preview} alt="profile picture" />}
-            {preview && <div className="absolute bg-[rgb(0,0,0,0.5)] rounded-full w-28 h-28 top-[12.5rem]" />}
+  return (
+    <div className="flex flex-col items-center gap-6 sm:gap-12">
+      <Navbar />
 
-        <input multiple={false} accept=".jpg,.jpeg,.png" onChange={changePicture} className="hidden" type="file" name="picture" />
+      <h1 className="w-5/6 mt-20 sm:mt-24 text-3xl font-bold">Profile</h1>
 
-        </label>
-        <div className={`${!preview ? 'hidden' :''} flex justify-between`}>
-        <button className="text-xs bg-green-500 w-full rounded p-2" type="submit">Confrim Photo</button>
-        <button onClick={()=>{setPreview()}} className="text-xs bg-red-500 w-full rounded p-2" type="reset">Cencel Photo</button>
-        </div>
-        <button className={`${preview ? 'hidden' :''} text-xs bg-slate-700 w-full rounded p-2`} type="submit">Upload New Photo</button>
-        <p className="text-xs text-gray-500">Since <span className="font-bold">{user.createdAt?.slice(0,-14).split('-').reverse().join('-')}</span></p>
-      </form>
-      
-      <form onSubmit={updateProfileData} className="flex-1 border border-gray-500 p-4 flex flex-col gap-6 outline-none">
-        {successMessage &&<div className="bg-green-200 text-green-700 border-green-700 border-solid p-5 rounded">{successMessage}</div>}
-          <div className="flex flex-col gap-1">
-            <label>
-                <div  className="font-bold text-sm">Full Name</div>
-            <div className="flex border border-[#DEDEDE] rounded-md text-gray-500 p-2 gap-2">
-              <Icon.User/>
-              <input defaultValue={user.fullName} className="text-xs w-full outline-none"  type="text" placeholder="Enter Your Full Name" name="fullName"/>
-            </div>
-            </label>
+      <div
+        className={`fixed top-24 py-2 px-4 bg-white shadow-md text-green-400 rounded text-sm flex justify-center items-center font-bold ${
+          success ? "block" : "hidden"
+        }`}
+      >
+        <h1>Update Profile Success</h1>
+      </div>
+      <div
+        className={`fixed top-24 py-2 px-4 bg-white shadow-md text-red-500 rounded text-sm flex justify-center items-center font-bold ${
+          error ? "block" : "hidden"
+        }`}
+      >
+        <h1>{errorMessage}</h1>
+      </div>
+
+      <section className="w-5/6 flex flex-col sm:flex-row gap-4">
+        <form
+          onSubmit={updatePicture}
+          className="w-full sm:w-1/5 border border-[#E8E8E8] h-fit flex flex-col items-center p-4 gap-3"
+        >
+          <div className="flex flex-col items-center">
+            <h2 className="font-bold">{dataProfile && dataProfile.fullName}</h2>
+            <p className="text-xs text-[#4F5665]">
+              {dataProfile && dataProfile.email}
+            </p>
           </div>
-
-          <div className="flex flex-col gap-1">
-            <label>
-                <div className="font-bold text-sm">Email</div>
-            <div className="flex border border-[#DEDEDE] rounded-md text-gray-500 p-2 gap-2">
-              <Icon.Mail/>
-              <input defaultValue={user.email} className="text-xs w-full outline-none" type="email" placeholder="Enter Your Email" name="email"/>
-            </div>
-            </label>
-          </div>
-
-          <div className="flex flex-col gap-1">
-            <label>
-                <div className="font-bold text-sm">Phone</div>
-            <div className="flex  border border-[#DEDEDE] rounded-md text-gray-500 p-2 gap-2">
-              <Icon.Phone/>
-              <input defaultValue={user.phoneNumber} className="text-xs w-full outline-none" type="text" placeholder="Enter Your Phone Number" name="phoneNumber"/>
-            </div>
-            </label>
-          </div>
-
-          <div className="flex flex-col gap-1">
-            <label>
-                <div className="font-bold text-sm">Password</div>
-            <div className="flex border border-[#DEDEDE] rounded-md text-gray-500 p-2 gap-2">
-              <Icon.Lock/>
-              <input defaultValue={user.password} htmlFor={'password'}className="text-xs w-full outline-none" type="password" placeholder="Enter Your Password" name="password"/>
-            </div>
-            </label>
-          </div>
-
-          <div className="flex flex-col gap-1">
-            <label>
-                <div className="font-bold text-sm">Address</div>
-            <div className="flex border border-[#DEDEDE] rounded-md text-gray-500 p-2 gap-2">
-              <Icon.MapPin/>
-              <input defaultValue={user.address} className="text-xs w-full outline-none" type="text" placeholder="Enter Your Adress" name="address"/>
-            </div>
-            </label>
-          </div>
-        <div>
-        <button className="w-full bg-slate-700 rounded text-xs p-2" type="submit">Update Profile</button>
-        </div>
-          
+          <label className="relative rounded-full">
+            {(!preview && dataProfile) && !dataProfile.picture && (
+              <img
+                className="rounded-full w-28 h-28 object-cover"
+                src={defaultPhoto}
+              ></img>
+            )}
+            {(!preview && dataProfile) && dataProfile.picture && (
+              <img
+                className="rounded-full w-28 h-28 object-cover"
+                src={
+                  dataProfile &&
+                  `http://localhost:8888/uploads/users/${dataProfile.picture}`
+                }
+              ></img>
+            )}
+            {preview && (
+              <img
+                className="rounded-full w-28 h-28 object-cover"
+                src={preview}
+              ></img>
+            )}
+            {preview && (
+              <div className="absolute top-0 left-0 w-full h-full bg-black rounded-full bg-opacity-50" />
+            )}
+            <input
+              onChange={previewPicture}
+              multiple={false}
+              type="file"
+              accept=".jpg, .jpeg, .png"
+              name="picture"
+              className="hidden"
+            />
+          </label>
+          <button
+            type="submit"
+            className="text-xs bg-gradient-to-br from-primary to-black text-white w-full rounded p-2 transition-all active:scale-95"
+          >
+            Upload New Photo
+          </button>
+          <p className="text-xs text-[#4F5665]">
+            Since{" "}
+            <span className="font-bold">
+              {registrationDate.format('D').padStart(2, '0')} {registrationDate.format("MMMM")} {registrationDate.format('YYYY')}
+            </span>
+          </p>
         </form>
-      
+
+        <form
+          onSubmit={updateProfile}
+          className="w-full sm:flex-1 border border-[#E8E8E8] p-4 flex flex-col gap-6 outline-none"
+        >
+          {dataProfile && (
+            <>
+              <InputForm
+                profile={true}
+                name="fullName"
+                label="Full Name"
+                type="text"
+                placeholder="Enter Your Full Name"
+                defaultValue={dataProfile.fullName}
+              />
+              <InputForm
+                profile={true}
+                name="email"
+                label="Email"
+                type="email"
+                placeholder="Enter Your Email"
+                defaultValue={dataProfile.email}
+              />
+              <InputForm
+                profile={true}
+                name="phoneNumber"
+                label="Phone"
+                type="text"
+                placeholder="Enter Your Phone Number"
+                defaultValue={dataProfile.phoneNumber}
+              />
+              <InputForm
+                profile={true}
+                name="password"
+                label="Password"
+                type="password"
+                placeholder="Enter Your Password"
+                passProfile={true}
+              />
+              <InputForm
+                profile={true}
+                name="address"
+                label="Address"
+                type="text"
+                placeholder="Enter Your Address"
+                defaultValue={dataProfile.address}
+              />
+            </>
+          )}
+          <Button value="Submit" py="2" />
+        </form>
+      </section>
+
+      <Footer />
     </div>
-    {/* profile form */}
+  );
+};
 
-        <Footer/>
-        </div>
-        
-        
-        
-        </>
-    )
-}
-
-export default Profile
+export default Profile;

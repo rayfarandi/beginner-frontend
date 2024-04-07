@@ -1,141 +1,255 @@
-import React, { useEffect, useState } from 'react'
-import * as Icon from 'react-feather'
-import { Link,useNavigate } from 'react-router-dom'
-// gambar
-import LogoW from '../assets/images/logo-white.png'
-import LogoTextW from '../assets/images/text-logo-white.png'
-import axios from 'axios'
-import defaultInsertImage from "../assets/images/insertimage.jpg" 
-import { useDispatch, useSelector } from 'react-redux'
-import { logout as logoutAction } from '../../redux/reducers/auth'
-import { setProfile as setProfileAction } from '../../redux/reducers/profile'
+import axios from "axios";
+import { Link } from "react-router-dom";
+import { FiShoppingCart, FiMenu, FiSearch, FiUser } from "react-icons/fi";
+import { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom'
 
-const Navbar =({ bg })=>{
-  const [menuOpen, setMenuOpen]= useState(false)
-  const [logoutOpen, setLogoutOpen] = useState(false)
-  // const [token ,setToken] = useState(window.localStorage.getItem('token'))
-  const token = useSelector(state=> state.auth.token)
-  const [searchDisplay, setSearchDisplay] = React.useState('hidden')
-  // const [user, setUser] = useState({})
-  const user = useSelector(state => state.profile.data)
-  const dispatch = useDispatch()
+import { useDispatch, useSelector } from "react-redux";
+import { logout as logoutAction } from "../redux/reducers/auth";
+import { setProfile as setProfileAction} from '../redux/reducers/profile'
+
+import CupCoffee from "../assets/images/cup-coffee-icon-white.png";
+import TextLogo from "../assets/images/text-logo-white.png";
+import defaultPhoto from '../assets/images/default-photo-profil.jpeg'
+
+
+const LinkNav = ({mobile, destination, value,}) => {
+  return (
+      <Link
+      to={destination}
+      // className={` base-100 ${!mobile ? 'hidden sm:block' : ''} ${handlective ? 'border-b-2 border-primary' : ''}`}
+      className={` base-100 ${!mobile ? 'hidden sm:block' : ''} ${document.URL.endsWith(destination) && 'border-b-2 border-primary' }`}
+    >
+      {value}
+    </Link>
+  )
+}
+
+const Navbar = ({home}) => {
+
+  const [navMobile, setNavMobile] = useState(false)
+  const [navSearch, setNavSearch] = useState(false)
+  const [homeActive, setHomeActive] = useState(false)
+  const [productActive, setProductActive] = useState(false)
   const navigate = useNavigate()
 
-  const getProfile = async()=>{
+  const token = useSelector(state => state.auth.token)
+  const dataProfile = useSelector(state => state.profile.data)
+  const dispatch = useDispatch()
+  
+  const getProfile =  async () => {
     if(token){
-      const {data} = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/profile`,{
-                headers:{
-                    'Authorization': `Bearer ${token}`
-                }
-    })
-    // setUser(data.results)
-    
-    dispatch(setProfileAction(data.results))
-    }
-}
-React.useEffect(()=>{
-    getProfile()
-},[])
+      try {
+        const {data} = await axios.get(`http://localhost:8888/profile`, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        })
   
-  const searchButton = (event) => {
-    event.preventDefault()
-    if(searchDisplay === 'hidden'){
-        setSearchDisplay('flex')
-    }else if(searchDisplay === 'flex'){
-        setSearchDisplay('hidden')
+        dispatch(setProfileAction(data.results))
+      } catch (error) {
+        console.log(error)
+      }
     }
-}
-
-  
-  const onLogout =()=>{
-    // setToken(null)
-    // window.localStorage.removeItem('token')
-    dispatch(logoutAction())
-    navigate('/login')
   }
-  useEffect(()=>{
-    // getProfile()
+
+  const onLogout = () => {
+    dispatch(logoutAction())
+    navigate('/')
+  }
+
+
+
+  useEffect(() => {
+    getProfile()
+    
+
+    if (document.URL.endsWith('/')) {
+      setHomeActive(true);
+      setProductActive(false);
+    } else {
+      setProductActive(true);
+      setHomeActive(false);
+    }
+    
+   
   },[])
-    return (
-      
-        <>
-      
-      <nav className={`${!menuOpen ? 'py-4 flex-row  ' : 'flex-col pt-4 '} flex w-full fixed z-10`} style={{ background: bg }}>
-      
-      <div className="flex justify-between items-center w-11/12 ml-[5%]">
-        <div className="flex gap-10">
-          <div className="flex flex-row">
-            <img src={LogoW}  className=" flex" alt="logo"/>
-            <img src={LogoTextW} className=" flex pl-1" alt="logo tulisan"/>
+
+  return (
+    <nav
+      className={`fixed w-full h-fit py-3 sm:py-0 sm:h-14 flex flex-col gap-4 items-center  ${
+        home ? "bg-[#00000021]"  : "bg-black"
+      } z-50`}
+    >
+      <div className="flex justify-between items-center sm:h-full w-5/6">
+        <div className="flex sm:gap-12 ">
+          <div className="flex gap-4">
+            <div>
+              <img src={CupCoffee} />
+            </div>
+            <div>
+              <img src={TextLogo} />
+            </div>
           </div>
-          <div className="flex gap-10">
-            <Link to="/" className="hover:border-b hover:border-slate-700 text-white hidden md:block">Home</Link>
-            <Link to="/product" className="hover:border-b hover:border-slate-700 text-white hidden md:block">Product</Link>
+          <div className="flex gap-12">
+            <LinkNav destination="/" value="Home" handlective={homeActive} />
+            <LinkNav destination="/products" value="Product" handleActive={productActive}
+            />
           </div>
         </div>
 
-      
+        <div className="relative flex items-center gap-2 sm:gap-5 sm:w-[32rem] justify-end">
+          <form
+            className={`${
+              !navSearch ? "hidden" : "flex"
+            } absolute items-center ${
+              token ? "left-[5.7rem]" : "left-12"
+            } border border-white rounded w-60 py-1 px-1.5 transition-all`}
+          >
+            <input
+              className="bg-transparent base-100 placeholder-white text-base w-52 flex px-1 outline-none "
+              type="text"
+              placeholder="search"
+            />
+            <button className="hidden" type="submit"></button>
+          </form>
+          <FiSearch
+            onClick={() => setNavSearch(!navSearch)}
+            color="white"
+            className="text-2xl base-100 hidden sm:block z-50 active:scale-90 transition-all cursor-pointer"
+          />
+          <Link to="/checkout">
+          {/* <Link to="/history-order"> */}
 
-        <div className="flex items-center gap-5">
-            
-            
-            <form className='flex flex-row-reverse items-center gap-2' action="">
-              <div onClick={searchButton}>
-                <div className="hover:border-b-2 hover:border-b-slate-700 hover:pb-1.5"><Icon.Search  className='text-lg text-white'/>
-                </div>
+            <FiShoppingCart
+              color="white"
+              className="text-2xl hidden sm:block base-100 active:scale-90 transition-all"
+            />
+          </Link>
+
+          {token && dataProfile && (
+            <div className="flex-1 flex justify-end items-center sm:hidden ">
+              <div>
+                <img
+                  className="rounded-full w-8 h-8 object-cover"
+                  src={dataProfile && dataProfile.picture ? `http://localhost:8888/uploads/users/${dataProfile.picture}` : defaultPhoto}
+                ></img>
               </div>
-            </form>
-            <div className={`${searchDisplay} flex-row items-center border h-8 border-gray-300 rounded-lg px-4 gap-4`}>
-                <input className="flex-1 outline-none placeholder:text-sm placeholder:text-white bg-transparent" id="search" type="text" name="search" placeholder="Search" autoComplete="on"/>
             </div>
-            <Icon.ShoppingCart className="text-white"/>
-            
-            <button onClick={()=>setLogoutOpen(!logoutOpen)}>
-            {token && 
+          )}
+
+          <FiMenu
+            onClick={() => setNavMobile(!navMobile)}
+            className="text-2xl sm:hidden base-100 active:scale-90 transition-all"
+          />
+          {token && dataProfile ? (
             <>
-            <div className='h-8 w-8 rounded-full bg-white'>
-            {!user.picture && <img className='h-8 w-8 rounded-full' src={defaultInsertImage} />}
-              {user.picture && <img className='h-8 w-8 rounded-full' src={`${import.meta.env.VITE_BACKEND_URL}/uploads/profile/${user.picture}` } />}
-            </div>
+              <div className="hidden sm:block">
+                <img
+                  className="rounded-full w-8 h-8 object-cover"
+                  src={dataProfile && dataProfile.picture ? `http://localhost:8888/uploads/users/${dataProfile.picture}` : defaultPhoto}
+                ></img>
+              </div>
+              <Link
+                to="/profile"
+                className="bg-gradient-to-br base-100 from-primary to-black py-2 px-3 text-sm rounded hidden sm:block active:scale-95 transition-all"
+              >
+                Profile
+              </Link>
+              <button
+                onClick={onLogout}
+                type="button"
+                className="bg-gradient-to-br base-100 from-primary to-black py-2 px-3 text-sm rounded hidden sm:block active:scale-95 transition-all"
+              >
+                Logout
+              </button>
             </>
-            }
-            </button>
-            <button onClick={()=>setMenuOpen(!menuOpen)}>
-            <Icon.Menu className="md:hidden text-white"/>
-            </button>
-            
-            
-            
-            {!token &&<Link to="/login"className="text-white border border-white py-2 px-3 text-sm rounded hidden md:block">Sign In</Link>}
-            {!token &&<Link to="/register" className="bg-slate-700 py-2 px-3 text-sm rounded hidden md:block">Sign Up</Link>}
+          ) : (
+            <>
+              <Link
+                to="/login"
+                className="base-100 border border-white py-2 px-3 text-sm rounded hidden sm:block active:scale-95 transition-all"
+              >
+                Sign In
+              </Link>
+              <Link
+                to="/register"
+                className="bg-gradient-to-br from-primary to-black py-2 px-3 base-100 text-sm rounded hidden sm:block active:scale-95 transition-all"
+              >
+                Sign Up
+              </Link>
+            </>
+          )}
         </div>
-    </div>
-    {menuOpen && <div className="md:hidden flex w-full bg-black pt-4 pb-2 flex-col" style={{ background: bg }}>
-                <div className="flex ">
-                    <Icon.Search className="bg-white pl-2  rounded-l-full text-black text-2xl md hydrated"/>
-                    <input type="text" className="w-full rounded-r-full px-3" placeholder="Search"/>
-                </div>
-                <div className="flex flex-col gap-2">
-                    <Link to="/" className="text-white hover:opacity-80  mt-2 flex justify-center border-[1px] border-white py-2 rounded">Home</Link>
-                    <Link to="/product" className="text-white hover:opacity-80 decoration-primary flex justify-center border-[1px] border-white py-2 rounded">Product</Link>
-                    {!token&& <Link to="/register" className="text-white hover:opacity-80  mt-2 flex justify-center border-[1px] border-white py-2 rounded">Sign Up</Link>}
-                    {!token&& <Link to="/login" className="text-white hover:opacity-80 decoration-primary flex justify-center border-[1px] border-white py-2 rounded">Sign In</Link>}
-                </div>
-                
-            </div>}
+      </div>
+
+      <div
+        className={`${
+          !navMobile ? "hidden" : "flex"
+        } sm:hidden flex-col gap-3 w-5/6 h-fit`}
+      >
+        <div className="w-full flex justify-between items-center base-100 h-6">
+          <div className="flex-1 flex items-center gap-4">
+            <LinkNav mobile={true} destination="/" value="Home" />
+            <LinkNav mobile={true} destination="/products" value="Product" />
+          </div>
+          <Link to="/history-order">
+            <FiShoppingCart
+              color="white"
+              className="text-2xl base-100 active:scale-90 transition-all"
+            />
+          </Link>
+        </div>
+
+        <form className="flex-1 flex items-center gap-2 w-full border border-white rounded py-1 px-2">
+          <FiSearch color="white" size={23} />
+          <input
+            className="bg-transparent base-100 text-sm outline-none placeholder-white w-full"
+            type="text"
+            placeholder="search"
+          />
+          <button type="submit" className="hidden"></button>
+        </form>
+
+        {token ? (
+          <div className="flex flex-col gap-4">
+          <div className="bg-gradient-to-br from-primary to-black py-1 px-2 text-sm rounded w-full text-center active:scale-90 transition-all">
+
+          <Link
+            to="/profile"
+            className="base-100 "
+          >
+            Profile
+          </Link>
+          </div>
+          
+          <button
+            type="button"
+            onClick={onLogout}
+            className="base-100 bg-gradient-to-br from-primary to-black py-1 px-2 text-sm rounded w-full text-center active:scale-90 transition-all"
+          >
+            Logout
+          </button>
+          </div>
+        ) : (
+          <div className="flex gap-4">
+            <Link
+              className="flex-1 base-100 border border-white py-1 px-2 text-sm rounded w-full text-center active:scale-90 transition-all"
+              to="/login"
+            >
+              Sign In
+            </Link>
+            <Link
+              className="flex-1 bg-gradient-to-br from-primary to-black py-1 px-2 text-sm rounded w-full text-center active:scale-90 transition-all"
+              to="/register"
+            >
+              Sign Up
+            </Link>
+          </div>
+        )}
+      </div>
     </nav>
-            
-          {logoutOpen && <div className='flex'> <button><Link to="/profile" className="flex -right-1 top-11 text-l bg-slate-300 items-center px-2 py-2 mx-5 my-5 rounded hover:opacity-70 z-20 fixed">
-          <Icon.User className="w-12" name="log-out"/>
-          <h1 className="px-2">Profile</h1>
-          </Link></button>
-          <button onClick={onLogout} className="flex -right-1 top-24 text-l bg-slate-300 items-center px-1.5 py-2 mx-5 my-5  rounded hover:opacity-70 z-20 fixed">
-          <Icon.LogOut className="w-12" name="log-out"/>
-          <h1 className="px-2">Logout</h1>
-          </button></div>}
-          
-          
-        </>
-    )
-} 
-export default Navbar
+  );
+};
+
+export default Navbar;

@@ -1,25 +1,25 @@
-import { FaStar } from "react-icons/fa6"
+import { FaStar } from "react-icons/fa";
 
-
-
-const Rating =(rating)=>{
-    const maxRating =5
-    const elementStar = []
-    for (let i=1; i<=maxRating;i++){
-        const colorStar = i <= rating ? 'yellow-500' : 'gray-500'
-        elementStar.push(
-            <FaStar key={i}
-            style={{color: colorStar}}
-            className="text-lg" />
-        )
+const Rating = ({rating, color}) => {
+    const stars = [];
+    for (let i = 1; i <= 5; i++) {
+      stars.push(i);
     }
-    return(
-        <>
-        <div className="flex gap-2 items-center">
-            {elementStar}
-            <span>{rating}</span>
+
+    return (
+        <div className="flex items-center gap-2 sm:gap-4">
+        <div className="flex gap-1 sm:gap-2">
+          {stars.map((index) => (
+            index <= parseInt(rating)
+            ? <FaStar key={index} color="orange" className="text-xs sm:text-base"/>
+            : <FaStar key={index} color="#a7a9ad" className="text-xs sm:text-base"/>
+          ))}
         </div>
-        </>
+        <p className={`text-xs sm:text-base ${color ? 'text-white' : 'text-[#4F5665]'}`} id="rating-number">
+          {rating}.0
+        </p>
+      </div>
     )
 }
+
 export default Rating
