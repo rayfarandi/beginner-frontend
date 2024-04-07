@@ -12,11 +12,11 @@ import ForgotPassword from './pages/ForgotPassword'
 import Home from './pages/Home'
 import Products from './pages/Products'
 import ProductDetails from './pages/ProductDetails'
-import Checkout from './pages/Checkout'
 import HistoryOrder from './pages/HistoryOrder'
 import OrderDetails from './pages/OrderDetails'
 import Profile from './pages/Profile'
-import PrivateRoute from './components/privateRoute'
+import PrivateRoute from './components/PrivateRoute'
+import Checkout from './pages/Checkout'
 
 const router = createBrowserRouter([
   {
