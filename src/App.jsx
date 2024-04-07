@@ -16,7 +16,7 @@ import Checkout from './pages/Checkout'
 import HistoryOrder from './pages/HistoryOrder'
 import OrderDetails from './pages/OrderDetails'
 import Profile from './pages/Profile'
-import PrivateRoute from './components/privateRoute'
+import PrivateRoute from './components/PrivateRoute'
 
 const router = createBrowserRouter([
   {
