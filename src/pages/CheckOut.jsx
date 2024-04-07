@@ -6,7 +6,7 @@ import { FiPlus } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import { setShipping } from "../redux/reducers/deliveryShipping";
 
-import { OptionVariety } from "../components/Details";
+import OptionVariety  from "../components/Details";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import CardProductOrder from "../components/CardProductOrder";
