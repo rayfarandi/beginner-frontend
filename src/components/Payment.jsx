@@ -39,7 +39,9 @@ const Payment = () => {
   const shipping = useSelector(state => state.deliveryShipping.shipping)
 
   const totalOrder = useSelector(state => state.totalOrder.total).reduce((prev, curr) => prev + curr, 0)
-  const tax = totalOrder * 0.025
+  // const tax = totalOrder * 0.010
+  const tax = totalOrder * 0
+
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
