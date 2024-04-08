@@ -309,7 +309,11 @@ const Products = () => {
       setError(true)
       setDataProducts(null)
 
-      
+      setTimeout(()=>{
+        setTimeout(false)
+        setError('')
+        listAllProducts()
+      },1500)
     }
   }
 
