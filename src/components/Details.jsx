@@ -38,7 +38,7 @@ const Details = ({id, productName, rating, review, description, basePrice, disco
   const getDataSize = async (size) => {
     try {
       const { data } = await axios.get(
-        `http://localhost:8888/data-size?name=${size}`
+        `${import.meta.env.VITE_SERVER_URL}/data-size?name=${size}`
       );
       setDataSize(data.results);
     } catch (error) {
@@ -49,7 +49,7 @@ const Details = ({id, productName, rating, review, description, basePrice, disco
 
     const getDataVariant = async (variant) => {
       try {
-        const {data} = await axios.get(`http://localhost:8888/data-variant?name=${variant}`)
+        const {data} = await axios.get(`${import.meta.env.VITE_SERVER_URL}/data-variant?name=${variant}`)
         setDataVariant(data.results)
       } catch (error) {
         console.log(error)

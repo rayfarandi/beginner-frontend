@@ -9,7 +9,7 @@ const CardProduct = ({id, productName, description, rating, basePrice, discountP
   return (
     <div className="relative flex justify-center w-fit h-fit">
       <div>
-        <img className="w-44 h-44 sm:w-72 sm:h-72 object-cover" src={image ? `http://localhost:8888/uploads/products/${image}` : Product1}/>
+        <img className="w-44 h-44 sm:w-72 sm:h-72 object-cover" src={image ? `${import.meta.env.VITE_SERVER_URL}/uploads/products/${image}` : Product1}/>
       </div>
       {
         tag &&

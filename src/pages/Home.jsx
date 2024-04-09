@@ -46,7 +46,7 @@ const ListProvide = ({ text }) => {
 // eslint-disable-next-line react-refresh/only-export-components
 export const recommendProducts= async (setData) => {
   try {
-    const {data} = await axios.get("http://localhost:8888/products", {
+    const {data} = await axios.get(`${import.meta.env.VITE_SERVER_URL}/products`, {
       params: {
         limit: setData.limit,
         isRecommended: true

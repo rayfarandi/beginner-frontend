@@ -40,7 +40,7 @@ const Navbar = ({home}) => {
   const getProfile =  async () => {
     if(token){
       try {
-        const {data} = await axios.get(`http://localhost:8888/profile`, {
+        const {data} = await axios.get(`${import.meta.env.VITE_SERVER_URL}/profile`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -132,7 +132,7 @@ const Navbar = ({home}) => {
               <div>
                 <img
                   className="rounded-full w-8 h-8 object-cover"
-                  src={dataProfile && dataProfile.picture ? `http://localhost:8888/uploads/users/${dataProfile.picture}` : defaultPhoto}
+                  src={dataProfile && dataProfile.picture ? `${import.meta.env.VITE_SERVER_URL}/uploads/users/${dataProfile.picture}` : defaultPhoto}
                 ></img>
               </div>
             </div>
@@ -147,7 +147,7 @@ const Navbar = ({home}) => {
               <div className="hidden sm:block">
                 <img
                   className="rounded-full w-8 h-8 object-cover"
-                  src={dataProfile && dataProfile.picture ? `http://localhost:8888/uploads/users/${dataProfile.picture}` : defaultPhoto}
+                  src={dataProfile && dataProfile.picture ? `${import.meta.env.VITE_SERVER_URL}/uploads/users/${dataProfile.picture}` : defaultPhoto}
                 ></img>
               </div>
               <Link

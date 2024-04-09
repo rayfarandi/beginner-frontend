@@ -49,7 +49,7 @@ const OrderDetails = () => {
 
   const getDetailsOrder = async () => {
     try {
-      const {data} = await axios.get(`http://localhost:8888/order/${id}`, {
+      const {data} = await axios.get(`${import.meta.env.VITE_SERVER_URL}/order/${id}`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -57,7 +57,7 @@ const OrderDetails = () => {
       console.log(data.results)
       setDataDetails(data.results)
 
-      const {data: dataProducts} = await axios.get(`http://localhost:8888/order-details?orderId=${id}`, {
+      const {data: dataProducts} = await axios.get(`${import.meta.env.VITE_SERVER_URL}/order-details?orderId=${id}`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
