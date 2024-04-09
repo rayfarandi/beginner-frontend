@@ -1,6 +1,9 @@
 # COFFEE SHOP
 
-![App Screenshot](https://github.com/rayfarandi/fwg17-beginner-frontend/tree/main/public/banner.png?raw=true)
+
+<p align="center">
+        <img src="public/banner.png" width="900px" alt="logo"></img>
+</p>
 
 
 
