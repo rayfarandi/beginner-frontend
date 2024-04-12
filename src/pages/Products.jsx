@@ -232,20 +232,37 @@ const Products = () => {
   const [error, setError] = useState(false)
   const [disable, setDisable] = useState(false)
 
+  // const listAllProducts = async () => {
+  //   try {
+  //     const {data} = await axios.get(`${import.meta.env.VITE_SERVER_URL}/products`)
+  //     console.log(data)
+  //     setTotalPage(data.pageInfo.totalPage)
+  //     setNextPage(data.pageInfo.nextPage)
+  //     setPrevPage(data.pageInfo.prevPage)
+  //     setCurrentPage(data.pageInfo.currentPage)
+  //     setDataProducts(data.results)
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
   const listAllProducts = async () => {
     try {
-      const {data} = await axios.get(`${import.meta.env.VITE_SERVER_URL}/products`)
-      console.log(data)
-      setTotalPage(data.pageInfo.totalPage)
-      setNextPage(data.pageInfo.nextPage)
-      setPrevPage(data.pageInfo.prevPage)
-      setCurrentPage(data.pageInfo.currentPage)
-      setDataProducts(data.results)
+      // Memastikan tidak ada slash di akhir VITE_SERVER_URL
+      const serverUrl = import.meta.env.VITE_SERVER_URL.endsWith('/')
+        ? import.meta.env.VITE_SERVER_URL.slice(0, -1)
+        : import.meta.env.VITE_SERVER_URL;
+  
+      const {data} = await axios.get(`${serverUrl}/products`);
+      console.log(data);
+      setTotalPage(data.pageInfo.totalPage);
+      setNextPage(data.pageInfo.nextPage);
+      setPrevPage(data.pageInfo.prevPage);
+      setCurrentPage(data.pageInfo.currentPage);
+      setDataProducts(data.results);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }
-
 
   const searchProduct = async (event) => {
     event.preventDefault()
