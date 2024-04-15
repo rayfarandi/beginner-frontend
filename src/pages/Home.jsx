@@ -13,6 +13,7 @@ import Map from "../assets/images/home-map.png";
 import MapMobile from "../assets/images/map-mobile.png";
 import CardProductHome from "../components/CardProductHome";
 import { useSelector } from "react-redux";
+import ProductSkeleton from "../components/ProductSkeleton";
 
 const Data = ({ value, text }) => {
   return (
@@ -44,7 +45,8 @@ const ListProvide = ({ text }) => {
 
 // recommendation products start
 // eslint-disable-next-line react-refresh/only-export-components
-export const recommendProducts= async (setData) => {
+export const recommendProducts= async (setIsLoading,setData) => {
+  setIsLoading(true)
   try {
     const {data} = await axios.get(`${import.meta.env.VITE_SERVER_URL}/products`, {
       params: {
@@ -59,6 +61,8 @@ export const recommendProducts= async (setData) => {
     setData.setNextPage && setData.setNextPage(data.pageInfo.nextPage)
   } catch (error) {
     console.log(error)
+  }finally{
+    setIsLoading(false)
   }
 }
 // recommendation products end
@@ -66,6 +70,7 @@ export const recommendProducts= async (setData) => {
 
 
 const Home = () => {
+  const [isLoading,setIsLoading]= useState(false)
   const token = useSelector(state => state.auth.token)
 
   const [chatBox, setChatBox] = useState(false);
@@ -96,7 +101,7 @@ const Home = () => {
 
 
   const [dataProducts, setDataProducts] = useState()
-
+  
 
   const [position, setPosition] = useState(0);
   const handleSlideLeft = () => {
@@ -112,17 +117,20 @@ const Home = () => {
       left: 0,
       behavior: "smooth",
     });
+  
+    setDisplay(true)
+    setIsLoading(true)
 
-    setDisplay(true);
+    const timer = setTimeout(()=>{
+      
+      recommendProducts(setIsLoading, {
+        setDataProducts,
+        limit: 4,
+      })
+    },6000)
+    return ()=> clearTimeout(timer)
 
-    recommendProducts({
-      setDataProducts,
-      limit: 4,
-    });
-
-    
-    
-  },[]);
+  }, [])
 
 
   return (
@@ -300,7 +308,12 @@ const Home = () => {
         </div>
 
         <div className="gap-y-48 gap-x-6 flex flex-wrap justify-center mb-44 sm:gap-6 w-fit mx-6 sm:mx-0 sm:px-6">
-          {dataProducts &&
+          {isLoading ? (
+            Array.from({length:4},(_,index)=>(
+              <ProductSkeleton className="w-44 h-44" key={index} />
+            ))
+          ) : (
+            dataProducts &&
             dataProducts.map((product) => (
               <CardProductHome
                 id={product.id}
@@ -312,7 +325,8 @@ const Home = () => {
                 image={product.image}
                 tag={product.tag}
               />
-            ))}
+            ))
+          )}
         </div>
       </section>
 

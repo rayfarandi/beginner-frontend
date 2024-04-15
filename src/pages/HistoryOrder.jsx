@@ -18,6 +18,7 @@ import Button from "../components/Button";
 import Product1 from "../assets/images/detail-product1.jpg";
 
 
+
 const optionFilter = ["On Progress", "Sending Goods", "Finish Order"]
 
 const CardHistoryOrder = ({id, orderNumber, date, total, statusDelivery, image}) => {
@@ -93,11 +94,13 @@ const [totalPage, setTotalPage] = useState()
   const [totalData, setTotalData] = useState(0)
   const [errorMessage, setErrorMessage] = useState()
   const [error, setError] = useState(false)
+  const [isLoading,setIsLoading] = useState(false)
 
   const token = useSelector(state => state.auth.token)
 
 
   const dataOrders = async () => {
+    setIsLoading(true)
     try {
       const {data} = await axios.get(`${import.meta.env.VITE_SERVER_URL}/orders`, {
         headers: {
@@ -112,6 +115,7 @@ const [totalPage, setTotalPage] = useState()
         setPrevPage(data.pageInfo.prevPage);
         setTotalData(data.pageInfo.totalData);
         setCurrentPage(data.pageInfo.currentPage);
+        setIsLoading(false)
       } else {
         // Handle kasus dimana data.pageInfo tidak ada
         console.error('Data pageInfo tidak ditemukan dalam respon');
@@ -123,6 +127,7 @@ const [totalPage, setTotalPage] = useState()
         : 'Terjadi kesalahan saat mengambil data';
       setErrorMessage(errorMessage);
       setError(true);
+      setIsLoading(false)
     }
   };
 
@@ -359,8 +364,11 @@ const [totalPage, setTotalPage] = useState()
               <input className="outline-none bg-transparent" type="month" name="date"/>
             </label>
           </div>
-
+          
           <div className="relative flex flex-col gap-4 h-fit">
+            {/* loading */}
+          {isLoading && <span className="absolute text-primary top-2 left-1/2 -translate-x-1/2 loading loading-bars w-[3rem] h-[3rem]"></span>}
+              {/* loading */}
           <div className={`absolute text-center top-10 py-2 px-4 bg-white shadow-md rounded text-sm text-red-500 flex justify-center items-center font-bold ${error ? 'flex' : 'hidden'}`}>
                 <h1>{errorMessage}</h1>
           </div>

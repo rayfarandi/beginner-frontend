@@ -11,6 +11,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
+import ProductSkeleton from "../components/ProductSkeleton";
 
 
 // filter start
@@ -231,8 +232,10 @@ const Products = () => {
   const [errorMessage, setErrorMessage] = useState()
   const [error, setError] = useState(false)
   const [disable, setDisable] = useState(false)
+  const [isLoading,setIsLoading] = useState(false)
 
   const listAllProducts = async () => {
+    setIsLoading(true)
     try {
       const {data} = await axios.get(`${import.meta.env.VITE_SERVER_URL}/products`)
       console.log(data)
@@ -243,12 +246,15 @@ const Products = () => {
       setDataProducts(data.results)
     } catch (error) {
       console.log(error)
+    }finally{
+      setIsLoading(false)
     }
   }
   
 
   const searchProduct = async (event) => {
     event.preventDefault()
+    setIsLoading(true)
     mobileFilter && setMobileFilter(false);
 
 
@@ -292,7 +298,8 @@ const Products = () => {
       setCurrentPage(data.pageInfo.currentPage)
       setDataProducts(data.results)
       setQueryParameter(queryParams)
-
+      
+      
       setSearchParams({
         searchKey
       })
@@ -314,6 +321,8 @@ const Products = () => {
         setError('')
         listAllProducts()
       },1500)
+    }finally{
+      setIsLoading(false)
     }
   }
 
@@ -459,12 +468,15 @@ const Products = () => {
     });
 
     setDisplay(true)
+    setIsLoading(true)
+    const timer = setTimeout(()=>{
 
-    if(searchParams.get("searchKey")){
-      searchProduct()
-    }else{
-      listAllProducts();
-    }
+      if(searchParams.get("searchKey")){
+        searchProduct()
+      }else{
+        listAllProducts();
+      }
+    },400)
   }, []);
 
   return (
@@ -565,7 +577,12 @@ const Products = () => {
               </div>
 
               <div className=" flex flex-wrap justify-center gap-x-4 sm:gap-x-20 gap-y-48 sm:gap-y-44 mb-48 max-w-xxl">
-                { dataProducts &&
+                {isLoading ? (
+                  Array.from({length: 6},(_,index)=>(
+                    <ProductSkeleton className="w-72 h-72" key={index}/>
+                  ))
+                ):(
+                  dataProducts &&
                   dataProducts.map((product) => (
                       product.discount == 0 ? 
                         (<CardProduct
@@ -590,7 +607,8 @@ const Products = () => {
                       tag={product.tag}
                       />)
                   ))
-                }
+                )}
+                
               </div>
             </div>
 
