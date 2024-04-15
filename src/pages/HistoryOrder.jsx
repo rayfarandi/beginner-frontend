@@ -96,26 +96,35 @@ const [totalPage, setTotalPage] = useState()
 
   const token = useSelector(state => state.auth.token)
 
+
   const dataOrders = async () => {
     try {
-      const {data} = await axios.get('${import.meta.env.VITE_SERVER_URL}/orders', {
+      const {data} = await axios.get(`${import.meta.env.VITE_SERVER_URL}/orders`, {
         headers: {
           'Authorization' : `Bearer ${token}`
         }
-      })
-      console.log(data && data)
-      setOrders(data.results)
-      setTotalPage(data.pageInfo.totalPage)
-      setNextPage(data.pageInfo.nextPage)
-      setPrevPage(data.pageInfo.prevPage);
-      setTotalData(data.pageInfo.totalData)
-      setCurrentPage(data.pageInfo.currentPage)
+      });
+      console.log(data); // Tambahkan untuk debugging
+      if (data && data.pageInfo) {
+        setOrders(data.results);
+        setTotalPage(data.pageInfo.totalPage);
+        setNextPage(data.pageInfo.nextPage);
+        setPrevPage(data.pageInfo.prevPage);
+        setTotalData(data.pageInfo.totalData);
+        setCurrentPage(data.pageInfo.currentPage);
+      } else {
+        // Handle kasus dimana data.pageInfo tidak ada
+        console.error('Data pageInfo tidak ditemukan dalam respon');
+      }
     } catch (error) {
-      console.log(error.response.data.message)
-      setErrorMessage(error.response.data.message)
-      setError(true)
+      console.log(error);
+      const errorMessage = error.response && error.response.data && error.response.data.message
+        ? error.response.data.message
+        : 'Terjadi kesalahan saat mengambil data';
+      setErrorMessage(errorMessage);
+      setError(true);
     }
-  }
+  };
 
 
   const filterStatus = async (event) => {

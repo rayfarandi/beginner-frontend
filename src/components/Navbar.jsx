@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { FiShoppingCart, FiMenu, FiSearch, FiUser } from "react-icons/fi";
+import { FiShoppingCart, FiMenu, FiSearch, FiUser, FiArchive } from "react-icons/fi";
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom'
 
@@ -71,7 +71,7 @@ const Navbar = ({home}) => {
       setProductActive(true);
       setHomeActive(false);
     }
-    
+  
    
   },[])
 
@@ -85,7 +85,9 @@ const Navbar = ({home}) => {
         <div className="flex sm:gap-12 ">
           <div className="flex gap-4">
             <div>
+            <Link to="/">
               <img src={CupCoffee} />
+            </Link>
             </div>
             <div>
               <img src={TextLogo} />
@@ -103,7 +105,7 @@ const Navbar = ({home}) => {
             className={`${
               !navSearch ? "hidden" : "flex"
             } absolute items-center ${
-              token ? "left-[5.7rem]" : "left-12"
+              token ? "left-[-2.2rem]" : "left-4"
             } border border-white rounded w-60 py-1 px-1.5 transition-all`}
           >
             <input
@@ -118,9 +120,13 @@ const Navbar = ({home}) => {
             color="white"
             className="text-2xl base-100 hidden sm:block z-50 active:scale-90 transition-all cursor-pointer"
           />
-          <Link to="/checkout">
-          {/* <Link to="/history-order"> */}
-
+          <Link to="/history-order">
+            <FiArchive
+              color="white"
+              className="text-2xl hidden sm:block base-10 active:scale-90 transition-all"
+            />
+          </Link>
+          <Link to="/checkout">        
             <FiShoppingCart
               color="white"
               className="text-2xl hidden sm:block base-100 active:scale-90 transition-all"
@@ -194,6 +200,12 @@ const Navbar = ({home}) => {
             <LinkNav mobile={true} destination="/products" value="Product" />
           </div>
           <Link to="/history-order">
+            <FiArchive
+              color="white"
+              className="text-2xl base-100 active:scale-90 transition-all"
+            />
+          </Link>
+          <Link to="/checkout">
             <FiShoppingCart
               color="white"
               className="text-2xl base-100 active:scale-90 transition-all"
