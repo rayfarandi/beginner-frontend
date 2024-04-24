@@ -113,6 +113,35 @@ const Profile = () => {
       }
 
     }
+
+    const deletePicture = async(event) =>{
+      event.preventDefault()
+      const form = new URLSearchParams()
+      form.append("picture", '')
+
+      try{
+        const {data} = await axios.patch(`${import.meta.env.VITE_SERVER_URL}/profile`,form, {
+          headers:{
+            'Authorization': `Bearer ${token}`,
+          }
+        })
+        console.log(data)
+        dispatch(setProfileAction(data.results))
+        setPreview(false)
+        setSuccess(true)
+        setTimeout(() => {
+          setSuccess(false)
+        }, 2000)
+      }catch{
+        console.log(error)
+        setErrorMessage(error.response.data.message)
+        setError(true)
+        setTimeout(() => {
+          setError(false)
+        }, 2000);
+      }
+    }
+    
   // update profile end
 
   return (
@@ -160,9 +189,13 @@ const Profile = () => {
                 src={
                   dataProfile &&
                   `${import.meta.env.VITE_SERVER_URL}/uploads/users/${dataProfile.picture}`
+                  // dataProfile.picture 
+                  // persiapan cloudinary
                 }
+                // src={dataProfile && dataProfile.picture ? `${import.meta.env.VITE_SERVER_URL}/uploads/users/${dataProfile.picture}` : defaultPhoto}
               ></img>
             )}
+            
             {preview && (
               <img
                 className="rounded-full w-28 h-28 object-cover"
@@ -186,6 +219,13 @@ const Profile = () => {
             className="text-xs bg-gradient-to-br from-primary to-black text-white w-full rounded p-2 transition-all active:scale-95"
           >
             Upload New Photo
+          </button>
+          <button
+            disabled={(preview && dataProfile) || !dataProfile.picture}
+            onClick={deletePicture}
+            className={`text-xs bg-gradient-to-br from-secondary to-black text-white w-full rounded p-2 transition-all active:scale-95 disabled:active:scale-100 disabled:transition-none`}
+          >
+            Delete Photo
           </button>
           <p className="text-xs text-[#4F5665]">
             Since{" "}
