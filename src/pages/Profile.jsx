@@ -6,7 +6,8 @@ import { useState } from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import InputForm from "../components/InputForm";
-import Button from "../components/Button"
+import ButtonCustom from "../components/ButtonCustom"
+import { Button } from "daisyui"
 import axios from "axios";
 import moment from "moment";
 import defaultPhoto from '../assets/images/default-photo-profil.jpeg'
@@ -227,6 +228,14 @@ const Profile = () => {
           >
             Delete Photo
           </button>
+          {/* <Button
+            onClick={deletePicture}
+            color="secondary"
+            size="sm"
+            block
+            >
+            Delete Photo
+          </Button> */}
           <p className="text-xs text-[#4F5665]">
             Since{" "}
             <span className="font-bold">
@@ -283,7 +292,7 @@ const Profile = () => {
               />
             </>
           )}
-          <Button value="Submit" py="2" />
+          <ButtonCustom value="Submit" py="2"/>
         </form>
       </section>
 

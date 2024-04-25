@@ -1,4 +1,4 @@
-import Button from "./Button";
+import Button from "./ButtonCustom";
 import InputForm from "../components/InputForm";
 import CupCoffee from '../assets/images/cup-coffe-icon.png'
 import TextLogo from "../assets/images/text-logo.png"

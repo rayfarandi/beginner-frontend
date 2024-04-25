@@ -71,6 +71,24 @@ const ProductDetails = () => {
   const [disable, setDisable] = useState(false)
   const[currentPage, setCurrentPage] = useState()
 
+  const recommendProducts = async () =>{
+    try{
+      const {data} =await axios.get(`${import.meta.env.VITE_SERVER_URL}/products`, {
+        params: {
+          limit: 3,
+          isRecommended:true
+        }
+      })
+      console.log(data)
+      setDataProducts(data.results)
+      setCurrentPage(data.pageInfo.currentPage)
+      setTotalPage(data.pageInfo.totalPage)
+      setNextPage(data.pageInfo.nextPage)
+    }catch(error){
+      console.log(error)
+    }
+  }
+
   const pageNavigator = async (page) => {
     try {
       const {data} = await axios.get(`${import.meta.env.VITE_SERVER_URL}/products`, {

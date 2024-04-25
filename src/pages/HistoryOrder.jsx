@@ -5,8 +5,7 @@ import moment from 'moment';
 import {
   FiMessageSquare,
   FiAlignRight,
-  FiCalendar,
-  FiChevronDown,
+  
 } from "react-icons/fi";
 
 import { useSelector } from "react-redux";
@@ -14,7 +13,7 @@ import { useSelector } from "react-redux";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import PageNavigation from "../components/PageNavigation";
-import Button from "../components/Button";
+import ButtonCustom from "../components/ButtonCustom";
 import Product1 from "../assets/images/detail-product1.jpg";
 
 
@@ -402,7 +401,7 @@ const [totalPage, setTotalPage] = useState()
             if your unable to find answer or find your product quickly, please
             describe your problem and tell us. we will give you solution.
           </p>
-          <Button destination="#" value="Send Message" py="1.5" />
+          <ButtonCustom destination="#" value="Send Message" py="1.5" />
         </div>
       </div>
 
